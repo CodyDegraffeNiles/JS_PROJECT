@@ -37,6 +37,7 @@ Furthermore, this project will include:
 ### Technologies, Libraries, APIs
 ------
 This project will be implemented using the following technologies: 
+* Vanilla Javascript to implement interactive gameplay logic
 * Canvas API to render the game grid as well as the units and animations
 * Webpack and npm to bundle the Javascript Code and manage project dependencies
 * Babel to transpile the Javascript Code
