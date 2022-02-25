@@ -15,13 +15,13 @@ After the player's turn, the AI will make a turn and command its units to either
 ### Functionality & MVPs
 -------
 With MINI-XCOM, users will be able to:
-* Command their units to move or shoot. 
-* View the stats of their units.
-* Fight against a cunning(albeit simple) AI openent in turn-based combat.
-* See a victory or defeat image and/or message upon completion of the game.
+* Command their units to move or shoot
+* View the stats of their units
+* Fight against a cunning(albeit simple) AI openent in turn-based combat
+* See a victory or defeat image and/or message upon completion of the game
 
 Furthermore, this project will include: 
-* An intro section describing the background and rules of MINI-XCOM.
+* An intro section describing the background and rules of MINI-XCOM
 * A production README
 
 ### Wireframes
@@ -30,9 +30,9 @@ Furthermore, this project will include:
 ### Technologies, Libraries, APIs
 ------
 This project will be implemented using the following technologies: 
-* Canvas API to render the game grid as well as the units and animations.
-* Webpack and npm to bundle the Javascript Code and manage project dependencies.
-* Babel to transpile the Javascript Code.
+* Canvas API to render the game grid as well as the units and animations
+* Webpack and npm to bundle the Javascript Code and manage project dependencies
+* Babel to transpile the Javascript Code
 
 ### Implementation Timeline 
 ------
