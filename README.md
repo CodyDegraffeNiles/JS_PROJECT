@@ -2,10 +2,15 @@
 
 ### Background
 -------
-In MINI_XCOM, you command a squad of hardened space marines as they battle there way through a vicious enemy. 
-Become the commander, these marines need to survivie. Position them behind cover and flank your enemies to let them fight another day.
+In MINI_XCOM, the player commands a squad of hardened space marines. In turn-based combat on a grid-based board, 
+the player battles the AI in last man standing fight.  If all of player’s units die, they lose. If they defeat all the enemies, they win. Each turn, and for each
+unit, the player can either:
+  1) Move the Unit 
+  2) Command it to shoot an enemy
+ 
+After the player's turn, the AI will make a turn and command its units in a similar way to either move or shoot. Each unit, both friend and foe, has a set of stats. These stats include a movement range, shotting range, and health points. The player can also, at anytime, view their units' stats. The player must also be stragetic about their movement choices as cover morphs the battlefiled into choke points and kill zones.
 
-FOR THE EMPEROR!
+The player must become the commander these marines need to survie. FOR THE EMPEROR!
 
 
 ### Functionality & MVPs
