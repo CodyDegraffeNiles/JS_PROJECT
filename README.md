@@ -65,7 +65,7 @@ There are many areas for impovement in this project. Some of possible areas for 
 * Increase AI logic
 * Allow the user to customize their marines, e.g., their name and color
 * Add music
-* Create multiple levels of fighting and allow for the persistance of Marine's health through the levels
+* Create multiple levels of fighting and allow for the persistance of marines' health through the levels
 
 
 
