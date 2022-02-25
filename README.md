@@ -26,6 +26,13 @@ Furthermore, this project will include:
 
 ### Wireframes
 ------
+<img width="1029" alt="Wireframe of JS Project" src="https://user-images.githubusercontent.com/79245580/155656120-da29e2b5-b34e-4e11-84d3-fbe4229e6527.png">
+
+* Nav links include include links to this project's Github repo as well as my Github page and LinkedIn. 
+* Game Controls will include a restart option as well as an option to view the instructions.
+* Game Board is the grid on which the game takes place. It is also the area over which the end game image/message will be displayed.
+* Remaining units to move is a counter that both shows who the current player is (either the player or the AI) as well as the number of their units that can act in the current turn. 
+* Unit Stats is the panel that appears when a user views the stats on a unit. In the absence of a selected unit, it will either dissapear or show the stats of the last selected unit.
 
 ### Technologies, Libraries, APIs
 ------
