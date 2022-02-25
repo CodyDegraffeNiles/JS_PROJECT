@@ -15,7 +15,7 @@
   \**********************/
 /***/ (function() {
 
-eval("\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n  console.log(\"hi\")\n\n})\n\n//# sourceURL=webpack://MINI-XCOM/./src/index.js?");
+eval("\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n  console.log(\"working :)\")\n\n  const gameGrid = document.getElementById(\"game-grid\")\n  let ctx = gameGrid.getContext('2d');\n  window.ctx = ctx;\n  ctx.fillStyle = \"peachpuff\";\n  ctx.fillRect(50,50,100,100);\n})\n\n//# sourceURL=webpack://MINI-XCOM/./src/index.js?");
 
 /***/ })
 
