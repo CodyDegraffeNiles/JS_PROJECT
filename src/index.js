@@ -1,4 +1,4 @@
-import Grid from "./grid.js";
+import Grid from "./scripts/grid.js";
 
 document.addEventListener("DOMContentLoaded", () =>{
   console.log("working :)")
