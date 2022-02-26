@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/grid.js":
-/*!*********************!*\
-  !*** ./src/grid.js ***!
-  \*********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-eval("__webpack_require__.r(__webpack_exports__);\n\nclass Grid{\n  constructor(height = 500, width = 500, column = 8, row = 8){\n    this.height = height;\n    this.width = width;\n    this.columnNum = column; \n    this.rowNum = row;\n  }\n\n  drawGrid(){\n    let canvas = document.createElement(\"CANVAS\");\n    canvas.width = this.width;\n    canvas.height = this.height;\n    let ctx = canvas.getContext(\"2d\");\n    canvas.style.border = \"2px solid black\"\n    ctx.fillStyle = \"grey\";\n    ctx.fillRect(0, 0, this.width, this.height);\n    ctx.beginPath();\n    ctx.lineWidth = 2;\n    ctx.lineStyle = \"black\";\n    for (let x = 0; x < this.height; x += this.height / this.rowNum) {\n      ctx.moveTo(x, 0)\n      ctx.lineTo(x, this.height)\n    }\n    for (let y = 0; y < this.width; y += this.width / this.columnNum) {\n      ctx.moveTo(0, y)\n      ctx.lineTo(this.width, y)\n    }\n    ctx.stroke();\n    let gameboard = document.getElementById('play-area')\n    gameboard.appendChild(canvas);\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Grid);\n\n//# sourceURL=webpack://MINI-XCOM/./src/grid.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _grid_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./grid.js */ \"./src/grid.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n  console.log(\"working :)\")\n\n  const grid = new _grid_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\n  grid.drawGrid();\n\n  // grid.drawGrid(100, 200)\n\n  // const gameGrid = document.getElementById(\"game-grid\")\n  // let ctx =sd gameGrid.getContext('2d');\n  // window.ctx = ctx;\n  // ctx.fillStyle = \"peachpuff\";\n  // ctx.fillRect(50,50,100,100);\n})\n\n//# sourceURL=webpack://MINI-XCOM/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scripts_grid_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scripts/grid.js */ \"./src/scripts/grid.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n  console.log(\"working :)\")\n\n  const grid = new _scripts_grid_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]()\n  grid.drawGrid();\n\n  // grid.drawGrid(100, 200)\n\n  // const gameGrid = document.getElementById(\"game-grid\")\n  // let ctx =sd gameGrid.getContext('2d');\n  // window.ctx = ctx;\n  // ctx.fillStyle = \"peachpuff\";\n  // ctx.fillRect(50,50,100,100);\n})\n\n//# sourceURL=webpack://MINI-XCOM/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/grid.js":
+/*!*****************************!*\
+  !*** ./src/scripts/grid.js ***!
+  \*****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+eval("__webpack_require__.r(__webpack_exports__);\n\nclass Grid{\n  constructor(height = 500, width = 500, column = 8, row = 8){\n    this.height = height;\n    this.width = width;\n    this.columnNum = column; \n    this.rowNum = row;\n  }\n\n  drawGrid(){\n    let canvas = document.createElement(\"CANVAS\");\n    canvas.width = this.width;\n    canvas.height = this.height;\n    let ctx = canvas.getContext(\"2d\");\n    canvas.style.border = \"2px solid black\"\n    ctx.fillStyle = \"grey\";\n    ctx.fillRect(0, 0, this.width, this.height);\n    ctx.beginPath();\n    ctx.lineWidth = 2;\n    ctx.lineStyle = \"black\";\n    for (let x = 0; x < this.height; x += this.height / this.rowNum) {\n      ctx.moveTo(x, 0)\n      ctx.lineTo(x, this.height)\n    }\n    for (let y = 0; y < this.width; y += this.width / this.columnNum) {\n      ctx.moveTo(0, y)\n      ctx.lineTo(this.width, y)\n    }\n    ctx.stroke();\n    let gameboard = document.getElementById('play-area')\n    gameboard.appendChild(canvas);\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Grid);\n\n//# sourceURL=webpack://MINI-XCOM/./src/scripts/grid.js?");
 
 /***/ })
 
