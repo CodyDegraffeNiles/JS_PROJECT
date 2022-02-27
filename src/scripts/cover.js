@@ -1,13 +1,14 @@
 import Unit from "./unit.js";
 
-class Cover{
+class Cover extends Unit{
   constructor(pos){
-    this.name = "Indomitable Cover";
-    this.health = 9001;
-    this.movmentRange = 0;
-    this.shootingRange = 0;
-    this.enemy = true;
-    this.pos = pos;
+    super({
+      name: "Indomitable Cover",
+      health: 9001,
+      movementRange: 0,
+      shootingRange: 0,
+      pos: pos,
+    });
   }
 
   draw(){

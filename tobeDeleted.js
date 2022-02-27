@@ -22,3 +22,19 @@
 //   enemy: false,
 //   name: "BoboMonkey"
 // })
+
+// Valid Move function for Unit
+// validMath(move){
+//   let moveX = move[0];
+//   let moveY = move[1];
+//   // Check if it is in valid bounds.
+//   if (moveX > 7 || moveX < 0 || moveY > 7 || moveY < 0) {
+//     return false;
+//   }
+//   if (Math.abs(this.pos[0] - moveX) > this.movementRange || Math.abs(this.pos[1] - moveY) > this.movementRange) {
+//     return false;
+//   }
+//   return true;
+// }
+
+

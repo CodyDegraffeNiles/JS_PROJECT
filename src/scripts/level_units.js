@@ -15,7 +15,7 @@ const levelUnits = [new Unit({
   new Unit({
   pos: [1, 5],
   health: 100,
-  movementRange: 3,
+  movementRange: 2,
   shootingRange: 4,
   enemy: false,
   name: "Renektus"

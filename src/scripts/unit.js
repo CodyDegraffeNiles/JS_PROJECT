@@ -9,6 +9,7 @@ class Unit{
     this.enemy = options.enemy;
     this.name = options.name;
     this.movementLeft = false;
+    this.grid = "grid";
   }
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
@@ -25,8 +26,9 @@ class Unit{
     ctx.fill();
   }
   move([x,y]){
-    // Check if move is within movement range.]
-    if (this.validMove([x,y])){
+    // Check if move is valid]
+    let posMoves = this.posssibleMoves();
+    if (posMoves.includes([x,y])){
       this.pos[0] = x;
       this.pos[1] = y;
     }
@@ -35,7 +37,7 @@ class Unit{
     }
   }
 
-  // Returns an array of possible moves for the unit. Will be important for the AI
+  // Returns an array of possible moves for the unit; Important for the AI
   posssibleMoves(){
     let posMoves = [];
     directions.forEach(dir =>{
@@ -44,23 +46,23 @@ class Unit{
       for(let i = 0; i < this.movementRange; i++){
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
-        if (orgX <= 7 && orgX >= 0 && orgY <= 7 && orgY >= 0){
-          /// Also need to check if position is occupied;
+        // check if in valid bounds and position is not occupied.
+        if (this.isValidMove([orgX, orgY]) && !this.grid.occupiedPos([orgX, orgY])){
           posMoves.push([orgX, orgY]);
         }
+        else {
+          break
+        };
       };
     })
     return posMoves;
   };
 
-  validMove(move){
+  isValidMove(move){
     let moveX = move[0];
     let moveY = move[1];
     // Check if it is in valid bounds.
-    if (moveX > 7 || moveX < 0 || moveY > 7 || moveY < 0){
-      return false;
-    }
-    if (Math.abs(this.pos[0] - moveX) > this.movementRange || Math.abs(this.pos[1] - moveY) > this.movementRange){
+    if (moveX > 7 || moveX < 0 || moveY > 7 || moveY < 0) {
       return false;
     }
     return true;
@@ -69,6 +71,11 @@ class Unit{
   // Causes the unit to take damage
   takeDamage(amount) {
     this.health -= amount;
+  }
+
+  // sets this.grid equal to a specific grid
+  joinGrid(newGrid){
+    this.grid = newGrid;
   }
 };
 

@@ -60,8 +60,9 @@ class Grid{
     })
   }
 
-  // add a unit to the units array
+  // add a unit to the units array as well as sets that unit's grid.
   addNewUnit(unit){
+    unit.joinGrid(this);
     this.units.push(unit);
   }
 
@@ -89,6 +90,17 @@ class Grid{
     let left = this.units.slice(0, deleteIndex);
     let right = this.units.slice(deleteIndex + 1)
     this.units = left.concat(right);
+  };
+
+  // takes a position checks if it occupied.
+  occupiedPos(pos){
+    let check = false;
+    this.units.forEach( unit => {
+      if (unit.pos[0] === pos[0] && unit.pos[1] === pos[1]){
+        check = true;
+      }
+    });
+    return check;
   }
 };
 
