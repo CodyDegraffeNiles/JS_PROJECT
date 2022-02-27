@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.Grid = Grid;
   window.Unit = Unit;
   window.GridView = GridView;
-  window.cover
+  window.Cover = Cover;
   const grid = new Grid()
   const gridView = new GridView(grid);
   gridView.start();

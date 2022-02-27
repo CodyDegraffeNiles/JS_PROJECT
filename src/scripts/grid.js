@@ -69,6 +69,7 @@ class Grid{
   // add level one units
   loadLevelOneUnits(){
     levelUnits.forEach(unit =>{
+
       this.addNewUnit(unit);
     })
   }

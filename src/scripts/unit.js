@@ -13,6 +13,7 @@ class Unit{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
+    // Yellow for friendly units and green for enemy forces.
     let color = "yellow";
     if (this.enemy){color = "green"};
     ctx.fillStyle = color;
@@ -23,18 +24,6 @@ class Unit{
     ctx.arc(center_x, center_y, 20, 0, 2 * Math.PI, false);
     ctx.fill();
   }
-
-  draw_cover(){
-    const canvas = (document.getElementsByClassName('game-board'))[0];
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = "black";
-    ctx.beginPath();
-    let top_x = this.pos[0] * 80;
-    let top_y = this.pos[0] * 80 + 20
-    ctx.fillRect(top_x, top_y, 80, 40)
-    ctx.stroke();
-  }
-
   move([x,y]){
     let new_x = this.pos[0] + x;
     let new_y = this.pos[1] + y;
@@ -45,22 +34,7 @@ class Unit{
       this.pos[0] = this.pos[0] + x;
       this.pos[1] = this.pos[1] + y;
     };
-
   }
-  //creates the units necessary for the level of the game
 };
 
-
 export default Unit;
-
-/// Example object for testing purposes
-
-new Unit({
-  pos: [4,4],
-  canvas: (document.getElementsByClassName("game-board"))[0],
-  health: 40,
-  movementRange: 2,
-  shootingRange: 2,
-  enemy: false,
-  name: "BoboMonkey"
-})
