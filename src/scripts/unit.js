@@ -8,6 +8,8 @@ class Unit{
     this.movementRange = options.movementRange;
     this.shootingRange = options.shootingRange;
     this.enemy = options.enemy;
+    this.name = options.name;
+    this.movementLeft = false;
   }
 
   draw(){
@@ -36,7 +38,7 @@ class Unit{
 
   }
   //creates the units necessary for the level of the game
-    initalizeLevel1(){
+    createUnits(){ 
       let friendly1 = new Unit({
         pos: [5, 4],
         canvas: (document.getElementsByClassName("game-board"))[0],
@@ -57,7 +59,7 @@ class Unit{
         name: "Renektus"
       });
 
-      let enemy1 = Unit({
+      let enemy1 = new Unit({
         pos: [1, 1],
         canvas: (document.getElementsByClassName("game-board"))[0],
         health: 50,
@@ -76,6 +78,7 @@ class Unit{
         enemy: true,
         name: "Tuska"
       })
+      return [friendly1, friendly2, enemy1, enemy2];
     }
   };
 
@@ -90,5 +93,6 @@ new Unit({
   health: 40,
   movementRange: 2,
   shootingRange: 2,
-  enemy: false
+  enemy: false,
+  name: "BoboMonkey"
 })

@@ -6,9 +6,10 @@ class Grid{
     this.width = width;
     this.columnNum = column; 
     this.rowNum = row;
+    this.units = [];
   }
 
-  draw(){
+  inital_draw(){
     let canvas = document.createElement("CANVAS");
     canvas.classList.add("game-board");
     canvas.width = this.width;
