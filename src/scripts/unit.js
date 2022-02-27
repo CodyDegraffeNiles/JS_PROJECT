@@ -25,46 +25,57 @@ class Unit{
     ctx.fill();
   }
   move([x,y]){
-    // Check if slot is within movement range.
-    let possMoves = this.posMoves();
-    let new_x = this.pos[0] + x;
-    let new_y = this.pos[1] + y;
-    if (possMoves.includes([new_x, new_y])){
-      this.pos[0] = this.pos[0] + x;
-      this.pos[1] = this.pos[1] + y;
+    // Check if move is within movement range.]
+    if (this.validMove([x,y])){
+      this.pos[0] = x;
+      this.pos[1] = y;
     }
     else{
       alert("Invalid Move");
     }
   }
 
-  // Causes the unit to take damage
-  takeDamage(amount){
-    this.health -= amount;
-  }
-
-  // Returns an array of possible moves for the unit.
-  possMoves(){
+  // Returns an array of possible moves for the unit. Will be important for the AI
+  posssibleMoves(){
     let posMoves = [];
-    let orgX = this.pos[0];
-    let orgY = this.pos[1];
     directions.forEach(dir =>{
+      let orgX = this.pos[0];
+      let orgY = this.pos[1];
       for(let i = 0; i < this.movementRange; i++){
-        let newX = orgX + dir[0];
-        let newY = orgY + dir[1];
-        if (newX <= 7 && newX >= 0 && newY <= 7 && newY >= 0){
-          posMoves.push([newX, newY]);
+        orgX = orgX + dir[0];
+        orgY = orgY + dir[1];
+        if (orgX <= 7 && orgX >= 0 && orgY <= 7 && orgY >= 0){
+          /// Also need To check if position is occupied;
+          posMoves.push([orgX, orgY]);
         }
       };
     })
-    console.log(posMoves);
+    return posMoves;
+  };
+
+  validMove(move){
+    let moveX = move[0];
+    let moveY = move[1];
+    // Check if it is in valid bounds.
+    if (moveX > 7 || moveX < 0 || moveY > 7 || moveY < 0){
+      return false;
+    }
+    if (Math.abs(this.pos[0] - moveX) > this.movementRange || Math.abs(this.pos[1] - moveY) > this.movementRange){
+      return false;
+    }
+    return true;
+  }
+
+  // Causes the unit to take damage
+  takeDamage(amount) {
+    this.health -= amount;
   }
 };
 
 export default Unit;
 
 
-//
+// Possible directions that can be taken in movement.
 const directions = [
   [0,1],
   [0,-1],
