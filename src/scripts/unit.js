@@ -38,49 +38,7 @@ class Unit{
 
   }
   //creates the units necessary for the level of the game
-    createUnits(){ 
-      let friendly1 = new Unit({
-        pos: [5, 4],
-        canvas: (document.getElementsByClassName("game-board"))[0],
-        health: 100,
-        movementRange: 2,
-        shootingRange: 2,
-        enemy: false,
-        name: "Ajax"
-      });
-
-      let friendly2 = new Unit({
-        pos: [5, 2],
-        canvas: (document.getElementsByClassName("game-board"))[0],
-        health: 100,
-        movementRange: 2,
-        shootingRange: 2,
-        enemy: false,
-        name: "Renektus"
-      });
-
-      let enemy1 = new Unit({
-        pos: [1, 1],
-        canvas: (document.getElementsByClassName("game-board"))[0],
-        health: 50,
-        movementRange: 2,
-        shootingRange: 2,
-        enemy: true,
-        name: "DemonaKilla"
-      })
-
-      let enemy2 = new Unit({
-        pos: [3, 5],
-        canvas: (document.getElementsByClassName("game-board"))[0],
-        health: 50,
-        movementRange: 2,
-        shootingRange: 2,
-        enemy: true,
-        name: "Tuska"
-      })
-      return [friendly1, friendly2, enemy1, enemy2];
-    }
-  };
+};
 
 
 export default Unit;

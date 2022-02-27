@@ -1,4 +1,5 @@
 import Unit from "./unit.js";
+import levelUnits from "./level_units.js";
 
 class Grid{
   constructor(height = 480, width = 480, column = 6, row = 6){
@@ -41,9 +42,7 @@ class Grid{
     ctx.stroke();
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas);
-    this.units.forEach(unit =>{
-      unit.draw();
-    });
+    this.populate();
   }
 
   // populate all unit elements
@@ -53,11 +52,19 @@ class Grid{
     })
   }
 
+  // add a unit to the units array
   addNewUnit(unit){
     this.units.push(unit);
   }
 
+  // add level one units
+  loadLevelOneUnits(){
+    levelUnits.forEach(unit =>{
+      this.addNewUnit(unit);
+    })
+  }
 
 };
+
 
 export default Grid;
