@@ -25,20 +25,53 @@ class Unit{
     ctx.fill();
   }
   move([x,y]){
+    // Check if slot is within movement range.
+    let possMoves = this.posMoves();
     let new_x = this.pos[0] + x;
     let new_y = this.pos[1] + y;
-    // Check that movement positions are valid on the grid
-    if (new_x > 7 ||new_x < 0 || new_y > 7|| new_y < 0 ){
-      console.log("invalid move");
-    } else {
+    if (possMoves.includes([new_x, new_y])){
       this.pos[0] = this.pos[0] + x;
       this.pos[1] = this.pos[1] + y;
-    };
+    }
+    else{
+      alert("Invalid Move");
+    }
   }
 
-  take_damage(amount){
+  // Causes the unit to take damage
+  takeDamage(amount){
     this.health -= amount;
+  }
+
+  // Returns an array of possible moves for the unit.
+  possMoves(){
+    let posMoves = [];
+    let orgX = this.pos[0];
+    let orgY = this.pos[1];
+    directions.forEach(dir =>{
+      for(let i = 0; i < this.movementRange; i++){
+        let newX = orgX + dir[0];
+        let newY = orgY + dir[1];
+        if (newX <= 7 && newX >= 0 && newY <= 7 && newY >= 0){
+          posMoves.push([newX, newY]);
+        }
+      };
+    })
+    console.log(posMoves);
   }
 };
 
 export default Unit;
+
+
+//
+const directions = [
+  [0,1],
+  [0,-1],
+  [1,0],
+  [-1,0],
+  [1,1],
+  [-1,-1],
+  [1,-1],
+  [-1,1]
+]

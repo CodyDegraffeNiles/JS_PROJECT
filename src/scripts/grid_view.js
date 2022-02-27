@@ -10,9 +10,16 @@ class GridView {
     this.grid.create();
   }
 
-  step(){
+  turn(){
+   //Will be a while loop - i.e., while a player has actions or clicks a button.
+  }
+
+  action(){
+    this.grid.empty();
     this.grid.draw();
   }
+
+
 
 }
 

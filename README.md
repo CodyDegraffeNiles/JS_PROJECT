@@ -6,7 +6,7 @@
 In MINI-XCOM, the player commands a squad of hardened space marines. In turn-based combat on a grid-coordinate board, 
 the player battles the AI in a last man standing fight.  If all the player’s units die, they lose. If they kill all the enemy units, they win. In each turn and for each unit, the player can either:
 
-  1) Move the unit
+  1) Move the unit.
   2) Command the unit to shoot an enemy
 
 After the player's turn, the AI will make a turn and command its units to either move or shoot. Each unit, both friend and foe, has a set of stats. These stats include a movement range, shooting range, and health points. A unit dies once its health points reach zero. The player can also view their units' stats by clicking on the unit. Lastly, the player must be stragetic about their movement choices as cover morphs the battlefiled into choke points and kill zones.

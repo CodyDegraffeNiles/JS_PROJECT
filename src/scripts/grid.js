@@ -28,9 +28,8 @@ class Grid{
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas)
   };
-  // draws an itteration of the intial board.
+
   draw(){
-    this.erase();
     let canvas = (document.getElementsByClassName("game-board"))[0];
     let ctx = canvas.getContext("2d");
     this.create_grid(canvas, ctx)
@@ -84,6 +83,7 @@ class Grid{
     })
   };
 
+  // elminate a unit from the grids array of units. 
   destroy(unit) {
     let deleteIndex = this.units.indexOf(unit);
     let left = this.units.slice(0, deleteIndex);
