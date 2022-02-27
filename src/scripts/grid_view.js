@@ -7,7 +7,7 @@ class GridView {
   };
 
   start(){
-    this.grid.draw();
+    this.grid.create();
   }
 
   step(){

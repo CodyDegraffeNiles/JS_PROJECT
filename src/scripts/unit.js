@@ -3,7 +3,6 @@ class Unit{
     // Position is in [0,0] - 2d array format, is converted mathmatically
     // into the center of a square on the board.
     this.pos = options.pos;
-    this.canvas = options.canvas;
     this.health = options.health;
     this.movementRange = options.movementRange;
     this.shootingRange = options.shootingRange;
@@ -11,9 +10,9 @@ class Unit{
     this.name = options.name;
     this.movementLeft = false;
   }
-
   draw(){
-    let ctx = this.canvas.getContext("2d");
+    const canvas = (document.getElementsByClassName('game-board'))[0];
+    const ctx = canvas.getContext('2d');
     let color = "yellow";
     if (this.enemy){color = "green"};
     ctx.fillStyle = color;
@@ -23,6 +22,17 @@ class Unit{
     ctx.beginPath();
     ctx.arc(center_x, center_y, 20, 0, 2 * Math.PI, false);
     ctx.fill();
+  }
+
+  draw_cover(){
+    const canvas = (document.getElementsByClassName('game-board'))[0];
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    let top_x = this.pos[0] * 80;
+    let top_y = this.pos[0] * 80 + 20
+    ctx.fillRect(top_x, top_y, 80, 40)
+    ctx.stroke();
   }
 
   move([x,y]){

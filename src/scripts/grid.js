@@ -1,4 +1,3 @@
-import Unit from "./unit.js";
 import levelUnits from "./level_units.js";
 
 class Grid{
@@ -17,9 +16,8 @@ class Grid{
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // Creates the intial board.
-  draw(){
-    // this.erase();
+  // creates the inital board
+  create(){
     let canvas = document.createElement("CANVAS");
     canvas.classList.add("game-board");
     canvas.width = this.width;
@@ -41,7 +39,27 @@ class Grid{
     }
     ctx.stroke();
     let gameboard = document.getElementById('play-area')
-    gameboard.appendChild(canvas);
+    gameboard.appendChild(canvas)
+  };
+  // draws an itteration of the intial board.
+  draw(){
+    // this.erase();
+    let canvas = (document.getElementsByClassName("game-board"))[0];
+    let ctx = canvas.getContext("2d");
+    ctx.fillStyle = "grey";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.lineStyle = "black";
+    for (let x = 0; x < canvas.height; x += canvas.height / this.rowNum) {
+      ctx.moveTo(x, 0)
+      ctx.lineTo(x, canvas.height)
+    }
+    for (let y = 0; y < canvas.width; y += canvas.width / this.columnNum) {
+      ctx.moveTo(0, y)
+      ctx.lineTo(canvas.width, y)
+    }
+    ctx.stroke();
     this.populate();
   }
 
