@@ -54,7 +54,7 @@ class Unit{
       for(let i = 0; i < this.range; i++){
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
-        // check if in valid bounds and position is not occupied.
+        // check if in valid bounds and position is not occupied for move.
         if (this.isValidMove([orgX, orgY]) && !this.grid.occupiedPos([orgX, orgY])){
           posMoves.push([orgX, orgY]);
         }
@@ -94,10 +94,11 @@ class Unit{
 
   // The unit shoots at target location
   shoot(pos){
-    if(this.actionLeft === false){
-      alert("Unit has already acted!")
-    }
+    // if(this.actionLeft === false){
+    //   alert("Unit has already acted!")
+    // }
     let posMoves = this.posssibleMoves("shoot")
+    console.log(posMoves);
     if (posMoves.includes(pos) && this.grid.occupiedPos(pos)){
       this.takeAction();
       let target = this.grid.getUnit(pos);
