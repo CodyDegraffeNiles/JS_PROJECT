@@ -1,3 +1,4 @@
+import Unit from "./unit.js";
 
 class Grid{
   constructor(height = 480, width = 480, column = 6, row = 6){
@@ -31,6 +32,15 @@ class Grid{
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas);
   }
+
+  populate(units){
+    // units is an array of unit objects that need to be rendered
+    units.forEach(unit =>{
+      unit.draw();
+    })
+  }
+
+
 };
 
 export default Grid;
