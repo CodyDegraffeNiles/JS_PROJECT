@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   grid.loadLevelOneUnits();
   grid.draw();
   grid.units.forEach( unit => {
-    console.log(unit.possibleMoves())
+    console.log(unit.posssibleMoves())
   })
   // gridView.step();
 

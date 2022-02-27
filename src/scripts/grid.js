@@ -74,6 +74,20 @@ class Grid{
     })
   }
 
+  // Get the unit at a current position. Only use after using grid.occupiedPos()
+  // to confirm that position is occupied.
+  getUnit(pos){
+    let unitAtPos = {};
+
+    this.units.forEach( unit => {
+      if (unit.pos[0] === pos[0] && unit.pos[1] === pos[1]){
+        unitAtPos = unit;
+      }
+    });
+    
+    return unitAtPos
+  };
+
   // Check if any units are dead and then destroy them if they are.
   checkUnits(){
     // let that = this;

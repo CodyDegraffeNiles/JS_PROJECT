@@ -8,6 +8,7 @@ const levelUnits = [new Unit({
   health: 100,
   movementRange: 2,
   shootingRange: 4,
+  shootingPower: 20,
   enemy: false,
   name: "Ajax"
 }),
@@ -17,6 +18,7 @@ const levelUnits = [new Unit({
   health: 100,
   movementRange: 2,
   shootingRange: 4,
+  shootingPower: 20,
   enemy: false,
   name: "Renektus"
 }),
@@ -26,6 +28,7 @@ const levelUnits = [new Unit({
   health: 50,
   movementRange: 2,
   shootingRange: 4,
+  shootingPower: 15,
   enemy: true,
   name: "DemonaKilla"
 }),
@@ -35,6 +38,7 @@ const levelUnits = [new Unit({
   health: 50,
   movementRange: 2,
   shootingRange: 4,
+  shootingPower: 15,
   enemy: true,
   name: "Tuska"
 }),
