@@ -1,7 +1,7 @@
 import Unit from "./unit.js";
 
-class Cover {
-  construtor(pos){
+class Cover{
+  constructor(pos){
     this.name = "Indomitable Cover";
     this.health = 9001;
     this.movmentRange = 0;
@@ -16,7 +16,7 @@ class Cover {
     ctx.fillStyle = "black";
     ctx.beginPath();
     let top_x = this.pos[0] * 80;
-    let top_y = this.pos[0] * 80 + 20
+    let top_y = this.pos[1] * 80 + 20
     ctx.fillRect(top_x, top_y, 80, 40)
     ctx.stroke();
   }

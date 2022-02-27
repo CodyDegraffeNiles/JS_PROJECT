@@ -1,7 +1,7 @@
 import levelUnits from "./level_units.js";
 
 class Grid{
-  constructor(height = 480, width = 480, column = 6, row = 6){
+  constructor(height = 640, width = 640, column = 8, row = 8){
     this.height = height;
     this.width = width;
     this.columnNum = column; 
@@ -74,7 +74,22 @@ class Grid{
     })
   }
 
-};
+  // Check if any units are dead and then destroy them if they are.
+  checkUnits(){
+    // let that = this;
+    this.units.forEach(unit =>{
+      if (unit.health <= 0){
+        this.destroy(unit);
+      }
+    })
+  };
 
+  destroy(unit) {
+    let deleteIndex = this.units.indexOf(unit);
+    let left = this.units.slice(0, deleteIndex);
+    let right = this.units.slice(deleteIndex + 1)
+    this.units = left.concat(right);
+  }
+};
 
 export default Grid;
