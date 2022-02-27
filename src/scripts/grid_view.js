@@ -7,7 +7,7 @@ class GridView {
   };
 
   start(){
-    this.grid.inital_draw();
+    this.grid.draw();
   }
 
 }

@@ -9,7 +9,16 @@ class Grid{
     this.units = [];
   }
 
-  inital_draw(){
+  //erases board for cycling between frames.
+  erase(){
+    const canvas = (document.getElementsByClassName('game-board'))[0];
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Creates the intial board.
+  draw(){
+    // this.erase();
     let canvas = document.createElement("CANVAS");
     canvas.classList.add("game-board");
     canvas.width = this.width;
@@ -32,13 +41,20 @@ class Grid{
     ctx.stroke();
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas);
+    this.units.forEach(unit =>{
+      unit.draw();
+    });
   }
 
-  populate(units){
-    // units is an array of unit objects that need to be rendered
-    units.forEach(unit =>{
+  // populate all unit elements
+  populate(){
+    this.units.forEach(unit =>{
       unit.draw();
     })
+  }
+
+  addNewUnit(unit){
+    this.units.push(unit);
   }
 
 

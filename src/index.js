@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   const grid = new Grid()
   const gridView = new GridView(grid);
   gridView.start();
+  // grid.erase();
 
   /// Testing Code;
   // let canvas_array = document.getElementsByClassName("game-board");
