@@ -29,7 +29,7 @@ class Unit{
   move([x,y]){
     // Check if move is valid]
     if( this.actionLeftt === false){
-      alert("Unit has already moved!")
+      alert("Unit has already acted!")
     }
     let posMoves = this.posssibleMoves();
     if (posMoves.includes([x,y])){
@@ -84,16 +84,19 @@ class Unit{
   }
 
   // Allows for an action to take place.
-  startTurn(){
-    this.actionLeft === true;
+  gainAction(){
+    this.actionLeft = true;
   }
 
   // The unit shoots at target location
   shoot(pos){
-    if (isValidShot(pos) && this.grid.occupiedPos(pos)){
+    if(this.actionLeft === false){
+      alert("Unit has already acted!")
+    }
+    if (this.isValidShot(pos) && this.grid.occupiedPos(pos)){
       this.takeAction();
       let target = this.grid.getUnit(pos);
-      target.takeDamage(shootingPower);
+      target.takeDamage(this.shootingPower);
     }
     else{
       alert("Invalid Shot location")
@@ -101,18 +104,18 @@ class Unit{
   };
 
   isValidShot(pos){
-  let shotX = pos[0];
-  let shotY = pos[1];
-  // Check if the shot is in valid bounds.
-  if (shotX > 7 || shotY < 0 || shotX > 7 || shotY < 0) {
-    return false;
-  }
-  // Check if shot is within shooting range
-  if (Math.abs(this.pos[0] - shotX) > this.shootingRange || Math.abs(this.pos[1] - shotY) > this.shootingRange) {
-    return false;
-  }
-  return true;
-  }
+    let shotX = pos[0];
+    let shotY = pos[1];
+    // Check if the shot is in valid bounds.
+    if (shotX > 7 || shotY < 0 || shotX > 7 || shotY < 0) {
+      return false;
+    }
+    // Check if shot is within shooting range
+    if (Math.abs(this.pos[0] - shotX) > this.shootingRange || Math.abs(this.pos[1] - shotY) > this.shootingRange) {
+      return false;
+    }
+    return true;
+  };
   // the unit takes an action so its actionLeft is set to false.
   takeAction(){
     this.actionLeft = false;

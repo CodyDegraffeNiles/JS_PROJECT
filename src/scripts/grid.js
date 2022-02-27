@@ -29,13 +29,14 @@ class Grid{
     gameboard.appendChild(canvas)
   };
 
+  // creates every non-inital iteration of the board.
   draw(){
     let canvas = (document.getElementsByClassName("game-board"))[0];
     let ctx = canvas.getContext("2d");
     this.create_grid(canvas, ctx)
     this.populate();
   }
-  // creates the actuall grid;
+  // creates the actual grid;
   create_grid(canvas, ctx ){
     ctx.fillStyle = "grey";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -84,7 +85,7 @@ class Grid{
         unitAtPos = unit;
       }
     });
-    
+
     return unitAtPos
   };
 
