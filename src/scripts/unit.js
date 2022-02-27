@@ -1,3 +1,5 @@
+import Utils from "./utils.js";
+
 class Unit{
   constructor(options){
     // Position is in [0,0] - 2d array format, is converted mathmatically
@@ -26,16 +28,17 @@ class Unit{
     ctx.arc(center_x, center_y, 20, 0, 2 * Math.PI, false);
     ctx.fill();
   }
-  move([x,y]){
+  move(pos){
     // Check if move is valid]
-    if( this.actionLeftt === false){
+    if( this.actionLeft === false){
       alert("Unit has already acted!")
+      return;
     }
     let posMoves = this.posssibleMoves();
-    if (posMoves.includes([x,y])){
-      this.pos[0] = x;
-      this.pos[1] = y;
-      this.actionLeftt === false;
+    if (Utils.inArray(pos, posMoves)){
+      this.takeAction();
+      this.pos[0] = pos[0];
+      this.pos[1] = pos[1];
     }
     else{
       alert("Invalid Move");
@@ -104,12 +107,11 @@ class Unit{
 
   // The unit shoots at target location
   shoot(pos){
-    // if(this.actionLeft === false){
-    //   alert("Unit has already acted!")
-    // }
+    if(this.actionLeft === false){
+      alert("Unit has already acted!")
+    }
     let posMoves = this.posssibleMoves("shoot")
-    console.log(posMoves);
-    if (posMoves.includes(pos) && this.grid.occupiedPos(pos)){
+    if (Utils.inArray(pos, posMoves)){
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);
