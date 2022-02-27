@@ -45,7 +45,7 @@ class Unit{
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
         if (orgX <= 7 && orgX >= 0 && orgY <= 7 && orgY >= 0){
-          /// Also need To check if position is occupied;
+          /// Also need to check if position is occupied;
           posMoves.push([orgX, orgY]);
         }
       };
@@ -73,7 +73,6 @@ class Unit{
 };
 
 export default Unit;
-
 
 // Possible directions that can be taken in movement.
 const directions = [
