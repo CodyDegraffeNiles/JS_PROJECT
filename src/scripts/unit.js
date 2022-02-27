@@ -46,21 +46,26 @@ class Unit{
   // Determine which one by passing in type of action as parameter
   posssibleMoves(action = "move"){
     let range = this.movementRange;
-    if (action === "shoot"){range === this.shootingRange};
+    if (action === "shoot"){range = this.shootingRange};
     let posMoves = [];
-    directions.forEach(dir =>{
+    console.log(range);
+    directions.forEach(dir => {
       let orgX = this.pos[0];
       let orgY = this.pos[1];
-      for(let i = 0; i < this.range; i++){
+      for (let i = 0; i < range; i++){
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
-        // check if in valid bounds and position is not occupied for move.
         if (this.isValidMove([orgX, orgY]) && !this.grid.occupiedPos([orgX, orgY])){
-          posMoves.push([orgX, orgY]);
+          if (action === "move") { posMoves.push([orgX, orgY]) };
+        }
+        else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
+        // adds occupied position if action is shot since this is a valid shooting location.
+          if (action === "shoot"){posMoves.push([orgX, orgY])};
+          break
         }
         else {
-          break
-        };
+          break;
+        }
       };
     })
     return posMoves;
@@ -90,6 +95,11 @@ class Unit{
   // Allows for an action to take place.
   gainAction(){
     this.actionLeft = true;
+  }
+
+  // the unit takes an action so its actionLeft is set to false.
+  takeAction() {
+    this.actionLeft = false;
   }
 
   // The unit shoots at target location
