@@ -11,7 +11,6 @@ class GridView {
   }
 
   step(){
-    this.grid.erase();
     this.grid.draw();
   }
 

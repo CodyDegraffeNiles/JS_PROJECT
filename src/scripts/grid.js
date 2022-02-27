@@ -24,28 +24,20 @@ class Grid{
     canvas.height = this.height;
     let ctx = canvas.getContext("2d");
     canvas.style.border = "2px solid black"
-    ctx.fillStyle = "grey";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
-    ctx.lineWidth = 2;
-    ctx.lineStyle = "black";
-    for (let x = 0; x < canvas.height; x += canvas.height / this.rowNum) {
-      ctx.moveTo(x, 0)
-      ctx.lineTo(x, canvas.height)
-    }
-    for (let y = 0; y < canvas.width; y += canvas.width / this.columnNum) {
-      ctx.moveTo(0, y)
-      ctx.lineTo(canvas.width, y)
-    }
-    ctx.stroke();
+    this.create_grid(canvas, ctx);
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas)
   };
   // draws an itteration of the intial board.
   draw(){
-    // this.erase();
+    this.erase();
     let canvas = (document.getElementsByClassName("game-board"))[0];
     let ctx = canvas.getContext("2d");
+    this.create_grid(canvas, ctx)
+    this.populate();
+  }
+  // creates the actuall grid;
+  create_grid(canvas, ctx ){
     ctx.fillStyle = "grey";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
@@ -60,7 +52,6 @@ class Grid{
       ctx.lineTo(canvas.width, y)
     }
     ctx.stroke();
-    this.populate();
   }
 
   // populate all unit elements
