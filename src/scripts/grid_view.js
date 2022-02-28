@@ -67,7 +67,6 @@ class GridView {
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if(this.selectedUnit.move([x,y])){
-      console.log("BOBO!!!!");
       this.grid.draw();
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
@@ -88,7 +87,7 @@ class GridView {
     console.log("HI");
     if (this.selectedUnit.shoot([x,y])){
       console.log("WOOSH!")
-      this.grid.
+      this.grid;
       this.grid.draw();
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
