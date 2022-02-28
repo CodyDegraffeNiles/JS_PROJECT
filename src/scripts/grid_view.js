@@ -176,7 +176,7 @@ class GridView {
   }
 
 
-  // Helper method to populate the descrptive list with curren unit stats
+  // Helper method to populate the descrptive list with current unit stats
   populateStats(){
     // If no unit is selected, clear out Stats list
     if (this.selectedUnit === undefined){

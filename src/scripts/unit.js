@@ -85,47 +85,55 @@ class Unit{
       return false;
     }
     return true;
-  }
-
-  // Causes the unit to take damage
-  takeDamage(amount) {
-    this.health -= amount;
-  }
-
-  // sets this.grid equal to a specific grid
-  joinGrid(newGrid){
-    this.grid = newGrid;
-  }
-
-  // Allows for an action to take place.
-  gainAction(){
-    this.actionLeft = true;
-  }
-
-  // the unit takes an action so its actionLeft is set to false.
-  takeAction() {
-    this.actionLeft = false;
-  }
+  };
 
   // The unit shoots at target location
-  shoot(pos){
+  shoot(pos) {
     // Check if a unit can act.
-    if(this.actionLeft === false){
+    if (this.actionLeft === false) {
       alert("Unit has already acted!")
       return false;
     }
     let posMoves = this.posssibleMoves("shoot")
-    if (Utils.inArray(pos, posMoves)){
+    if (Utils.inArray(pos, posMoves)) {
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);
       return true;
     }
-    else{
+    else {
       alert("Invalid Shot location")
       return false;
     }
   };
+
+  // Causes the unit to take damage
+  takeDamage(amount) {
+    this.health -= amount;
+  };
+
+  // sets this.grid equal to a specific grid
+  joinGrid(newGrid){
+    this.grid = newGrid;
+  };
+
+  // Allows for an action to take place.
+  gainAction(){
+    this.actionLeft = true;
+  };
+
+  // the unit takes an action so its actionLeft is set to false.
+  takeAction() {
+    this.actionLeft = false;
+  };
+
+  // Checks if enemey
+  isEnemy(){
+    if (this.enemy == true){
+      return 
+    }
+  }
+
 };
 
 export default Unit;

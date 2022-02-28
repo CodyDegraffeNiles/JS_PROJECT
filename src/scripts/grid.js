@@ -7,6 +7,7 @@ class Grid{
     this.columnNum = column; 
     this.rowNum = row;
     this.units = [];
+    this.humanPlayer = true;
   }
   //erases board for cycling between frames.
   erase(){
@@ -103,6 +104,27 @@ class Grid{
     });
     return check;
   }
+
+  // Swaps turns between humanPlayer and computerPlay and loads up their units with
+  // an action point.
+  swapTurn(){
+    if (this.humanPlayer === true) {
+      this.humanPlayer = false;
+      this.units.forEach( unit => {
+        if(unit.isEnemy()){
+          unit.gainAction();
+        }
+      }
+        )
+    } else {
+      this.humanPlayer = true;
+      this.units.forEach(unit => {
+        if (!unit.isEnemy()) {
+          unit.gainAction();
+        }
+      });
+    };
+  };
 };
 
 export default Grid;

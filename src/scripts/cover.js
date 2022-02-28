@@ -22,6 +22,12 @@ class Cover extends Unit{
     ctx.fillRect(top_x, top_y, 80, 40)
     ctx.stroke();
   }
+
+  // Hijacks gain action method so that grid does not gain actions. Also makes 
+  // walls indestructible as their health is reset ever enemy turn.
+  gainAction(){
+    this.health = 9001;
+  }
 }
 
 export default Cover;
