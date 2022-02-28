@@ -111,16 +111,18 @@ class Unit{
     // Check if a unit can act.
     if(this.actionLeft === false){
       alert("Unit has already acted!")
-      return;
+      return false;
     }
     let posMoves = this.posssibleMoves("shoot")
     if (Utils.inArray(pos, posMoves)){
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);
+      return true;
     }
     else{
       alert("Invalid Shot location")
+      return false;
     }
   };
 };
