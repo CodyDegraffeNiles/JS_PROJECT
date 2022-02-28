@@ -1,5 +1,4 @@
-import Grid from "./grid.js";
-import Unit from "./unit.js";
+import Cover from "./cover.js"
 
 class GridView {
   constructor(grid){
@@ -23,9 +22,13 @@ class GridView {
 
   // Does an action whether it is shooting or moving
   action(){
-    this.grid.empty();
+    this.grid.erase();
     this.grid.draw();
   };
+
+  play(){
+    
+  }
 
   bindFirstClick(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
@@ -48,10 +51,9 @@ class GridView {
     if (this.grid.getUnit([x,y]) !== undefined){
       let unit = this.grid.getUnit([x, y]);
       // Determine if unit is a friendly. 
-        if (!unit.enemy){
-          console.log(unit);
-          unit.gainAction(); // Extrenous Code used for testings
-          console.log("ALLY!")
+        if (!(unit instanceof Cover)){ ///767
+          // unit.gainAction(); // Extrenous Code used for testing
+          // console.log("ALLY!")
           this.selectUnit(unit)
           canvas.removeEventListener("click", this.boundFirstClick);
           this.addActionEventListeners();
@@ -71,7 +73,7 @@ class GridView {
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if(this.selectedUnit.move([x,y])){
-      this.grid.draw();
+      this.action();
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
     }
@@ -89,9 +91,8 @@ class GridView {
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if (this.selectedUnit.shoot([x,y])){
-      console.log("WOOSH!")
-      this.grid;
-      this.grid.draw();
+      console.log("WOOSH!");
+      this.action();
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
     }
@@ -192,11 +193,13 @@ class GridView {
       let movementRange = document.getElementById("unit-movement");
       let shootingRange = document.getElementById("unit-shooting");
       let damage = document.getElementById("unit-damage");
+      let acted = document.getElementById("unit-avaliable");
       unitName.innerHTML = this.selectedUnit.name + " Spaces";
       health.innerHTML = this.selectedUnit.health + " Hit Points";
       movementRange.innerHTML = this.selectedUnit.movementRange + " Tiles";
       shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
       damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
+      acted.innerHTML = this.selectedUnit.actionLeft;
     }
   };
 }

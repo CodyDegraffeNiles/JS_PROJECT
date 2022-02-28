@@ -7,7 +7,8 @@ class Grid{
     this.columnNum = column; 
     this.rowNum = row;
     this.units = [];
-    this.humanPlayer = true;
+    this.actionableUnits = [];
+    this.humanPlayer = false;
   }
   //erases board for cycling between frames.
   erase(){
@@ -94,6 +95,14 @@ class Grid{
     this.units = left.concat(right);
   };
 
+  // removes a unit from the actionableUnits.
+  removeFromActionableUnits(unit){
+    let deleteIndex = this.actionableUnits.indexOf(unit);
+    let left = this.actionableUnits.slice(0, deleteIndex);
+    let right = this.actionableUnits.slice(deleteIndex + 1)
+    this.actionableUnits = left.concat(right);
+  }
+
   // takes a position checks if it occupied.
   occupiedPos(pos){
     let check = false;
@@ -106,13 +115,15 @@ class Grid{
   }
 
   // Swaps turns between humanPlayer and computerPlay and loads up their units with
-  // an action point.
+  // an action point while eliminating any moves from the other side.
   swapTurn(){
     if (this.humanPlayer === true) {
       this.humanPlayer = false;
       this.units.forEach( unit => {
-        if(unit.isEnemy()){
+        if (unit.isEnemy()){
           unit.gainAction();
+        } else{
+          unit.takeAction();
         }
       }
         )
@@ -121,6 +132,8 @@ class Grid{
       this.units.forEach(unit => {
         if (!unit.isEnemy()) {
           unit.gainAction();
+        }else {
+          unit.takeAction();
         }
       });
     };

@@ -120,18 +120,23 @@ class Unit{
   // Allows for an action to take place.
   gainAction(){
     this.actionLeft = true;
+    this.grid.actionableUnits.push(this);
   };
 
   // the unit takes an action so its actionLeft is set to false.
   takeAction() {
     this.actionLeft = false;
+    if(this.grid.actionableUnits.includes(this)){
+      this.grid.removeFromActionableUnits(this);
+    }
   };
 
   // Checks if enemey
   isEnemy(){
     if (this.enemy == true){
-      return 
+      return true
     }
+    return false
   }
 
 };
