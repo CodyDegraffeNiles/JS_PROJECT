@@ -6,20 +6,28 @@ class GridView {
     this.grid = grid;
   };
 
+  // build intital board
   start(){
     this.grid.create();
   }
 
-  turn(){
-   //Will be a while loop - i.e., while a player has actions or clicks a button.
-  }
-
+  // Does an action whether it is shooting or moving
   action(){
     this.grid.empty();
     this.grid.draw();
   }
 
+  bindClick(){
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    canvas.addEventListener("click", this.handleClick);
+  }
 
+  handleClick(e){
+    console.log(e);
+    e.preventDefault();
+    e.stopPropagation();
+    alert("Testing");
+  }
 
 }
 
