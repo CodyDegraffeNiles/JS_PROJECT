@@ -8,6 +8,7 @@ class Cover extends Unit{
       movementRange: 0,
       shootingRange: 0,
       pos: pos,
+      enemy: true
     });
   }
 

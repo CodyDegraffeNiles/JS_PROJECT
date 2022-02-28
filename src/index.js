@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () =>{
   const grid = new Grid()
   const gridView = new GridView(grid);
   gridView.start();
-  gridView.bindClick();
+  gridView.bindfirstClick();
   grid.loadLevelOneUnits();
   grid.draw();
   

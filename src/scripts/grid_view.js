@@ -4,7 +4,8 @@ import Unit from "./unit.js";
 class GridView {
   constructor(grid){
     this.grid = grid;
-    this.boundClick = this.handleClick.bind(this);
+    this.boundFirstClick = this.handleFirstClick.bind(this);
+    this.boundMove = this.handleMove.bind(this)
   };
 
   // build intital board
@@ -18,36 +19,40 @@ class GridView {
     this.grid.draw();
   }
 
-  bindClick(){
+  bindfirstClick(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
-    canvas.addEventListener("click", this.boundClick);
+    canvas.addEventListener("click", this.boundFirstClick);
   }
 
-  handleClick(e){
+  // handles firstClick
+  handleFirstClick(e){
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     let cavansLeft = canvas.offsetLeft + canvas.clientLeft;
     let canvasRight = canvas.offsetTop + canvas.clientTop;
-    let x = e.pageX - cavansLeft;
-    let y = e.pageY - canvasRight;
-    if(this.findUnit(x,y)){
-      console.log("boboLand");
-    }
-  };
-  // On click determines if a unit was clicked
-  findUnit(x,y){
-    let foundUnit = false;
-    this.grid.units.forEach(unit => {
-      if (x > unit.pos[0] * 80 && x < unit.pos[0] * 80 + 80 &&
-        y > unit.pos[1] * 80 && y < unit.pos[1] * 80 + 80) {
-        alert("clicked a unit!")
-        foundUnit = true;
-      }
-    })
-    return foundUnit;
+    let xClick = e.pageX - cavansLeft;
+    let yClick = e.pageY - canvasRight;
+    // Convert click into x, y positions
+    let x = Math.floor((xClick)/80);
+    let y = Math.floor((yClick)/80);
+    // Checks if there is a unit at the position clicked
+    if (this.grid.getUnit([x,y]) !== undefined){
+      let unit = this.grid.getUnit([x, y]);
+      // Determine if unit is a friendly. 
+        if (!unit.enemy){
+          console.log(unit);
+          unit.gainAction(); // Extrenous Code used for testings
+          console.log("ALLY!")
+          // canvas.removeEventListener("click", this.boundFirstClick);
+          // canvas.addEventListener("click",this.boundMove)
+        }
+        console.log("test");
+    };
   }
+  ;
 }
+
 
 
 export default GridView;

@@ -78,7 +78,7 @@ class Grid{
   // Get the unit at a current position. Only use after using grid.occupiedPos()
   // to confirm that position is occupied.
   getUnit(pos){
-    let unitAtPos = {};
+    let unitAtPos = undefined;
 
     this.units.forEach( unit => {
       if (unit.pos[0] === pos[0] && unit.pos[1] === pos[1]){
