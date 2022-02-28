@@ -60,10 +60,11 @@ class Unit{
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
         if (this.isValidMove([orgX, orgY]) && !this.grid.occupiedPos([orgX, orgY])){
+          // adds empty position if action is move.
           if (action === "move") { posMoves.push([orgX, orgY]) };
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
-        // adds occupied position if action is shot since this is a valid shooting location.
+        // adds occupied position if action is shot.
           if (action === "shoot"){posMoves.push([orgX, orgY])};
           break
         }

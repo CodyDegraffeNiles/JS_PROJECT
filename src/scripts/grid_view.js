@@ -9,12 +9,14 @@ class GridView {
     this.boundShot = this.handleShot.bind(this);
     this.boundSelectMove = this.selectMove.bind(this);
     this.boundSelectShot = this.selectShot.bind(this);
+    this.boundDeselectUnit = this.deselectUnit.bind(this);
     this.selectedUnit = "";
   };
 
   // build intital board
   start(){
     this.grid.createGrid();
+    this.addDeslectOption();
   }
 
   // Does an action whether it is shooting or moving
@@ -84,7 +86,6 @@ class GridView {
     // Convert click into x, y positions
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
-    console.log("HI");
     if (this.selectedUnit.shoot([x,y])){
       console.log("WOOSH!")
       this.grid;
@@ -95,7 +96,7 @@ class GridView {
 
   }
 
-  // sets the selected unit so it can be tracked on different event's.
+  // sets the selected unit so it can be tracked on different event listener
   selectUnit(unit){
     this.selectedUnit = unit;
   }
@@ -114,21 +115,43 @@ class GridView {
     shotEle.removeEventListener("click", this.boundSelectShot)
   }
 
+  addDeslectOption(){
+    let deselectElement = document.getElementById("deselect-command");
+    deselectElement.addEventListener("click", this.boundDeselectUnit)
+  }
+
   selectMove(e){
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
+    this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundMove);
-    this.removeActionEventListeners();
   }
 
   selectShot(e){
-    console.log("Test");
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
+    this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundShot);
+  }
+
+  deselectUnit(e){
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(this.selectedUnit)
+    this.selectedUnit = "";
+    console.log(this.selectedUnit);
     this.removeActionEventListeners();
+    this.removeMoveShootEvent();
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    canvas.addEventListener("click", this.boundFirstClick);
+  }
+
+  removeMoveShootEvent(){
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    canvas.removeEventListener("click", this.boundShot);
+    canvas.removeEventListener("click", this.boundMove)
   }
 
 }
