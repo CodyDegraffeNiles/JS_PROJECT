@@ -5,7 +5,7 @@ class GridView {
   constructor(grid){
     this.grid = grid;
     this.boundFirstClick = this.handleFirstClick.bind(this);
-    this.boundMove = this.handleMove.bind(this)
+    // this.boundMove = this.handleMove.bind(this)
   };
 
   // build intital board
