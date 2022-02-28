@@ -5,7 +5,8 @@ class GridView {
   constructor(grid){
     this.grid = grid;
     this.boundFirstClick = this.handleFirstClick.bind(this);
-    // this.boundMove = this.handleMove.bind(this)
+    this.boundMove = this.handleMove.bind(this)
+    this.selectedUnit = "";
   };
 
   // build intital board
@@ -44,13 +45,37 @@ class GridView {
           console.log(unit);
           unit.gainAction(); // Extrenous Code used for testings
           console.log("ALLY!")
-          // canvas.removeEventListener("click", this.boundFirstClick);
-          // canvas.addEventListener("click",this.boundMove)
+          this.selectUnit(unit)
+          canvas.removeEventListener("click", this.boundFirstClick);
+          canvas.addEventListener("click",this.boundMove)
         }
         console.log("test");
     };
+  };
+
+  handleMove(e){
+    e.preventDefault();
+    e.stopPropagation();
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    let cavansLeft = canvas.offsetLeft + canvas.clientLeft;
+    let canvasRight = canvas.offsetTop + canvas.clientTop;
+    let xClick = e.pageX - cavansLeft;
+    let yClick = e.pageY - canvasRight;
+    // Convert click into x, y positions
+    let x = Math.floor((xClick) / 80);
+    let y = Math.floor((yClick) / 80);
+    if(this.selectedUnit.move([x,y])){
+      console.log("BOBO!!!!");
+      this.grid.draw();
+      canvas.removeEventListener("click", this.boundMove);
+      canvas.addEventListener("click", this.boundFirstClick);
+    }
   }
-  ;
+
+  // sets the selected unit so it can be tracked on different event's.
+  selectUnit(unit){
+    this.selectedUnit = unit;
+  }
 }
 
 

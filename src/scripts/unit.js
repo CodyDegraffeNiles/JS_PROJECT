@@ -32,16 +32,18 @@ class Unit{
     // Check if move is valid]
     if( this.actionLeft === false){
       alert("Unit has already acted!")
-      return;
+      return false;
     }
     let posMoves = this.posssibleMoves();
     if (Utils.inArray(pos, posMoves)){
       this.takeAction();
       this.pos[0] = pos[0];
       this.pos[1] = pos[1];
+      return true;
     }
     else{
       alert("Invalid Move");
+      return false;
     }
   }
 
@@ -51,7 +53,6 @@ class Unit{
     let range = this.movementRange;
     if (action === "shoot"){range = this.shootingRange};
     let posMoves = [];
-    console.log(range);
     directions.forEach(dir => {
       let orgX = this.pos[0];
       let orgY = this.pos[1];
