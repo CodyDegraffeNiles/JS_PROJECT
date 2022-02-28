@@ -4,7 +4,6 @@ body{
   background-color: white;
 }
 
-
 #play-area{
   margin: auto;
   width: 50%;
@@ -20,7 +19,7 @@ body{
 
 #action-options{
   margin: auto;
-  width: 60%;
+  width: 50%;
   padding: 10px;
 }
 
@@ -39,6 +38,11 @@ h2{
 #action-options li:hover{
   background-color: green;
   color: white;
+}
+
+#unit-stats{
+  margin: auto;
+  width: 100px;
 }
 
 

@@ -11,7 +11,7 @@ class GridView {
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
     this.boundStats = this.stats.bind(this);
-    this.selectedUnit = "";
+    this.selectedUnit = undefined;
   };
 
   // sets up intial clicks
@@ -161,28 +161,44 @@ class GridView {
   deselectUnit(e){
     e.preventDefault();
     e.stopPropagation();
-    this.selectedUnit = "";
+    this.selectedUnit = undefined;
     this.removeActionEventListeners();
     this.removeMoveShootEvent();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
   };
 
-  // Creates a stats descriptive list on the left side of the board.
+  // Populates the stats descriptive list with the current units stats
   stats(e){
     e.preventDefault();
     e.stopPropagation();
-    let playArea = document.getElementById("play-area");
-    let unitStats = document.createElement("DL");
-    unitStats.setAttribute("id", "stats-list");
-    playArea.prepend(unitStats);
-    console.log("Test");
-    // this.populateStats();
+    this.populateStats();
   }
 
+
+  // Helper method to populate the descrptive list with curren unit stats
   populateStats(){
-  }
-
+    // If no unit is selected, clear out Stats list
+    if (this.selectedUnit === undefined){
+      let statsArray = Array.from(document.getElementsByTagName("DD"));
+      statsArray.forEach(value => {
+        value.innerHTML= "";     
+      });
+    }
+    // If there is a selected unit, update stats list.
+    else{
+      let unitName = document.getElementById("unit-name");
+      let health = document.getElementById("unit-health");
+      let movementRange = document.getElementById("unit-movement");
+      let shootingRange = document.getElementById("unit-shooting");
+      let damage = document.getElementById("unit-damage");
+      unitName.innerHTML = this.selectedUnit.name + " Spaces";
+      health.innerHTML = this.selectedUnit.health + " Hit Points";
+      movementRange.innerHTML = this.selectedUnit.movementRange + " Tiles";
+      shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
+      damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
+    }
+  };
 }
 
 
