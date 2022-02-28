@@ -107,8 +107,10 @@ class Unit{
 
   // The unit shoots at target location
   shoot(pos){
+    // Check if a unit can act.
     if(this.actionLeft === false){
       alert("Unit has already acted!")
+      return;
     }
     let posMoves = this.posssibleMoves("shoot")
     if (Utils.inArray(pos, posMoves)){
@@ -120,10 +122,6 @@ class Unit{
       alert("Invalid Shot location")
     }
   };
-  // the unit takes an action so its actionLeft is set to false.
-  takeAction(){
-    this.actionLeft = false;
-  }
 };
 
 export default Unit;
