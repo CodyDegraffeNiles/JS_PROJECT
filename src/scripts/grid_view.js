@@ -88,6 +88,7 @@ class GridView {
     console.log("HI");
     if (this.selectedUnit.shoot([x,y])){
       console.log("WOOSH!")
+      this.grid.
       this.grid.draw();
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
