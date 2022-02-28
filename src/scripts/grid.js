@@ -15,7 +15,7 @@ class Grid{
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
+  };
 
   // creates every non-inital iteration of the board.
   draw(){
@@ -23,7 +23,7 @@ class Grid{
     let ctx = canvas.getContext("2d");
     this.create_grid(canvas, ctx)
     this.populate();
-  }
+  };
   // creates the actual grid;
   create_grid(canvas, ctx ){
     ctx.fillStyle = "grey";
@@ -40,20 +40,21 @@ class Grid{
       ctx.lineTo(canvas.width, y)
     }
     ctx.stroke();
-  }
+  };
 
   // populate all unit elements
   populate(){
     this.units.forEach(unit =>{
       unit.draw();
     })
-  }
+  };
 
   // add a unit to the units array as well as sets that unit's grid.
   addNewUnit(unit){
     unit.joinGrid(this);
     this.units.push(unit);
-  }
+  };
+  
 
   // add level one units
   loadLevelOneUnits(){
@@ -61,7 +62,7 @@ class Grid{
 
       this.addNewUnit(unit);
     })
-  }
+  };
 
   // Get the unit at a current position. Only use after using grid.occupiedPos()
   // to confirm that position is occupied.
@@ -101,7 +102,7 @@ class Grid{
     let left = this.actionableUnits.slice(0, deleteIndex);
     let right = this.actionableUnits.slice(deleteIndex + 1)
     this.actionableUnits = left.concat(right);
-  }
+  };
 
   // takes a position checks if it occupied.
   occupiedPos(pos){
@@ -112,7 +113,7 @@ class Grid{
       }
     });
     return check;
-  }
+  };
 
   // Swaps turns between humanPlayer and computerPlay and loads up their units with
   // an action point while eliminating any moves from the other side.
@@ -137,7 +138,18 @@ class Grid{
         }
       });
     };
+    console.log("Swaping turn!")
   };
+
+  alliesDestroyed(){
+    return this.units.every(function(unit) {
+      console.log(unit.enemy)});
+      // unit.enemy === false)};
+  }
+
+  enemiesDestroyed(){
+    return this.units.every(unit => unit.enemy === true || unit instanceof Cover );
+  }
 };
 
 export default Grid;

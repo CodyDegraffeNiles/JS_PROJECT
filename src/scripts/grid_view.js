@@ -20,13 +20,22 @@ class GridView {
     this.addStatsOption();
   };
 
-  // Does an action whether it is shooting or moving
+  // Does an action and checks if it is the end of the turn/end of match.
   action(){
+    // Checks if any units were eliminated
+    this.grid.checkUnits();
     this.grid.erase();
     this.grid.draw();
+    // checks if game is over
+    if (this.gameOver()) { console.log("END OF LEVEL") }
     // Checks if the currentPlayers turn is over.
     if (this.grid.actionableUnits.length < 1) { this.grid.swapTurn() };
   };
+
+  gameOver(){
+    if(this.grid.alliesDestroyed()|| this.grid.enemiesDestroyed()){ return true;}
+    return false;
+  }
 
   bindFirstClick(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
