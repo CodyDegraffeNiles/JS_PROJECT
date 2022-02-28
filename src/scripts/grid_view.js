@@ -10,25 +10,27 @@ class GridView {
     this.boundSelectMove = this.selectMove.bind(this);
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
+    this.boundStats = this.stats.bind(this);
     this.selectedUnit = "";
   };
 
-  // build intital board
+  // sets up intial clicks
   start(){
-    this.grid.createGrid();
+    this.bindFirstClick();
     this.addDeslectOption();
-  }
+    this.addStatsOption();
+  };
 
   // Does an action whether it is shooting or moving
   action(){
     this.grid.empty();
     this.grid.draw();
-  }
+  };
 
-  bindfirstClick(){
+  bindFirstClick(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
-  }
+  };
 
   // handles firstClick
   handleFirstClick(e){
@@ -73,7 +75,7 @@ class GridView {
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
     }
-  }
+  };
 
   handleShot(e){
     e.preventDefault();
@@ -94,12 +96,12 @@ class GridView {
       canvas.addEventListener("click", this.boundFirstClick);
     }
 
-  }
+  };
 
-  // Sets the selected unit so it can be tracked on different event listener
+  // Sets the selected unit so it can be tracked on different event listeners
   selectUnit(unit){
     this.selectedUnit = unit;
-  }
+  };
 
   // Add event listeners for the actions list.
   addActionEventListeners(){
@@ -107,20 +109,35 @@ class GridView {
     moveEle.addEventListener("click", this.boundSelectMove);
     let shotEle = document.getElementById("shoot-command");
     shotEle.addEventListener("click", this.boundSelectShot)
-  }
+  };
   // Remove event listeners for actions list
   removeActionEventListeners(){
     let moveEle = document.getElementById("move-command");
     moveEle.removeEventListener("click", this.boundSelectMove);
     let shotEle = document.getElementById("shoot-command");
     shotEle.removeEventListener("click", this.boundSelectShot)
-  }
+  };
+
+  // Removes event listeners for moving and shooting. Allowing player to toggle between
+  // shot and move commands.
+  removeMoveShootEvent() {
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    canvas.removeEventListener("click", this.boundShot);
+    canvas.removeEventListener("click", this.boundMove)
+  };
 
   //Adds a deselect eventListener on actions list. Will always be present.
   addDeslectOption(){
     let deselectElement = document.getElementById("deselect-command");
     deselectElement.addEventListener("click", this.boundDeselectUnit)
-  }
+  };
+
+  // Adds a show stats eventListener on actins list. WIll always be present.
+  // Show stats of the selected unit.
+  addStatsOption(){
+    let statsElement = document.getElementById("stats-command");
+    statsElement.addEventListener("click", this.boundStats)
+  };
 
   //Activates eventListener for move.
   selectMove(e){
@@ -129,40 +146,44 @@ class GridView {
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundMove);
-  }
+  };
 
-  // Activates eventListener for shot.
+  // Activates eventlistener for shot.
   selectShot(e){
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundShot);
-  }
+  };
 
   // Deslects unit as to allow person to reset unit selection.
   deselectUnit(e){
     e.preventDefault();
     e.stopPropagation();
-    console.log(this.selectedUnit)
     this.selectedUnit = "";
-    console.log(this.selectedUnit);
     this.removeActionEventListeners();
     this.removeMoveShootEvent();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
+  };
+
+  // Creates a stats descriptive list on the left side of the board.
+  stats(e){
+    e.preventDefault();
+    e.stopPropagation();
+    let playArea = document.getElementById("play-area");
+    let unitStats = document.createElement("DL");
+    unitStats.setAttribute("id", "stats-list");
+    playArea.prepend(unitStats);
+    console.log("Test");
+    // this.populateStats();
   }
 
-  // Removes event listeners for moving and shooting. Allowing player to toggle between
-  // shot and move commands.
-  removeMoveShootEvent(){
-    let canvas = (document.getElementsByClassName("game-board")[0]);
-    canvas.removeEventListener("click", this.boundShot);
-    canvas.removeEventListener("click", this.boundMove)
+  populateStats(){
   }
 
 }
-
 
 
 export default GridView;

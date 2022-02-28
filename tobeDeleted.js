@@ -37,4 +37,15 @@
 //   return true;
 // }
 
+///---------------------- How I initial Created the Board
+// createGrid(){
+  // let canvas = document.createElement("CANVAS");
+  // canvas.classList.add("game-board");
+  // canvas.width = this.width;
+  // canvas.height = this.height;
+  // let ctx = canvas.getContext("2d");
+  // canvas.style.border = "2px solid black"
+  // // this.create_grid(canvas, ctx);
+  // let gameboard = document.getElementById('play-area')
+  // gameboard.prepend(canvas)};
 

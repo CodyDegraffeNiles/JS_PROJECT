@@ -8,35 +8,12 @@ class Grid{
     this.rowNum = row;
     this.units = [];
   }
-
   //erases board for cycling between frames.
   erase(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
-
-  // creates the inital board
-  createGrid(){
-    let canvas = document.createElement("CANVAS");
-    canvas.classList.add("game-board");
-    canvas.width = this.width;
-    canvas.height = this.height;
-    let ctx = canvas.getContext("2d");
-    canvas.style.border = "2px solid black"
-    this.create_grid(canvas, ctx);
-    let gameboard = document.getElementById('play-area')
-    gameboard.prepend(canvas)
-  };
-
-  // extrenous code for Reference (Will eventually be deleted)
-  // createOptions(){
-  //   let unitOptions = document.createElement("UL");
-  //   let gameboard = document.getElementById('play-area')
-  //   unitOptions.style.height = 50;
-  //   unitOptions.style.width = 50;
-  //   gameboard.appendChild(unitOptions);
-  // }
 
   // creates every non-inital iteration of the board.
   draw(){
