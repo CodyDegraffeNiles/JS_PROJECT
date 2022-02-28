@@ -1,4 +1,5 @@
 import levelUnits from "./level_units.js";
+import Cover from "./cover.js";
 
 class Grid{
   constructor(height = 640, width = 640, column = 8, row = 8){
@@ -142,13 +143,11 @@ class Grid{
   };
 
   alliesDestroyed(){
-    return this.units.every(function(unit) {
-      console.log(unit.enemy)});
-      // unit.enemy === false)};
+    return this.units.every(unit => unit.enemy === true)
   }
 
   enemiesDestroyed(){
-    return this.units.every(unit => unit.enemy === true || unit instanceof Cover );
+    return this.units.every(unit => (unit.enemy === false || unit instanceof Cover) );
   }
 };
 

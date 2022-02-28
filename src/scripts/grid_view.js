@@ -33,7 +33,7 @@ class GridView {
   };
 
   gameOver(){
-    if(this.grid.alliesDestroyed()|| this.grid.enemiesDestroyed()){ return true;}
+    if (this.grid.alliesDestroyed() || this.grid.enemiesDestroyed()){ return true;}
     return false;
   }
 
