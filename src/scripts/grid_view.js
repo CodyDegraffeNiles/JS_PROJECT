@@ -23,7 +23,6 @@ class GridView {
   }
 
   handleClick(e){
-    console.log(e);
     e.preventDefault();
     e.stopPropagation();
     alert("Testing");
