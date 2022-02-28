@@ -17,7 +17,7 @@ class Grid{
   }
 
   // creates the inital board
-  create(){
+  createGrid(){
     let canvas = document.createElement("CANVAS");
     canvas.classList.add("game-board");
     canvas.width = this.width;
@@ -28,6 +28,12 @@ class Grid{
     let gameboard = document.getElementById('play-area')
     gameboard.appendChild(canvas)
   };
+
+  createOptions(){
+    let unitOptions = document.createElement("UL");
+    let gameboard = document.getElementById('play-area')
+    gameboard.appendChild(unitOptions);
+  }
 
   // creates every non-inital iteration of the board.
   draw(){
