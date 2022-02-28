@@ -138,7 +138,6 @@ class Unit{
     }
     return false
   }
-
 };
 
 export default Unit;

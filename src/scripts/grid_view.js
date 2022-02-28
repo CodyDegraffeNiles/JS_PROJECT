@@ -24,11 +24,9 @@ class GridView {
   action(){
     this.grid.erase();
     this.grid.draw();
+    // Checks if the currentPlayers turn is over.
+    if (this.grid.actionableUnits.length < 1) { this.grid.swapTurn() };
   };
-
-  play(){
-    
-  }
 
   bindFirstClick(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
@@ -73,9 +71,9 @@ class GridView {
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if(this.selectedUnit.move([x,y])){
-      this.action();
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
+      this.action();
     }
   };
 
@@ -92,9 +90,9 @@ class GridView {
     let y = Math.floor((yClick) / 80);
     if (this.selectedUnit.shoot([x,y])){
       console.log("WOOSH!");
-      this.action();
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
+      this.action();
     }
 
   };

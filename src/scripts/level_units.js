@@ -1,8 +1,6 @@
 import Cover from "./cover.js";
 import Unit from "./unit.js";
 
-
-
 const levelUnits = [new Unit({
   pos: [5, 4],
   health: 100,

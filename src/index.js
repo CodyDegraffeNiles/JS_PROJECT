@@ -14,5 +14,6 @@ document.addEventListener("DOMContentLoaded", () =>{
   gridView.start();
   grid.loadLevelOneUnits();
   grid.draw();
-  grid.swapTurn(); 
+  grid.swapTurn();
+  // gridView.turn();
 });
