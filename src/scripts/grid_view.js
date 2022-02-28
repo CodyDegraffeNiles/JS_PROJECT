@@ -96,18 +96,19 @@ class GridView {
 
   }
 
-  // sets the selected unit so it can be tracked on different event listener
+  // Sets the selected unit so it can be tracked on different event listener
   selectUnit(unit){
     this.selectedUnit = unit;
   }
 
+  // Add event listeners for the actions list.
   addActionEventListeners(){
     let moveEle = document.getElementById("move-command");
     moveEle.addEventListener("click", this.boundSelectMove);
     let shotEle = document.getElementById("shoot-command");
     shotEle.addEventListener("click", this.boundSelectShot)
   }
-
+  // Remove event listeners for actions list
   removeActionEventListeners(){
     let moveEle = document.getElementById("move-command");
     moveEle.removeEventListener("click", this.boundSelectMove);
@@ -115,11 +116,13 @@ class GridView {
     shotEle.removeEventListener("click", this.boundSelectShot)
   }
 
+  //Adds a deselect eventListener on actions list. Will always be present.
   addDeslectOption(){
     let deselectElement = document.getElementById("deselect-command");
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   }
 
+  //Activates eventListener for move.
   selectMove(e){
     e.preventDefault();
     e.stopPropagation();
@@ -128,6 +131,7 @@ class GridView {
     canvas.addEventListener("click", this.boundMove);
   }
 
+  // Activates eventListener for shot.
   selectShot(e){
     e.preventDefault();
     e.stopPropagation();
@@ -136,6 +140,7 @@ class GridView {
     canvas.addEventListener("click", this.boundShot);
   }
 
+  // Deslects unit as to allow person to reset unit selection.
   deselectUnit(e){
     e.preventDefault();
     e.stopPropagation();
@@ -148,6 +153,8 @@ class GridView {
     canvas.addEventListener("click", this.boundFirstClick);
   }
 
+  // Removes event listeners for moving and shooting. Allowing player to toggle between
+  // shot and move commands.
   removeMoveShootEvent(){
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.removeEventListener("click", this.boundShot);
