@@ -9,12 +9,36 @@ body{
   margin: auto;
   width: 50%;
   padding: 10px;
+  display: flex;
 } 
 
 .title{
   margin: auto;
   width: 20%;
   padding: 10px;
+}
+
+#action-options{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+h2{
+  font-size: 24px;
+  color: red;
+}
+
+#action-options li{
+  border: 1px solid black;
+  font-size: 20px;
+  background-color: goldenrod;
+  cursor: pointer;
+}
+
+#action-options li:hover{
+  background-color: green;
+  color: white;
 }
 
 

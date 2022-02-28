@@ -26,14 +26,17 @@ class Grid{
     canvas.style.border = "2px solid black"
     this.create_grid(canvas, ctx);
     let gameboard = document.getElementById('play-area')
-    gameboard.appendChild(canvas)
+    gameboard.prepend(canvas)
   };
 
-  createOptions(){
-    let unitOptions = document.createElement("UL");
-    let gameboard = document.getElementById('play-area')
-    gameboard.appendChild(unitOptions);
-  }
+  // extrenous code for Reference (Will eventually be deleted)
+  // createOptions(){
+  //   let unitOptions = document.createElement("UL");
+  //   let gameboard = document.getElementById('play-area')
+  //   unitOptions.style.height = 50;
+  //   unitOptions.style.width = 50;
+  //   gameboard.appendChild(unitOptions);
+  // }
 
   // creates every non-inital iteration of the board.
   draw(){

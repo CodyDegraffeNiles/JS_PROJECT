@@ -12,7 +12,6 @@ class GridView {
   // build intital board
   start(){
     this.grid.createGrid();
-    this.grid.createOptions();
   }
 
   // Does an action whether it is shooting or moving
