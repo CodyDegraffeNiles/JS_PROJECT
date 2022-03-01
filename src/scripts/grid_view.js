@@ -10,6 +10,7 @@ class GridView {
     this.boundSelectMove = this.selectMove.bind(this);
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
+    this.boundAiTurn = this.aiTurn.bind(this);
     this.selectedUnit = undefined;
   };
 
@@ -29,17 +30,23 @@ class GridView {
     if (this.gameOver()) { 
       console.log("YOU WIN!")
       return;}
-    // Checks if the humanPlayers turn is over
-    // If so run the ai's turn, check for AI victory, and then hand it back over to the player.
+    // Checks if the humanPlayers turn is over. If so run the AI's turn after
+    // a three second delay.
     if (this.grid.actionableUnits.length < 1) { 
-      this.grid.swapTurn();
-      this.ai.addUnits();
-      this.ai.takeTurn();
-      if(this.gameOver()){console.log("YOU LOSE!")};
-      this.grid.swapTurn();
-      this.ai.emptyUnits();
+      setTimeout(this.boundAiTurn, 3000);
     };
   };
+
+  // Performs an Ai's turn by getting its unit, movinging them, checking for AI victory
+  // And if necessary handing it back over to the player.
+  aiTurn(){
+    this.grid.swapTurn();
+    this.ai.addUnits();
+    this.ai.takeTurn();
+    if (this.gameOver()) { console.log("YOU LOSE!") };
+    this.grid.swapTurn();
+    this.ai.emptyUnits();
+  }
 
   gameOver(){
     if (this.grid.alliesDestroyed() || this.grid.enemiesDestroyed()){ return true;}
