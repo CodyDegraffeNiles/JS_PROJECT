@@ -11,14 +11,11 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.GridView = GridView;
   window.Cover = Cover;
   const grid = new Grid()
-  const gridView = new GridView(grid);
+  const ai = new AI(grid);
+  const gridView = new GridView(grid, ai);
   gridView.start();
   grid.loadLevelOneUnits();
-  const ai = new AI(grid);
-  ai.addUnits();
   grid.draw();
+  // start on Player's turn
   grid.swapTurn();
-  grid.swapTurn();
-  ai.takeTurn();
-  // gridView.turn();
 });

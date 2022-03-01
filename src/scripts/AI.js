@@ -11,6 +11,11 @@ class AI{
     let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover)));
     units.forEach(unit => {this.units.push(unit)});
   }
+
+  // after each turn resest the AI's units so that if they are destroyed they dont linger.
+  emptyUnits(){
+    this.units = [];
+  }
   // Takes a turn by either shooting at a target or moving to a random location
   takeTurn(){
     this.units.forEach(unit => { 

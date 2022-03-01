@@ -1,8 +1,9 @@
 import Cover from "./cover.js"
 
 class GridView {
-  constructor(grid){
+  constructor(grid, ai){
     this.grid = grid;
+    this.ai = ai;
     this.boundFirstClick = this.handleFirstClick.bind(this);
     this.boundMove = this.handleMove.bind(this)
     this.boundShot = this.handleShot.bind(this);
@@ -13,11 +14,12 @@ class GridView {
     this.selectedUnit = undefined;
   };
 
-  // sets up intial clicks
+  // sets up intial clicks and loads up the ai's units
   start(){
     this.bindFirstClick();
     this.addDeslectOption();
     this.addStatsOption();
+    this.ai
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -27,9 +29,17 @@ class GridView {
     this.grid.erase();
     this.grid.draw();
     // checks if game is over
-    if (this.gameOver()) { console.log("END OF LEVEL") }
-    // Checks if the currentPlayers turn is over.
-    if (this.grid.actionableUnits.length < 1) { this.grid.swapTurn() };
+    if (this.gameOver()) { console.log("YOU WIN!") }
+    // Checks if the humanPlayers turn is over
+    // If so run the ai's turn, check for AI victory, and then hand it back over to the player.
+    if (this.grid.actionableUnits.length < 1) { 
+      this.grid.swapTurn();
+      this.ai.addUnits();
+      this.ai.takeTurn();
+      if(this.gameOver()){console.log("YOU LOSE!")};
+      this.grid.swapTurn();
+      this.ai.emptyUnits();
+    };
   };
 
   gameOver(){
