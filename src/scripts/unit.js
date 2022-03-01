@@ -1,4 +1,4 @@
-import Utils from "./utils.js";
+import Util from "./utils.js";
 
 class Unit{
   constructor(options){
@@ -35,7 +35,7 @@ class Unit{
       return false;
     }
     let posMoves = this.posssibleMoves();
-    if (Utils.inArray(pos, posMoves)){
+    if (Util.inArray(pos, posMoves)){
       this.takeAction();
       this.pos[0] = pos[0];
       this.pos[1] = pos[1];
@@ -96,7 +96,7 @@ class Unit{
       return false;
     }
     let posMoves = this.posssibleMoves("shoot")
-    if (Utils.inArray(pos, posMoves)) {
+    if (Util.inArray(pos, posMoves)) {
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);

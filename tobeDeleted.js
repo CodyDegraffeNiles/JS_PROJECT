@@ -49,3 +49,18 @@
   // let gameboard = document.getElementById('play-area')
   // gameboard.prepend(canvas)};
 
+///
+
+// Populates the stats descriptive list with the current units stats
+// stats(e){
+//   e.preventDefault();
+//   e.stopPropagation();
+//   this.populateStats();
+// }
+
+// Adds a show stats eventListener on actins list. WIll always be present.
+// // Show stats of the selected unit.
+// addStatsOption(){
+//   let statsElement = document.getElementById("stats-command");
+//   statsElement.addEventListener("click", this.boundStats)
+// };

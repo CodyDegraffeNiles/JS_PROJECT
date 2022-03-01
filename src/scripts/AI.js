@@ -16,24 +16,28 @@ class AI{
   emptyUnits(){
     this.units = [];
   }
-  // Takes a turn by either shooting at a target or moving to a random location
+  // Takes a turn with each unit one by one
   takeTurn(){
-    this.units.forEach(unit => { 
+    this.units.forEach(unit => {
+      this.commandUnit(unit);
+    })
+  };
+
+    // Commands a unit to either shoot at a target or move to a random location
+    commandUnit(unit){
       let posShots = unit.posssibleMoves("shoot");
       let posMoves = unit.posssibleMoves("move");
-      console.log(posShots);
-      if(posShots.length >= 1){
+      if (posShots.length >= 1) {
         unit.shoot(posShots[0]);
         this.grid.checkUnits();
         this.grid.draw();
       }
-      else{
+      else {
         let randomMove = Math.floor(Math.random() * posMoves.length);
         unit.move(posMoves[randomMove]);
         this.grid.draw();
       }
-    })
-  };
+    };
 
 }
 

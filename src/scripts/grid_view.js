@@ -10,16 +10,13 @@ class GridView {
     this.boundSelectMove = this.selectMove.bind(this);
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
-    this.boundStats = this.stats.bind(this);
     this.selectedUnit = undefined;
   };
 
-  // sets up intial clicks and loads up the ai's units
+  // sets up intial clicks
   start(){
     this.bindFirstClick();
     this.addDeslectOption();
-    this.addStatsOption();
-    this.ai
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -29,7 +26,9 @@ class GridView {
     this.grid.erase();
     this.grid.draw();
     // checks if game is over
-    if (this.gameOver()) { console.log("YOU WIN!") }
+    if (this.gameOver()) { 
+      console.log("YOU WIN!")
+      return;}
     // Checks if the humanPlayers turn is over
     // If so run the ai's turn, check for AI victory, and then hand it back over to the player.
     if (this.grid.actionableUnits.length < 1) { 
@@ -68,10 +67,11 @@ class GridView {
     if (this.grid.getUnit([x,y]) !== undefined){
       let unit = this.grid.getUnit([x, y]);
       // Determine if unit is a friendly. 
-        if (!(unit instanceof Cover)){ ///767
+        if (!(unit instanceof Cover)){ 
           this.selectUnit(unit)
           canvas.removeEventListener("click", this.boundFirstClick);
           this.addActionEventListeners();
+          this.populateStats()
         }
     };
   };
@@ -91,6 +91,7 @@ class GridView {
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
       this.action();
+      this.populateStats();
     }
   };
 
@@ -106,10 +107,10 @@ class GridView {
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if (this.selectedUnit.shoot([x,y])){
-      console.log("WOOSH!");
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
       this.action();
+      this.populateStats();
     }
 
   };
@@ -148,13 +149,6 @@ class GridView {
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   };
 
-  // Adds a show stats eventListener on actins list. WIll always be present.
-  // Show stats of the selected unit.
-  addStatsOption(){
-    let statsElement = document.getElementById("stats-command");
-    statsElement.addEventListener("click", this.boundStats)
-  };
-
   //Activates eventListener for move.
   selectMove(e){
     e.preventDefault();
@@ -178,18 +172,12 @@ class GridView {
     e.preventDefault();
     e.stopPropagation();
     this.selectedUnit = undefined;
+    this.populateStats();
     this.removeActionEventListeners();
     this.removeMoveShootEvent();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
   };
-
-  // Populates the stats descriptive list with the current units stats
-  stats(e){
-    e.preventDefault();
-    e.stopPropagation();
-    this.populateStats();
-  }
 
 
   // Helper method to populate the descrptive list with current unit stats
