@@ -64,8 +64,8 @@ class Unit{
           if (action === "move") { posMoves.push([orgX, orgY]) };
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
-        // adds occupied position if action is shot as well as if the target is not on the same team.
-          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy === this.enemy )
+        // adds occupied position if action is shot as well as check for friendly fire.
+          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy !== this.enemy )
           {posMoves.push([orgX, orgY])};
           break
         }

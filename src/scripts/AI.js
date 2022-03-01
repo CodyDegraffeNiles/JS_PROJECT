@@ -16,18 +16,18 @@ class AI{
     this.units.forEach(unit => { 
       let posShots = unit.posssibleMoves("shoot");
       let posMoves = unit.posssibleMoves("move");
-      // console.log(posShots);
-      // console.log(posMoves);
-      // console.log(unit);
+      console.log(posShots);
       if(posShots.length >= 1){
         unit.shoot(posShots[0]);
+        this.grid.checkUnits();
+        this.grid.draw();
       }
       else{
         let randomMove = Math.floor(Math.random() * posMoves.length);
         unit.move(posMoves[randomMove]);
+        this.grid.draw();
       }
     })
-    this.grid.draw();
   };
 
 }
