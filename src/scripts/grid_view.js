@@ -41,6 +41,8 @@ class GridView {
   // And if necessary handing it back over to the player.
   aiTurn(){
     this.grid.swapTurn();
+    this.selectedUnit = undefined;
+    this.populateStats();
     this.ai.addUnits();
     this.ai.takeTurn();
     if (this.gameOver()) { console.log("YOU LOSE!") };
@@ -205,11 +207,12 @@ class GridView {
       let damage = document.getElementById("unit-damage");
       let acted = document.getElementById("unit-avaliable");
       unitName.innerHTML = this.selectedUnit.name;
-      health.innerHTML = this.selectedUnit.health + " Hit Points";
+      health.innerHTML = this.selectedUnit.health + " Points";
       movementRange.innerHTML = this.selectedUnit.movementRange + " Tiles";
       shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
       damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
-      this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : "Already Acted";
+      this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Can't Act";
+      acted.innerHTML === "Has Action" ? acted.style.color = "green" : acted.style.color = "red";
     }
   };
 }
