@@ -58,10 +58,11 @@ table {
 }
 
 body {
-  background-color: white;
+  background-color: black;
   background-image: url("/images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size: cover;
 }
 
 #play-area {
@@ -85,7 +86,7 @@ body {
 
 h2 {
   font-size: 24px;
-  color: red;
+  color: #ff2600;
 }
 
 #action-options li {
@@ -96,7 +97,7 @@ h2 {
 }
 
 #action-options li:hover {
-  background-color: green;
+  background-color: black;
   color: white;
 }
 
@@ -107,6 +108,11 @@ h2 {
   margin-left: 0%;
   margin-right: 10px;
   width: 100px;
+}
+
+.stats-title {
+  font-size: 24px;
+  color: #f8d06a;
 }
 
 /* #game-grid{

@@ -204,12 +204,12 @@ class GridView {
       let shootingRange = document.getElementById("unit-shooting");
       let damage = document.getElementById("unit-damage");
       let acted = document.getElementById("unit-avaliable");
-      unitName.innerHTML = this.selectedUnit.name + " Spaces";
+      unitName.innerHTML = this.selectedUnit.name;
       health.innerHTML = this.selectedUnit.health + " Hit Points";
       movementRange.innerHTML = this.selectedUnit.movementRange + " Tiles";
       shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
       damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
-      acted.innerHTML = this.selectedUnit.actionLeft;
+      this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : "Already Acted";
     }
   };
 }
