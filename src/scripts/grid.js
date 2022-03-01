@@ -142,10 +142,12 @@ class Grid{
     console.log("Swaping turn!")
   };
 
+  // Return true all alies are destroyed
   alliesDestroyed(){
     return this.units.every(unit => unit.enemy === true)
   }
 
+  // Returns true if all enemies, execpt for cover, are destroyed.
   enemiesDestroyed(){
     return this.units.every(unit => (unit.enemy === false || unit instanceof Cover) );
   }
