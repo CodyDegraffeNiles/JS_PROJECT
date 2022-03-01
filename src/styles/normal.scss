@@ -1,5 +1,8 @@
 body{
   background-color: white;
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #play-area{
@@ -10,8 +13,10 @@ body{
 } 
 
 .title{
-  margin: auto;
-  width: 20%;
+  // margin: auto;
+  // width: 5%;
+  display: block;
+  text-align: center;
   padding: 10px;
 }
 
@@ -39,8 +44,12 @@ h2{
 }
 
 #unit-stats{
-  margin: auto;
-  width: 100px;
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0%;
+  margin-right: 10px;
+  width:100px;
 }
 
 
