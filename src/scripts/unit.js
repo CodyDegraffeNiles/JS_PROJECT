@@ -64,8 +64,9 @@ class Unit{
           if (action === "move") { posMoves.push([orgX, orgY]) };
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
-        // adds occupied position if action is shot.
-          if (action === "shoot"){posMoves.push([orgX, orgY])};
+        // adds occupied position if action is shot as well as if the target is not on the same team.
+          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy === this.enemy )
+          {posMoves.push([orgX, orgY])};
           break
         }
         else {
@@ -99,6 +100,7 @@ class Unit{
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);
+      console.log("Woosh");
       return true;
     }
     else {
@@ -133,7 +135,7 @@ class Unit{
 
   // Checks if enemey
   isEnemy(){
-    if (this.enemy == true){
+    if (this.enemy === true){
       return true
     }
     return false

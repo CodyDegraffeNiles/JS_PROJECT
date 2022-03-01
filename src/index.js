@@ -15,9 +15,10 @@ document.addEventListener("DOMContentLoaded", () =>{
   gridView.start();
   grid.loadLevelOneUnits();
   const ai = new AI(grid);
-  ai.addUnits()
-  console.log(ai.units)
+  ai.addUnits();
   grid.draw();
   grid.swapTurn();
+  grid.swapTurn();
+  ai.takeTurn();
   // gridView.turn();
 });
