@@ -69,8 +69,6 @@ class GridView {
       let unit = this.grid.getUnit([x, y]);
       // Determine if unit is a friendly. 
         if (!(unit instanceof Cover)){ ///767
-          // unit.gainAction(); // Extrenous Code used for testing
-          // console.log("ALLY!")
           this.selectUnit(unit)
           canvas.removeEventListener("click", this.boundFirstClick);
           this.addActionEventListeners();
