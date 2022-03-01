@@ -216,8 +216,9 @@ class GridView {
       movementRange.innerHTML = this.selectedUnit.movementRange + " Tiles";
       shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
       damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
-      this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Can't Act";
-      acted.innerHTML === "Has Action" ? acted.style.color = "#39FF14" : acted.style.color = "red";
+      this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Acted";
+      acted.innerHTML === "Has Action" ? acted.style.color = "black" : acted.style.color = "black";
+      acted.innerHTML === "Has Action" ? acted.style.backgroundColor = "green" : acted.style.backgroundColor = "red";
     }
   };
 }
