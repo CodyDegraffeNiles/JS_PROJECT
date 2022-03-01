@@ -190,6 +190,7 @@ class GridView {
     this.removeMoveShootEvent();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
+    canvas.style.cursor = "pointer";
   };
 
 
