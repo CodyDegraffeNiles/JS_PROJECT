@@ -136,3 +136,7 @@ h2 {
   font-size: 24px;
   color: #39FF14;
 }
+
+.crosshairs {
+  cursor: crosshair;
+}

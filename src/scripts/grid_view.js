@@ -99,6 +99,7 @@ class GridView {
     if(this.selectedUnit.move([x,y])){
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
+      canvas.style.cursor = 'pointer';
       this.action();
       this.populateStats();
     }
@@ -118,6 +119,7 @@ class GridView {
     if (this.selectedUnit.shoot([x,y])){
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
+      canvas.style.cursor = "pointer";
       this.action();
       this.populateStats();
     }
@@ -165,6 +167,7 @@ class GridView {
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundMove);
+    canvas.style.cursor = "move";
   };
 
   // Activates eventlistener for shot.
@@ -174,6 +177,7 @@ class GridView {
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.addEventListener("click", this.boundShot);
+    canvas.style.cursor = "crosshair";
   };
 
   // Deslects unit as to allow person to reset unit selection.
@@ -212,7 +216,7 @@ class GridView {
       shootingRange.innerHTML = this.selectedUnit.shootingRange + " Tiles";
       damage.innerHTML = this.selectedUnit.shootingPower + " Damage";
       this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Can't Act";
-      acted.innerHTML === "Has Action" ? acted.style.color = "green" : acted.style.color = "red";
+      acted.innerHTML === "Has Action" ? acted.style.color = "#39FF14" : acted.style.color = "red";
     }
   };
 }
