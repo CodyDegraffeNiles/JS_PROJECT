@@ -18,6 +18,7 @@ class GridView {
   start(){
     this.bindFirstClick();
     this.addDeslectOption();
+    this.addRestartOption();
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -157,6 +158,25 @@ class GridView {
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   };
 
+  // Adds a reset event listener.
+  addRestartOption(){
+    let restartElement = document.getElementById("restart-command");
+    console.log(restartElement);
+    restartElement.addEventListener("dblclick", this.restart);
+  }
+
+  // Adds a end turn listener, so the player can end their turn prematurely.
+  addEndTurnOption(){
+    let endTurnElement = document.getElementById("endturn-command")
+  }
+
+  // Restarts the game by reloading the page.
+  restart(e){
+    e.preventDefault();
+    e.stopPropagation();
+    location.reload();
+  }
+
   //Activates eventlistener for move and removes other eventlistenres for the board.
   selectMove(e){
     e.preventDefault();
@@ -228,7 +248,6 @@ class GridView {
 
   //Highlights selected unit
   highlightUnit(){
-    console.log("test");
     let canvas = (document.getElementsByClassName("game-board")[0]);
     let ctx = canvas.getContext('2d');
     let rightX = this.selectedUnit.pos[0] * 80;
@@ -236,7 +255,9 @@ class GridView {
     ctx.fillStyle = '#39FF14';
     ctx.fillRect(rightX, leftX, 80, 80);
     this.selectedUnit.draw();
-  }
+  };
+
+  
 }
 
 
