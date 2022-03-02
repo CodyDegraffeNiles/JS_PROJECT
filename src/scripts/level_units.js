@@ -2,7 +2,7 @@ import Cover from "./cover.js";
 import Unit from "./unit.js";
 
 const levelUnits = [new Unit({
-  pos: [4,4],
+  pos: [0,0],
   health: 100,
   movementRange: 2,
   shootingRange: 4,
@@ -12,7 +12,7 @@ const levelUnits = [new Unit({
 }),
 
   new Unit({
-  pos: [3, 6],
+  pos: [7, 0],
   health: 100,
   movementRange: 2,
   shootingRange: 4,
@@ -22,24 +22,34 @@ const levelUnits = [new Unit({
 }),
 
   new Unit({
-  pos: [0, 1],
-  health: 50,
-  movementRange: 2,
-  shootingRange: 4,
-  shootingPower: 100,
-  enemy: true,
-  name: "DemonaKilla"
+    pos: [6, 0],
+    health: 50,
+    movementRange: 2,
+    shootingRange: 4,
+    shootingPower: 100,
+    enemy: true,
+    name: "Tuska"
 }),
 
   new Unit({
-  pos: [6, 0],
-  health: 50,
-  movementRange: 2,
-  shootingRange: 4,
-  shootingPower: 100,
-  enemy: true,
-  name: "Tuska"
-}),
+    pos: [0, 1],
+    health: 50,
+    movementRange: 2,
+    shootingRange: 4,
+    shootingPower: 100,
+    enemy: true,
+    name: "DemonaKilla"
+  }),
+
+  new Unit({
+    pos: [7, 7],
+    health: 50,
+    movementRange: 2,
+    shootingRange: 4,
+    shootingPower: 100,
+    enemy: true,
+    name: "Testing"
+  }),
 
 new Cover([0,2]),
 new Cover([2,4]),

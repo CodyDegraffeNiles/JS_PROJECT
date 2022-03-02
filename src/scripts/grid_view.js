@@ -39,11 +39,16 @@ class GridView {
       Util.displayEndScreen("human");
       return; }
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
-    // a three second delay.
+    // a three second delay and then select a unit for the player.
     if (this.grid.actionableUnits.length < 1) { 
       this.removeMoveShootEvent();
       this.removeActionEventListeners();
-      setTimeout(this.boundAiTurn, 3000);
+      // setTimeout(this.boundAiTurn, 3000);
+      this.boundAiTurn();
+      // Work around to ghost tank Issue.
+      let deselectElement = document.getElementById("deselect-command");
+      console.log(deselectElement);
+      // setTimeout(deselectElement.click, 5);
     };
   };
 
@@ -59,8 +64,10 @@ class GridView {
       Util.displayEndScreen("computer");
       return;
     };
-    this.grid.swapTurn();
     this.ai.emptyUnits();
+    this.grid.swapTurn();
+    // Jank method to fix tanks
+    
   }
 
   gameOver(){
@@ -90,7 +97,7 @@ class GridView {
       let unit = this.grid.getUnit([x, y]);
       // Determine if unit is a friendly. 
         if (!(unit instanceof Cover)){ 
-          this.selectUnit(unit)
+          this.selectUnit(unit);
           this.addActionEventListeners();
           this.populateStats()
         }

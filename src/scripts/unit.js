@@ -19,21 +19,17 @@ class Unit{
     const ctx = canvas.getContext('2d');
     // Brown tanks for friendlys
     if (!this.enemy){
-      var img = new Image();
+      let img = document.createElement("IMG");
       let startX = this.pos[0] * 80 - 10;
       let startY = this.pos[1] * 80 - 10
-      img.onload = function () {
-        ctx.drawImage(img, startX, startY);
-      };
+      img.onload = function(){ctx.drawImage(img, startX, startY) };
       img.src = "images/test5.svg";
     }
     else{
-      var img = new Image();
+      let img = document.createElement("IMG");
       let startX = this.pos[0] * 80 - 10;
       let startY = this.pos[1] * 80 - 10
-      img.onload = function () {
-        ctx.drawImage(img, startX, startY);
-      };
+      img.onload = function () { ctx.drawImage(img, startX, startY)};;
       img.src = "images/test5.svg";
     };
 }
@@ -46,6 +42,7 @@ class Unit{
     }
     let posMoves = this.posssibleMoves();
     if (Util.inArray(pos, posMoves)){
+      // Fill orginal location point
       this.takeAction();
       this.pos[0] = pos[0];
       this.pos[1] = pos[1];

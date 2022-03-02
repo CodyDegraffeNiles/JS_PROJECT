@@ -1,8 +1,6 @@
 
 // File handles several miscellaneous functions to clean up the code.
 
-
-
 const Util = {
   // checks if a position is an array of positions
   inArray(pos, array){
@@ -14,7 +12,7 @@ const Util = {
 
     return check
   },
-
+  
   // Handles the logic of ending the game and showing an end screen.
   displayEndScreen(player){
     let playArea = document.getElementById("play-area");
