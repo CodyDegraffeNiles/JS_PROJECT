@@ -23,14 +23,14 @@ class Unit{
       let startX = this.pos[0] * 80 - 10;
       let startY = this.pos[1] * 80 - 10
       img.onload = function(){ctx.drawImage(img, startX, startY) };
-      img.src = "images/test5.svg";
+      img.src = "images/allied_tank.svg";
     }
     else{
       let img = document.createElement("IMG");
-      let startX = this.pos[0] * 80 - 10;
-      let startY = this.pos[1] * 80 - 10
+      let startX = this.pos[0] * 80;
+      let startY = this.pos[1] * 80;
       img.onload = function () { ctx.drawImage(img, startX, startY)};;
-      img.src = "images/test5.svg";
+      img.src = "images/enemy_tank.svg";
     };
 }
   

@@ -19,6 +19,7 @@ class AI{
   // Takes a turn with each unit one by one
   takeTurn(){
     this.units.forEach(unit => {
+      this.grid.erase();
       this.commandUnit(unit);
     })
   };
