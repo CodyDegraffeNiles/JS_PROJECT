@@ -65,6 +65,14 @@ table {
   text-align: center;
 }
 
+#show-grid {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: transparent;
+  cursor: pointer;
+  color: red;
+}
+
 body {
   background-color: black;
   background-image: url("/images/background.jpeg");

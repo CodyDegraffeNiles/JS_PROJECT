@@ -176,7 +176,9 @@ class GridView {
   // Activates Ai turn. Activated using a double click rather than a click 
   // to ensure a user does not acidently end their turn.
   addEndTurnOption(){
+    console.log("s");
     let endTurnElement = document.getElementById("endturn-command");
+    console.log(endTurnElement);
     endTurnElement.addEventListener("dblclick", this.boundAiTurnEvent);
   }
 
@@ -187,6 +189,7 @@ class GridView {
     // endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
     endTurnElement.removeEventListener("dblclick", this.boundAiTurnEvent);
+    console.log("hi");
     setTimeout(this.boundAiTurn, 3000);
     setTimeout(this.boundEndOption, 3500);
   }
