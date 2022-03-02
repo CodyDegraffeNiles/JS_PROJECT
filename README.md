@@ -69,4 +69,5 @@ There are many areas for impovement in this project. Some of possible areas for 
 * Create multiple levels of fighting and allow for the persistance of marines' health through the levels
 
 
-
+### LIVE LINK
+https://codydegraffeniles.github.io/MINI-XCOM/
