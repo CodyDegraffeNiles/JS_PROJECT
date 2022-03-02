@@ -27,9 +27,7 @@ class GridView {
     this.grid.erase();
     this.grid.draw();
     // checks if game is over
-    if (this.gameOver()) { 
-      console.log("YOU WIN!")
-      return;}
+    if (this.gameOver()) { return;}
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
     // a three second delay.
     if (this.grid.actionableUnits.length < 1) { 
@@ -45,7 +43,7 @@ class GridView {
     this.populateStats();
     this.ai.addUnits();
     this.ai.takeTurn();
-    if (this.gameOver()) { console.log("YOU LOSE!") };
+    if (this.gameOver()) {return;};
     this.grid.swapTurn();
     this.ai.emptyUnits();
   }
@@ -78,7 +76,6 @@ class GridView {
       // Determine if unit is a friendly. 
         if (!(unit instanceof Cover)){ 
           this.selectUnit(unit)
-          canvas.removeEventListener("click", this.boundFirstClick);
           this.addActionEventListeners();
           this.populateStats()
         }
@@ -160,22 +157,24 @@ class GridView {
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   };
 
-  //Activates eventListener for move.
+  //Activates eventlistener for move and removes other eventlistenres for the board.
   selectMove(e){
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
+    canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundMove);
-    canvas.style.cursor = "move";
+    canvas.style.cursor = "alias";
   };
 
-  // Activates eventlistener for shot.
+  // Activates eventlistener for shot and removes other eventlistenrs for the board.
   selectShot(e){
     e.preventDefault();
     e.stopPropagation();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
+    canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundShot);
     canvas.style.cursor = "crosshair";
   };
@@ -191,6 +190,8 @@ class GridView {
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
     canvas.style.cursor = "pointer";
+    // Redraw grid to get out of selected units highlight
+    this.grid.draw();
   };
 
 
@@ -219,8 +220,23 @@ class GridView {
       this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Acted";
       acted.innerHTML === "Has Action" ? acted.style.color = "black" : acted.style.color = "black";
       acted.innerHTML === "Has Action" ? acted.style.backgroundColor = "green" : acted.style.backgroundColor = "red";
+      // clear grid and then highlight selected unit's grid spot
+      this.grid.draw()
+      this.highlightUnit();
     }
   };
+
+  //Highlights selected unit
+  highlightUnit(){
+    console.log("test");
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    let ctx = canvas.getContext('2d');
+    let rightX = this.selectedUnit.pos[0] * 80;
+    let leftX = this.selectedUnit.pos[1] * 80;
+    ctx.fillStyle = '#39FF14';
+    ctx.fillRect(rightX, leftX, 80, 80);
+    this.selectedUnit.draw();
+  }
 }
 
 

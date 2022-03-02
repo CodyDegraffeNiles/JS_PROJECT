@@ -100,7 +100,6 @@ class Unit{
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);
-      console.log("Woosh");
       return true;
     }
     else {

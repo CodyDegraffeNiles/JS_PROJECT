@@ -5,7 +5,6 @@ import Cover from "./scripts/cover.js";
 import AI from "./scripts/AI.js";
 
 document.addEventListener("DOMContentLoaded", () =>{
-  console.log("working :)")
   window.Grid = Grid;
   window.Unit = Unit;
   window.GridView = GridView;

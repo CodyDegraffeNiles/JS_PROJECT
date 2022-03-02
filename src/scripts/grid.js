@@ -139,7 +139,6 @@ class Grid{
         }
       });
     };
-    console.log("Swaping turn!")
   };
 
   // Return true all alies are destroyed
