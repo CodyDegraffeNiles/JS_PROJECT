@@ -12,6 +12,7 @@ class GridView {
     this.boundDeselectUnit = this.deselectUnit.bind(this);
     this.boundAiTurn = this.aiTurn.bind(this);
     this.boundAiTurnEvent = this.aiTurnEvent.bind(this);    
+    this.boundEndOption = this.addEndTurnOption.bind(this);
     this.selectedUnit = undefined;
   };
 
@@ -34,6 +35,8 @@ class GridView {
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
     // a three second delay.
     if (this.grid.actionableUnits.length < 1) { 
+      this.removeMoveShootEvent();
+      this.removeActionEventListeners();
       setTimeout(this.boundAiTurn, 3000);
     };
   };
@@ -42,6 +45,7 @@ class GridView {
   // And if necessary handing it back over to the player.
   aiTurn(){
     this.grid.swapTurn();
+    console.log("hi");
     this.selectedUnit = undefined;
     this.populateStats();
     this.ai.addUnits();
@@ -176,7 +180,12 @@ class GridView {
   aiTurnEvent(e){
     e.preventDefault();
     e.stopPropagation();
+    // remove eventListener from end turn element so that
+    // endturn command does not get spammed clicked.
+    let endTurnElement = document.getElementById("endturn-command");
+    endTurnElement.removeEventListener("click", this.boundAiTurnEvent);
     setTimeout(this.boundAiTurn, 3000);
+    setTimeout(this.boundEndOption, 3500);
   }
   // Restarts the game by reloading the page.
   restart(e){
