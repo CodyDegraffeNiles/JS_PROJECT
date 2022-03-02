@@ -58,7 +58,7 @@ table {
 }
 
 body {
-  background-color: black;
+  background-color: white;
   background-image: url("/images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -92,6 +92,7 @@ body {
 #action-title {
   font-size: 24px;
   color: #ff2600;
+  font-weight: bold;
 }
 
 #action-options li {
@@ -134,6 +135,7 @@ body {
 .stats-title {
   font-size: 24px;
   color: #39FF14;
+  font-weight: bold;
 }
 
 .crosshairs {
