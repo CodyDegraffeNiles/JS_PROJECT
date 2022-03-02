@@ -12,7 +12,15 @@ header {
 }
 
 #links{
-  display: absolute;
+  display: flex;
+  justify-content: right;
+}
+
+#links a {
+  padding: 5 px;
+  color: black;
+  text-decoration: none;
+  font-size: 14 px;
 }
 
 #play-area{
