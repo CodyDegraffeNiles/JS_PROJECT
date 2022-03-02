@@ -32,6 +32,23 @@ const Util = {
       gameOverMessage.style.color = "red";
       endScreen.prepend(gameOverMessage);
     }
+  },
+
+  // Change title to reflect whose turn it is.
+  showPlayersTurn(grid, gamegrid = true){
+    let titleElement = canvas.getElementById("title");
+    if (grid.humanPlayer){
+      titleElement.innerHTML = "Your turn";
+      titleElement.style.color = "green";
+    }
+    else {
+      titleElement.innerHTML = "Enemey Turn";
+      titleElement.style.color = "red";
+    };
+    if (!gamegrid){
+      titleElement.innerHTML = "MINI-XCOM";
+      titleElement.style.color = "rgb(199, 131, 4)";
+    };
   }
 }
 

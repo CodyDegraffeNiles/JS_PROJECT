@@ -308,6 +308,7 @@ class GridView {
     let instructionsElement = document.getElementById("instructions");
     instructionsElement.style.display = "none";
     playArea.style.display = "flex";
+    let title = document.getElementById("title");
     this.selectInstructions();
   }
 
