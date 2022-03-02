@@ -7,6 +7,14 @@ body{
   -webkit-background-size: cover
 }
 
+header {
+  display: relative;
+}
+
+#links{
+  display: absolute;
+}
+
 #play-area{
   // margin: auto;
   display: flex;
@@ -35,7 +43,7 @@ body{
 
 #action-title{
   font-size: 24px;
-  color: rgb(255, 38, 0);
+  color: rgb(255, 17, 0);
   font-weight: bold;
 }
 

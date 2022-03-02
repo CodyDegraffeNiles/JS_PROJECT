@@ -65,6 +65,14 @@ body {
   -webkit-background-size: cover;
 }
 
+header {
+  display: relative;
+}
+
+#links {
+  display: absolute;
+}
+
 #play-area {
   display: flex;
   justify-content: center;
@@ -91,7 +99,7 @@ body {
 
 #action-title {
   font-size: 24px;
-  color: #ff2600;
+  color: #ff1100;
   font-weight: bold;
 }
 
