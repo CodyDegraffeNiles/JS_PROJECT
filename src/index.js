@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () =>{
   window.Unit = Unit;
   window.GridView = GridView;
   window.Cover = Cover;
-  const grid = new Grid()
+  window.AI = AI;
+  const grid = new Grid();
   const ai = new AI(grid);
   const gridView = new GridView(grid, ai);
   gridView.start();

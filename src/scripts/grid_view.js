@@ -46,11 +46,11 @@ class GridView {
       // setTimeout(this.boundAiTurn, 3000);
       this.boundAiTurn();
       // Work around to ghost tank Issue.
-      let deselectElement = document.getElementById("deselect-command");
-      console.log(deselectElement);
       // setTimeout(deselectElement.click, 5);
+      setTimeout(this.grid.boundDraw, 1000);
     };
   };
+
 
   // Performs an Ai's turn by getting its unit, movinging them, checking for AI victory
   // And if necessary handing it back over to the player.
@@ -65,9 +65,11 @@ class GridView {
       return;
     };
     this.ai.emptyUnits();
+    // this.grid.erase();
+    // this.grid.draw();
     this.grid.swapTurn();
     // Jank method to fix tanks
-    
+
   }
 
   gameOver(){

@@ -19,7 +19,6 @@ class AI{
   // Takes a turn with each unit one by one
   takeTurn(){
     this.units.forEach(unit => {
-      this.grid.erase();
       this.commandUnit(unit);
     })
   };
@@ -31,12 +30,10 @@ class AI{
       if (posShots.length >= 1) {
         unit.shoot(posShots[0]);
         this.grid.checkUnits();
-        this.grid.draw();
       }
       else {
         let randomMove = Math.floor(Math.random() * posMoves.length);
         unit.move(posMoves[randomMove]);
-        this.grid.draw();
       }
     };
 

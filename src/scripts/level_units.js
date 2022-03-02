@@ -19,6 +19,7 @@ const levelUnits = [new Unit({
   shootingPower: 50,
   enemy: false,
   name: "Renektus"
+
 }),
 
   new Unit({
