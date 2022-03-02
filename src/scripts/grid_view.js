@@ -11,6 +11,7 @@ class GridView {
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
     this.boundAiTurn = this.aiTurn.bind(this);
+    this.boundAiTurnEvent = this.aiTurnEvent.bind(this);    
     this.selectedUnit = undefined;
   };
 
@@ -19,6 +20,7 @@ class GridView {
     this.bindFirstClick();
     this.addDeslectOption();
     this.addRestartOption();
+    this.addEndTurnOption();
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -161,15 +163,21 @@ class GridView {
   // Adds a reset event listener.
   addRestartOption(){
     let restartElement = document.getElementById("restart-command");
-    console.log(restartElement);
     restartElement.addEventListener("dblclick", this.restart);
   }
 
-  // Adds a end turn listener, so the player can end their turn prematurely.
+  // Adds a end turn listener, so the player can end their turn prematurely
+  // Activates Ai turn.
   addEndTurnOption(){
-    let endTurnElement = document.getElementById("endturn-command")
+    let endTurnElement = document.getElementById("endturn-command");
+    endTurnElement.addEventListener("click", this.boundAiTurnEvent);
   }
 
+  aiTurnEvent(e){
+    e.preventDefault();
+    e.stopPropagation();
+    setTimeout(this.boundAiTurn, 3000);
+  }
   // Restarts the game by reloading the page.
   restart(e){
     e.preventDefault();
