@@ -2,6 +2,7 @@
 body{
   background-color: white;
   background-image: url("/images/background.jpeg");
+  // Source for background-image: https://www.pinterest.com/pin/728246202216089604/ 
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -30,7 +31,6 @@ header {
   justify-content: center;
   align-items: center;
 } 
-
 .game-board {
   cursor: pointer;
 }
@@ -39,7 +39,7 @@ header {
   padding: 10px;
   font-size: 40px;
   font-family:Arial, Helvetica, sans-serif;
-  color:black;
+  color:rgb(199, 131, 4);
   font-weight: 500;
 }
 
@@ -50,7 +50,7 @@ header {
 
 #action-title{
   font-size: 24px;
-  color: rgb(255, 17, 0);
+  color: #39FF14;
   font-weight: bold;
   filter: brightness(85%);
 }
@@ -95,7 +95,7 @@ header {
 
 .stats-title{
   font-size: 24px;
-  color: #39FF14;
+  color: black;
   font-weight: bold;
 }
 
