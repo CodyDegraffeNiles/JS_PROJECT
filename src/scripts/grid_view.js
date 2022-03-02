@@ -13,11 +13,14 @@ class GridView {
     this.boundAiTurn = this.aiTurn.bind(this);
     this.boundAiTurnEvent = this.aiTurnEvent.bind(this);    
     this.boundEndOption = this.addEndTurnOption.bind(this);
+    this.boundShowGrid = this.showGrid.bind(this);
+    this.boundShowInstructions = this.showInstructions.bind(this);
     this.selectedUnit = undefined;
   };
 
   // sets up intial clicks
   start(){
+    this.selectGrid();
     this.bindFirstClick();
     this.addDeslectOption();
     this.addRestartOption();
@@ -274,6 +277,39 @@ class GridView {
     this.selectedUnit.draw();
   };
 
+  // Allow for instructions to be taken off and the grid to be shown
+  selectGrid(){
+    let instructionsElement = document.getElementById("show-grid");
+    instructionsElement.addEventListener("click", this.boundShowGrid);
+  }
+
+  // Function for hiding instructions and showing the grid
+  showGrid(e){
+    e.preventDefault();
+    e.stopPropagation();
+    let playArea = document.getElementById("play-area");
+    let instructionsElement = document.getElementById("instructions");
+    instructionsElement.style.display = "none";
+    playArea.style.display = "flex";
+    this.selectInstructions();
+  }
+
+  // Allow for instructions to be hidden and the grid to be shown
+  selectInstructions(){
+    let showInstructionsElement = document.getElementById("instructions-command");
+    showInstructionsElement.addEventListener("click", this.boundShowInstructions);
+  }
+
+  // Function for showing instructions and hiding grid;
+  showInstructions(e){
+    e.preventDefault();
+    e.stopPropagation();
+    let playArea = document.getElementById("play-area");
+    let instructionsElement = document.getElementById("instructions");
+    instructionsElement.style.display = "";
+    playArea.style.display = "none";
+    this.selectGrid();
+  }
   
 }
 

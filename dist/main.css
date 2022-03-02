@@ -58,7 +58,6 @@ table {
 }
 
 #instructions {
-  display: none;
   margin: auto;
   font-family: sans-serif;
   font-size: 18px;
@@ -85,14 +84,14 @@ header {
 }
 
 #links a {
-  padding: 5 px;
+  padding: 5px;
   color: black;
   text-decoration: none;
-  font-size: 14 px;
+  font-size: 14px;
 }
 
 #play-area {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
