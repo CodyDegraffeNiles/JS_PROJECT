@@ -43,11 +43,9 @@ class GridView {
     if (this.grid.actionableUnits.length < 1) { 
       this.removeMoveShootEvent();
       this.removeActionEventListeners();
-      // setTimeout(this.boundAiTurn, 3000);
-      this.boundAiTurn();
-      // Work around to ghost tank Issue.
-      // setTimeout(deselectElement.click, 5);
-      setTimeout(this.grid.boundDraw, 1000);
+      setTimeout(this.boundAiTurn, 2000);
+      // Fix ghost tank issue.
+      setTimeout(this.grid.boundDraw, 2001);
     };
   };
 
