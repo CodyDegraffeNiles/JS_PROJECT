@@ -67,3 +67,33 @@
 
 // Extra instructions 
 {/* <li> Even though, the heretics move erratically, they will take every shot they get.</li> */}
+
+// How to Draw Svg on canvas.
+
+// var img = new Image();
+// img.onload = function () {
+//   ctx.drawImage(img, 0, 0);
+// }
+// img.src = "http://upload.wikimedia.org/wikipedia/commons/d/d2/Svg_example_square.svg";
+//   }
+
+
+///  draw(){ old draw for circles
+// const canvas = (document.getElementsByClassName('game-board'))[0];
+// const ctx = canvas.getContext('2d');
+// // Yellow for friendly units and green for enemy forces.
+// let color = "yellow";
+// if (this.enemy) { color = "green" };
+// ctx.fillStyle = color;
+// // Get the center of the square of the units position
+// let center_x = this.pos[0] * 80 + 40;
+// let center_y = this.pos[1] * 80 + 40;
+// ctx.beginPath();
+// ctx.arc(center_x, center_y, 20, 0, 2 * Math.PI, false);
+// ctx.fill();
+// var img = new Image();
+// img.onload = function () {
+//   ctx.drawImage(img, -10, -10);
+// };
+// img.src = "images/t4.png";
+// }

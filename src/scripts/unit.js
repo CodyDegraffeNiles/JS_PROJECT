@@ -17,17 +17,27 @@ class Unit{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    // Yellow for friendly units and green for enemy forces.
-    let color = "yellow";
-    if (this.enemy){color = "green"};
-    ctx.fillStyle = color;
-     // Get the center of the square of the units position
-    let center_x = this.pos[0] * 80 + 40;
-    let center_y = this.pos[1] * 80 + 40;
-    ctx.beginPath();
-    ctx.arc(center_x, center_y, 20, 0, 2 * Math.PI, false);
-    ctx.fill();
-  }
+    // Brown tanks for friendlys
+    if (!this.enemy){
+      var img = new Image();
+      let startX = this.pos[0] * 80 - 10;
+      let startY = this.pos[1] * 80 - 10
+      img.onload = function () {
+        ctx.drawImage(img, startX, startY);
+      };
+      img.src = "images/test5.svg";
+    }
+    else{
+      var img = new Image();
+      let startX = this.pos[0] * 80 - 10;
+      let startY = this.pos[1] * 80 - 10
+      img.onload = function () {
+        ctx.drawImage(img, startX, startY);
+      };
+      img.src = "images/test5.svg";
+    };
+}
+  
   move(pos){
     // Check if move is valid]
     if( this.actionLeft === false){
