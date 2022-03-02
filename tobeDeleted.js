@@ -64,3 +64,6 @@
 //   let statsElement = document.getElementById("stats-command");
 //   statsElement.addEventListener("click", this.boundStats)
 // };
+
+// Extra instructions 
+{/* <li> Even though, the heretics move erratically, they will take every shot they get.</li> */}
