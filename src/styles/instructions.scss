@@ -14,3 +14,23 @@
   cursor: pointer;
   color: red;
 }
+
+#instructions h2{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#end-screen{
+  display: none;
+  font-size: 40px;
+  margin: auto;
+  text-align: center;
+}
+
+#end-game-restart-command{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}

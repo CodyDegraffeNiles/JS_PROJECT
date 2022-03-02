@@ -2,7 +2,7 @@ import Cover from "./cover.js";
 import Unit from "./unit.js";
 
 const levelUnits = [new Unit({
-  pos: [4, 4],
+  pos: [5, 0],
   health: 100,
   movementRange: 2,
   shootingRange: 4,
@@ -12,7 +12,7 @@ const levelUnits = [new Unit({
 }),
 
   new Unit({
-  pos: [3, 7],
+  pos: [0, 0],
   health: 100,
   movementRange: 2,
   shootingRange: 4,

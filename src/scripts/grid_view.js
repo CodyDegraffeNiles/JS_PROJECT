@@ -1,4 +1,5 @@
 import Cover from "./cover.js"
+import Util from "./utils.js";
 
 class GridView {
   constructor(grid, ai){
@@ -34,7 +35,9 @@ class GridView {
     this.grid.erase();
     this.grid.draw();
     // checks if game is over
-    if (this.gameOver()) { return;}
+    if (this.gameOver()) { 
+      Util.displayEndScreen("human");
+      return; }
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
     // a three second delay.
     if (this.grid.actionableUnits.length < 1) { 
@@ -52,7 +55,10 @@ class GridView {
     this.populateStats();
     this.ai.addUnits();
     this.ai.takeTurn();
-    if (this.gameOver()) {return;};
+    if (this.gameOver()) {
+      Util.displayEndScreen("computer");
+      return;
+    };
     this.grid.swapTurn();
     this.ai.emptyUnits();
   }
@@ -166,10 +172,14 @@ class GridView {
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   };
 
-  // Adds a reset event listener.
+  // Adds a reset event listener on both the resert button in the top right corner
+  // and the resert button that appears on the end game screen.
   addRestartOption(){
-    let restartElement = document.getElementById("restart-command");
-    restartElement.addEventListener("dblclick", this.restart);
+    let restartElementOne = document.getElementById("restart-command");
+    restartElementOne.addEventListener("dblclick", this.restart);
+    // Only add one click for the restart since it is the intended purpose to restart.
+    let restartElementTwo= document.getElementById("end-game-restart-command");
+    restartElementTwo.addEventListener("click", this.restart);
   }
 
   // Adds a end turn listener, so the player can end their turn prematurely
