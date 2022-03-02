@@ -45,7 +45,6 @@ class GridView {
   // And if necessary handing it back over to the player.
   aiTurn(){
     this.grid.swapTurn();
-    console.log("hi");
     this.selectedUnit = undefined;
     this.populateStats();
     this.ai.addUnits();
@@ -171,10 +170,11 @@ class GridView {
   }
 
   // Adds a end turn listener, so the player can end their turn prematurely
-  // Activates Ai turn.
+  // Activates Ai turn. Activated using a double click rather than a click 
+  // to ensure a user does not acidently end their turn.
   addEndTurnOption(){
     let endTurnElement = document.getElementById("endturn-command");
-    endTurnElement.addEventListener("click", this.boundAiTurnEvent);
+    endTurnElement.addEventListener("dblclick", this.boundAiTurnEvent);
   }
 
   aiTurnEvent(e){
@@ -183,7 +183,7 @@ class GridView {
     // remove eventListener from end turn element so that
     // endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
-    endTurnElement.removeEventListener("click", this.boundAiTurnEvent);
+    endTurnElement.removeEventListener("dblclick", this.boundAiTurnEvent);
     setTimeout(this.boundAiTurn, 3000);
     setTimeout(this.boundEndOption, 3500);
   }
