@@ -15,12 +15,11 @@ class Cover extends Unit{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = "black";
-    ctx.beginPath();
-    let top_x = this.pos[0] * 80;
-    let top_y = this.pos[1] * 80 + 20
-    ctx.fillRect(top_x, top_y, 80, 40)
-    ctx.stroke();
+    let img = document.createElement("IMG");
+    let startX = this.pos[0] * 80;
+    let startY = this.pos[1] * 80;
+    img.onload = function () { ctx.drawImage(img, startX, startY) };
+    img.src = "images/cover.svg";
   }
 
   // Hijacks gain action method so that grid does not gain actions. Also makes 
