@@ -33,7 +33,6 @@ class AI{
       }
       else {
         let enemyShots = this.posEnemyShots();
-        console.log(enemyShots);
         let safeMoves = posMoves.filter(move => !(enemyShots.includes(move)));
         if (safeMoves.length >= 1){
           let safeRandomMove = Math.floor(Math.random() * safeMoves.length);

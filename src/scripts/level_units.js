@@ -23,6 +23,16 @@ const levelUnits = [new Unit({
 }),
 
   new Unit({
+    pos: [1, 4],
+    health: 100,
+    movementRange: 3,
+    shootingRange: 4,
+    shootingPower: 75,
+    enemy: false,
+    name: "Catachan 22nd"
+  }),
+
+  new Unit({
     pos: [3, 3],
     health: 75,
     movementRange: 2,
