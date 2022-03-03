@@ -16,11 +16,18 @@ MINI-XCOM uses Vanilla Javascript and a Canvas HTML element to provide interacti
 
 While the use of Canvas over normal HTML allows for more dynamic images and less cluttered HTML, Canvas does present a unique challange, locating exactly where a user clicked. Unlike a grid using HTML elements, sections of a canvas grid cannot be "labeled/marked". This means if a user clicks anywhere on the canvas, the whole canvas is clicked. This is problamatic as it makes user interaction with units on the canvas impossible without creating a method to determine where on the canvas the user clicked. MINI-XCOM solves this problem in the following way. 
 
-After determining where the user clicked, as each grid box has a height of 80px and a width of 80px, the x and y coordinates of the click are both divided by 80 and then floored (rounded down) to get the grid position of the click. This grid position is then checked against the positions of the units stored in the grid to determine if the user clicked on a unit and if so, the approriate logic is initaited. This logic is also used to convert a unit's positions back into
+First, MINI-XCOM's canvas element has defined ratios. It is an 8 by 8 grid with each square having a both a height and width of 80. Thus, each unit on the grid is given a pos(ition) attribute that corresponds to a location on the grid, so its location can be stored and later manipulated for movement. (Code Snippet)
 
-The other tricky part of the project was handling the Event Listeners.
+Secondly, when a user clicks on the canvas, the following code is run to determine the exact location of the click. (Code snippet)
+
+
+(explanation).
+
+After determining where the user clicked, the x and y coordinates of the click are both divided by 80 as this is the noted height and width of the grid. The resulting number is floored (rounded down) to get the grid position of the click. This grid position is then checked against the positions of the units to determine if the user clicked on a unit and if so, the approriate logic is initaited. This logic is also use in reverse to convert a unit's position back into coordinates on the grid so they can be rendered in the proper spot on the grid.
 
 Lastly, MINI-XCOM uses wepback and npm to bundle code and manage project dependenices respectively. It also uses Babel to transpile the Javascript Code so that MINI-XCOM is backwards compatible.
+
+### Another Feature?
 
 
 ### Future Features
