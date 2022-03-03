@@ -14,7 +14,7 @@ class Unit{
     this.actionLeft = false;
     this.grid = "grid"; 
     this.shotSound = new Audio();
-    this.shotSound.src = "sounds/shot.mp3"
+    this.shotSound.src = "sounds/shot.wav"
     this.shotSound.volume = .4;
     this.moveSound = new Audio();
     this.moveSound.src = "sounds/move.wav"
