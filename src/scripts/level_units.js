@@ -36,7 +36,7 @@ const levelUnits = [new Unit({
     pos: [3, 3],
     health: 75,
     movementRange: 2,
-    shootingRange: 7,
+    shootingRange: 5,
     shootingPower: 100,
     enemy: true,
     name: "Tzeentch's Scheme"
@@ -46,7 +46,7 @@ const levelUnits = [new Unit({
     pos: [2, 0],
     health: 75,
     movementRange: 2,
-    shootingRange: 7,
+    shootingRange: 5,
     shootingPower: 100,
     enemy: true,
     name: "Khorne's Glory"
@@ -56,7 +56,7 @@ const levelUnits = [new Unit({
     pos: [7, 4],
     health: 75,
     movementRange: 2,
-    shootingRange: 7,
+    shootingRange: 5,
     shootingPower: 100,
     enemy: true,
     name: "Nurgle's Love"
@@ -66,7 +66,7 @@ const levelUnits = [new Unit({
     pos: [6, 1],
     health: 75,
     movementRange: 2,
-    shootingRange: 7,
+    shootingRange: 5,
     shootingPower: 100,
     enemy: true,
     name: "Slaanesh's Desire"
