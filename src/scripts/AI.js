@@ -23,7 +23,7 @@ class AI{
     })
   };
 
-    // Commands a unit to either shoot at a target or move to a random location
+    // Commands a unit to either shoot at a target or move to a safe location
     commandUnit(unit){
       let posShots = unit.posssibleMoves("shoot");
       let posMoves = unit.posssibleMoves("move");
@@ -32,11 +32,34 @@ class AI{
         this.grid.checkUnits();
       }
       else {
-        let randomMove = Math.floor(Math.random() * posMoves.length);
-        unit.move(posMoves[randomMove]);
+        let enemyShots = this.posEnemyShots();
+        console.log(enemyShots);
+        let safeMoves = posMoves.filter(move => !(enemyShots.includes(move)));
+        if (safeMoves.length >= 1){
+          let safeRandomMove = Math.floor(Math.random() * safeMoves.length);
+          unit.move(safeMoves[safeRandomMove]);
+        }
+        else{
+          // Random move if there is no safe move.
+          let randomMove = Math.floor(Math.random() * posMoves.length);
+          unit.move(posMoves[randomMove]);
+        }
       }
     };
 
+    // Gets an array of possible shots from the enemy
+    posEnemyShots(){
+      let enemyUnits = this.grid.units.filter(unit => unit.enemy === false);
+      let posEnemyShots = [];
+      enemyUnits.forEach(unit => {
+        // Have to use moves, which will be possible shoots in the future. 
+        // Also give's the ai a blind spot when the move range is less than
+        // the shooting range and does not include up to that shooting point. 
+        // Intended feature, not a bug :)
+        posEnemyShots = posEnemyShots.concat(unit.posssibleMoves("move"));
+      });
+      return posEnemyShots
+    };
 }
 
 export default AI;
