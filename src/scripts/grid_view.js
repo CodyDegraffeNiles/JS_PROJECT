@@ -23,7 +23,7 @@ class GridView {
   start(){
     this.selectGrid();
     this.bindFirstClick();
-    this.addDeslectOption();
+    this.addDeselectOption();
     this.addRestartOption();
     this.addEndTurnOption();
   };
@@ -44,6 +44,9 @@ class GridView {
     if (this.grid.actionableUnits.length < 1) { 
       this.removeMoveShootEvent();
       this.removeActionEventListeners();
+      this.selectedUnit = undefined;
+      this.populateStats();
+      // this.boundDeselectUnit();
       Util.showPlayersTurn("computer")
       setTimeout(this.boundAiTurn, 2000);
       // Fix ghost tank issue.
@@ -175,7 +178,7 @@ class GridView {
   };
 
   //Adds a deselect eventListener on actions list. Will always be present.
-  addDeslectOption(){
+  addDeselectOption(){
     let deselectElement = document.getElementById("deselect-command");
     deselectElement.addEventListener("click", this.boundDeselectUnit)
   };
@@ -201,13 +204,17 @@ class GridView {
   aiTurnEvent(e){
     e.preventDefault();
     e.stopPropagation();
-    // remove eventListener from end turn element so that
+    // remove event listener from end turn element so that
     // endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
     endTurnElement.removeEventListener("dblclick", this.boundAiTurnEvent);
     Util.showPlayersTurn("computer");
+    this.selectedUnit = undefined;
+    this.populateStats();
+    this.grid.draw();
     setTimeout(this.boundAiTurn, 3000);
     setTimeout(this.grid.boundDraw, 3001);
+    // Put event listerner back on end turn element
     setTimeout(this.boundEndOption, 3001);
   }
   // Restarts the game by reloading the page.
