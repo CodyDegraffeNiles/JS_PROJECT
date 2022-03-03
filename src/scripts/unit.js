@@ -41,7 +41,7 @@ class Unit{
   move(pos){
     // Check if move is valid]
     if( this.actionLeft === false){
-      alert("Unit has already acted!")
+      alert("Unit has already acted. Deslect this unit and select another one.")
       return false;
     }
     let posMoves = this.posssibleMoves();
@@ -54,7 +54,7 @@ class Unit{
       return true;
     }
     else{
-      alert("Invalid Move");
+      alert("Invalid Move. Please select a valid move location");
       return false;
     }
   }
@@ -104,7 +104,7 @@ class Unit{
   shoot(pos) {
     // Check if a unit can act.
     if (this.actionLeft === false) {
-      alert("Unit has already acted!")
+      alert("Unit has already acted. Deslect this unit and select another.")
       return false;
     }
     let posMoves = this.posssibleMoves("shoot")
@@ -116,7 +116,7 @@ class Unit{
       return true;
     }
     else {
-      alert("Invalid Shot location")
+      alert("Invalid Shot. Please select a valid shot location.")
       return false;
     }
   };
