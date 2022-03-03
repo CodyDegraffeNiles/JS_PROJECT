@@ -80,6 +80,7 @@ class GridView {
     Util.showPlayersTurn("human")
     this.grid.draw();
     this.bindFirstClick(); 
+    canvas.style.cursor = "pointer";
   }
 
   gameOver(){
