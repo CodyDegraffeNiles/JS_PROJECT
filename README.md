@@ -56,7 +56,7 @@ After determining where the user clicked, the x and y coordinates of the click a
   let y = Math.floor((yClick) / 80);
  ```
 
-### Planned Features:
+### Planned Features
 ------ 
 * Increased AI logic
 * Animation for the tanks
