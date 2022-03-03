@@ -228,13 +228,13 @@ class GridView {
     // Put event listerner back on end turn element
     setTimeout(this.boundEndOption, 3001);
     }
-  }
+  };
   // Restarts the game by reloading the page.
   restart(e){
     e.preventDefault();
     e.stopPropagation();
     location.reload();
-  }
+  };
 
   //Activates eventlistener for move and removes other eventlistenres for the board.
   selectMove(e){
@@ -323,7 +323,7 @@ class GridView {
   selectGrid(){
     let instructionsElement = document.getElementById("show-grid");
     instructionsElement.addEventListener("click", this.boundShowGrid);
-  }
+  };
 
   // Function for hiding instructions and showing the grid
   showGrid(e){
@@ -336,13 +336,13 @@ class GridView {
     let title = document.getElementById("title");
     this.selectInstructions();
     Util.showPlayersTurn("human")
-  }
+  };
 
   // Allow for instructions to be hidden and the grid to be shown
   selectInstructions(){
     let showInstructionsElement = document.getElementById("instructions-command");
     showInstructionsElement.addEventListener("click", this.boundShowInstructions);
-  }
+  };
 
   // Function for showing instructions and hiding grid;
   showInstructions(e){
@@ -354,14 +354,14 @@ class GridView {
     playArea.style.display = "none";
     this.selectGrid();
     Util.showPlayersTurn("instructions")
-  }
+  };
 
   // Sets up event listener for muting sound
   muteSounds(){
     let muteElement = document.getElementById("sound-command");
     muteElement.addEventListener("click", this.boundMute);
     muteElement.style.textDecoration = "none";
-  }
+  };
 
   // Mutes all unit sounds
   mute(e){
@@ -371,14 +371,14 @@ class GridView {
     let muteElement = document.getElementById("sound-command");
     muteElement.removeEventListener("click", this.boundMute);
     this.unMuteSounds();
-  }
+  };
 
   // Sets up event listener for unMuting sounds
   unMuteSounds() {
     let muteElement = document.getElementById("sound-command");
     muteElement.addEventListener("click", this.boundunMute);
     muteElement.style.textDecoration = "line-through";
-  }
+  };
 
   // Unmutes all unit sounds
   unMute(e){
@@ -388,7 +388,7 @@ class GridView {
     let muteElement = document.getElementById("sound-command");
     muteElement.removeEventListener("click", this.boundunMute);
     this.muteSounds();
-  }
+  };
   
 }
 

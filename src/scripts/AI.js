@@ -4,18 +4,18 @@ class AI{
   constructor(grid){
     this.grid = grid;
     this.units = [];
-  }
+  };
 
   // adds units for the AI to command
   addUnits(){
     let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover)));
     units.forEach(unit => {this.units.push(unit)});
-  }
+  };
 
   // after each turn resest the AI's units so that if they are destroyed they dont linger.
   emptyUnits(){
     this.units = [];
-  }
+  };
   // Takes a turn with each unit one by one
   takeTurn(){
     this.units.forEach(unit => {
