@@ -5,6 +5,8 @@ class GridView {
   constructor(grid, ai){
     this.grid = grid;
     this.ai = ai;
+    this.shotSound = new Audio();
+    this.shotSound.src =
     this.boundFirstClick = this.handleFirstClick.bind(this);
     this.boundMove = this.handleMove.bind(this)
     this.boundShot = this.handleShot.bind(this);
