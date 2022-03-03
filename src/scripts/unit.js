@@ -15,6 +15,8 @@ class Unit{
     this.grid = "grid"; 
     this.shotSound = new Audio();
     this.shotSound.src = "sounds/shot.mp3"
+    this.moveSound = new Audio();
+    this.moveSound.src = "sounds/move.wav"
   }
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
@@ -44,7 +46,8 @@ class Unit{
     }
     let posMoves = this.posssibleMoves();
     if (Util.inArray(pos, posMoves)){
-      // Fill orginal location point
+      // Only plays Move sound for friendlys as they will overlap too much in AI turn. 
+      if (!this.enemy) {this.moveSound.play()};
       this.takeAction();
       this.pos[0] = pos[0];
       this.pos[1] = pos[1];
