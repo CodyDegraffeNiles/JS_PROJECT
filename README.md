@@ -54,6 +54,7 @@ After determining where the user clicked, the x and y coordinates of the click a
  ```
 
 ### Technologies
+---- 
 
 * Vanilla Javascript and Canvas API are used to achieve interactive gameplay logic and display
 * Webpack and npm to bundle the Javascript Code and manage project dependencies
