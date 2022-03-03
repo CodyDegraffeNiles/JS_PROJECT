@@ -15,8 +15,10 @@ class Unit{
     this.grid = "grid"; 
     this.shotSound = new Audio();
     this.shotSound.src = "sounds/shot.mp3"
+    this.shotSound.volume = .4;
     this.moveSound = new Audio();
     this.moveSound.src = "sounds/move.wav"
+    this.moveSound.volume = .4;
   }
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
