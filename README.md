@@ -26,19 +26,16 @@ Secondly, when a user clicks on the canvas, the following code is run to determi
     let yClick = e.pageY - canvasRight;
 ```
 
-(explanation).
+The code above determines the X and Y coordinates of the upper left top of the Canvas. It then subtracts those of the X and y coordinates of the click (as givn by the pageX and pageY attributes, to give you the click in terms of the canvas' own coordinate system rather than overal pages.
 
-After determining where the user clicked, the x and y coordinates of the click are both divided by 80 as this is the noted height and width of the grid. The resulting number is floored (rounded down) to get the grid position of the click. This grid position is then checked against the positions of the units to determine if the user clicked on a unit and if so, the approriate logic is initaited. This logic is also use in reverse to convert a unit's position back into coordinates on the grid so they can be rendered in the proper spot on the grid. (Code snippet)
+After determining where the user clicked, the x and y coordinates of the click are both divided by 80 as this is the noted height and width of the grid. The resulting number is floored (rounded down) to get the grid position of the click. This grid position is then checked against the positions of the units to determine if the user clicked on a unit and if so, the approriate logic is initaited. This logic is also used in reverse to convert a unit's position back into coordinates on the grid so they can be rendered in the proper spot on the grid. 
 ``` JavaScript
   let x = Math.floor((xClick) / 80);
   let y = Math.floor((yClick) / 80);
  ```
-
-Lastly, MINI-XCOM uses wepback and npm to bundle code and manage project dependenices respectively. It also uses Babel to transpile the Javascript Code so that MINI-XCOM is backwards compatible.
-
-
+<!-- 
 ### Another Feature?
--------
+------- -->
 
 
 ### Future Features
