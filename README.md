@@ -58,7 +58,7 @@ After determining where the user clicked, the x and y coordinates of the click a
 
 ### Planned Features:
 ------ 
-* Increased AI logic with the AI taking its turn one unit at a time
+* Increased AI logic
 * Animation for the tanks
 * Add board scalability for different sized windows and devices
 
