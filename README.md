@@ -10,7 +10,6 @@ After the player's turn, the AI will command its units. Each unit, both friend a
 
 [Become A Commander!](https://codydegraffeniles.github.io/MINI-XCOM/)
 
-
 ### The Chosen Unit
 ----
 MINI-XCOM uses Vanilla Javascript and a Canvas HTML element to provide interactive gameplay to the user. By combining the two through the use of event listeners, the battlefield can dynamically update to provide the user with feedback about the battle as well as make gameplay smoother. There were two interesting issues that arose with this approach. The first was how to provide effective user feedback. The second was how to register user clicks on the canvas.
@@ -30,8 +29,6 @@ Class GridView {
     };
 ```
 This selectedUnit is the unit whose stats show up on the screen. The absence of a selectedUnit also indicates the swap of a turn as all units are deselected when a turn swaps so the other player can act. Lastly, the selectedUnit is also used to determine which event listeners to activate/remove. The reason for the heavy emphasis on the selectedUnit is because it is the main focus of the player. As the player interacts with the game one unit at a time, updating the user interface based on what unit is selected is critical for user interaction and readability. It also increases the player's feeling of agency as compared to a more static all unit overview.
-
-Now to look at the technical issue, registering user clicks.
 
 ### A Commander and His Canvas
 -----
@@ -56,12 +53,17 @@ After determining where the user clicked, the x and y coordinates of the click a
   let y = Math.floor((yClick) / 80);
  ```
 
+### Technologies
+
+* Vanilla Javascript and Canvas API are used to achieve interactive gameplay logic and display
+* Webpack and npm to bundle the Javascript Code and manage project dependencies
+* Babel to transpile the Javascript Code
+
 ### Planned Features
 ------ 
 * Increased AI logic
 * Animation for the tanks
 * Add board scalability for different sized windows and devices
-
 
 ### Acknowledgments
 ----
