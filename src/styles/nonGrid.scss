@@ -34,3 +34,15 @@
   cursor: pointer;
   color: white;
 }
+
+#options{
+  display: flex;
+}
+
+#options li{
+  padding-right: 10px;
+  color: rgb(94, 81, 59);
+  font-size: 20px;
+  cursor: pointer;
+}
+

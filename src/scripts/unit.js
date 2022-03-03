@@ -152,6 +152,17 @@ class Unit{
     }
     return false
   }
+
+  // Mutes all sounds associated with the unit.
+  muteSounds(){
+    this.moveSound.muted = true;
+    this.shotSound.muted = true;
+  }
+
+  unMuteSounds(){
+    this.moveSound.muted = false;
+    this.shotSound.muted = false;
+  }
 };
 
 export default Unit;

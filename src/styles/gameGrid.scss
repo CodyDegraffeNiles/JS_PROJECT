@@ -2,7 +2,6 @@
 body{
   background-color: black;
   background-image: url("/images/background.jpeg");
-  // Source for background-image: https://www.pinterest.com/pin/728246202216089604/ 
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -11,18 +10,6 @@ body{
 header {
   display: flex;
   justify-content: space-between;
-}
-
-#links{
-  display: flex;
-  justify-content: right;
-}
-
-#links a {
-  padding: 5px;
-  color: black;
-  text-decoration: none;
-  font-size: 14px;
 }
 
 #play-area{
@@ -36,7 +23,7 @@ header {
 }
 
 #title{
-  padding: 10px;
+  padding-left: 50px;
   font-size: 40px;
   font-family:Arial, Helvetica, sans-serif;
   color:rgb(199, 131, 4);
@@ -44,14 +31,7 @@ header {
 }
 
 #action-options{
-  // margin: auto;
   padding: 10px;
-}
-
-#restart-command{
-  color: rgb(94, 81, 59);
-  font-size: 20px;
-  cursor: pointer;
 }
 
 #action-title{
@@ -74,7 +54,6 @@ header {
 }
 
 #unit-stats{
-  // margin: auto;
   padding: 10px;
 }
 

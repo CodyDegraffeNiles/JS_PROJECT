@@ -151,6 +151,16 @@ class Grid{
   enemiesDestroyed(){
     return this.units.every(unit => (unit.enemy === false || unit instanceof Cover) );
   }
+
+  // Mutes all the sounds for each Unit
+  muteSound(){
+    this.units.forEach(unit => {unit.muteSounds()});
+  }
+
+  //Unmutes all the sounds for each Unit
+  unMuteSounds(){
+    this.units.forEach(unit => { unit.unMuteSounds() });
+  }
 };
 
 export default Grid;

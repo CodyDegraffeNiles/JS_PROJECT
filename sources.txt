@@ -13,11 +13,15 @@ Background image:
 https://www.pinterest.com/pin/728246202216089604/
 
 Base of CSS reset file:
- http://meyerweb.com/eric/tools/css/:
+http://meyerweb.com/eric/tools/css/:
 
 
+Movement Sound:
+https://sound-effects.bbcrewind.co.uk/search?q=07014081
 
-I also use pngtosvg to create my svg files.
+Shot Sound:
+https://sound-effects.bbcrewind.co.uk/search?q=07037325
+
 
 
 

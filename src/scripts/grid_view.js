@@ -16,6 +16,8 @@ class GridView {
     this.boundEndOption = this.addEndTurnOption.bind(this);
     this.boundShowGrid = this.showGrid.bind(this);
     this.boundShowInstructions = this.showInstructions.bind(this);
+    this.boundMute = this.mute.bind(this);
+    this.boundunMute = this.unMute.bind(this);
     this.selectedUnit = undefined;
   };
 
@@ -26,6 +28,7 @@ class GridView {
     this.addDeselectOption();
     this.addRestartOption();
     this.addEndTurnOption();
+    this.muteSounds();
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -341,6 +344,40 @@ class GridView {
     playArea.style.display = "none";
     this.selectGrid();
     Util.showPlayersTurn("instructions")
+  }
+
+  // Sets up event listener for muting sound
+  muteSounds(){
+    let muteElement = document.getElementById("sound-command");
+    muteElement.addEventListener("click", this.boundMute);
+    muteElement.style.textDecoration = "none";
+  }
+
+  // Mutes all unit sounds
+  mute(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.grid.muteSound();
+    let muteElement = document.getElementById("sound-command");
+    muteElement.removeEventListener("click", this.boundMute);
+    this.unMuteSounds();
+  }
+
+  // Sets up event listener for unMuting sounds
+  unMuteSounds() {
+    let muteElement = document.getElementById("sound-command");
+    muteElement.addEventListener("click", this.boundunMute);
+    muteElement.style.textDecoration = "line-through";
+  }
+
+  // Unmutes all unit sounds
+  unMute(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.grid.unMuteSounds();
+    let muteElement = document.getElementById("sound-command");
+    muteElement.removeEventListener("click", this.boundunMute);
+    this.muteSounds();
   }
   
 }
