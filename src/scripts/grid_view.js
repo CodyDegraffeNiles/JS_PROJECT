@@ -80,6 +80,7 @@ class GridView {
     Util.showPlayersTurn("human")
     this.grid.draw();
     this.bindFirstClick(); 
+    let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.style.cursor = "pointer";
   }
 
@@ -197,8 +198,7 @@ class GridView {
   // and the resert button that appears on the end game screen.
   addRestartOption(){
     let restartElementOne = document.getElementById("restart-command");
-    restartElementOne.addEventListener("dblclick", this.restart);
-    // Only add one click for the restart since it is the intended purpose to restart.
+    restartElementOne.addEventListener("click", this.restart);
     let restartElementTwo= document.getElementById("end-game-restart-command");
     restartElementTwo.addEventListener("click", this.restart);
   }
@@ -208,16 +208,17 @@ class GridView {
   // to ensure a user does not acidently end their turn.
   addEndTurnOption(){
     let endTurnElement = document.getElementById("endturn-command");
-    endTurnElement.addEventListener("dblclick", this.boundAiTurnEvent);
+    endTurnElement.addEventListener("click", this.boundAiTurnEvent);
   }
 
   aiTurnEvent(e){
     e.preventDefault();
     e.stopPropagation();
+    if (confirm("End Turn?")){;
     // remove event listener from end turn element so that
     // endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
-    endTurnElement.removeEventListener("dblclick", this.boundAiTurnEvent);
+    endTurnElement.removeEventListener("click", this.boundAiTurnEvent);
     Util.showPlayersTurn("computer");
     this.selectedUnit = undefined;
     this.populateStats();
@@ -226,6 +227,7 @@ class GridView {
     setTimeout(this.grid.boundDraw, 3001);
     // Put event listerner back on end turn element
     setTimeout(this.boundEndOption, 3001);
+    }
   }
   // Restarts the game by reloading the page.
   restart(e){
