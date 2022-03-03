@@ -35,6 +35,7 @@ class AI{
         let enemyShots = this.posEnemyShots();
         let safeMoves = posMoves.filter(move => !(enemyShots.includes(move)));
         if (safeMoves.length >= 1){
+          // Random safe move.
           let safeRandomMove = Math.floor(Math.random() * safeMoves.length);
           unit.move(safeMoves[safeRandomMove]);
         }
