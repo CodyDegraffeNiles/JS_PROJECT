@@ -68,4 +68,4 @@ After determining where the user clicked, the x and y coordinates of the click a
 The author would like to acknowledge that the following were invaluable to understanding and using the concepts that made MINI-XCOM possible:
 
 * [Clicks on a Canvas Element](https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element)
-* My friends who play tested and gave valuable user feedback.
+* My friends who play tested MINI-XCOM and gave valuable user feedback.
