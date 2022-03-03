@@ -35,17 +35,18 @@ const Util = {
   },
 
   // Change title to reflect whose turn it is.
-  showPlayersTurn(grid, gamegrid = true){
-    let titleElement = canvas.getElementById("title");
-    if (grid.humanPlayer){
-      titleElement.innerHTML = "Your turn";
+  showPlayersTurn(player){
+    let titleElement = document.getElementById("title");
+    if (player === "human"){
+      titleElement.innerHTML = "Your Turn";
       titleElement.style.color = "green";
     }
-    else {
+    else if (player === "computer") {
       titleElement.innerHTML = "Enemey Turn";
       titleElement.style.color = "red";
-    };
-    if (!gamegrid){
+    }
+    //Show title if on end screen.
+    else{
       titleElement.innerHTML = "MINI-XCOM";
       titleElement.style.color = "rgb(199, 131, 4)";
     };

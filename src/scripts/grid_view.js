@@ -36,6 +36,7 @@ class GridView {
     this.grid.draw();
     // checks if game is over
     if (this.gameOver()) { 
+      Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
       return; }
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
@@ -43,6 +44,7 @@ class GridView {
     if (this.grid.actionableUnits.length < 1) { 
       this.removeMoveShootEvent();
       this.removeActionEventListeners();
+      Util.showPlayersTurn("computer")
       setTimeout(this.boundAiTurn, 2000);
       // Fix ghost tank issue.
       setTimeout(this.grid.boundDraw, 2001);
@@ -59,15 +61,13 @@ class GridView {
     this.ai.addUnits();
     this.ai.takeTurn();
     if (this.gameOver()) {
+      Util.showPlayersTurn("endScreen")
       Util.displayEndScreen("computer");
       return;
     };
     this.ai.emptyUnits();
-    // this.grid.erase();
-    // this.grid.draw();
     this.grid.swapTurn();
-    // Jank method to fix tanks
-
+    Util.showPlayersTurn("human")
   }
 
   gameOver(){
@@ -204,8 +204,10 @@ class GridView {
     // endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
     endTurnElement.removeEventListener("dblclick", this.boundAiTurnEvent);
+    Util.showPlayersTurn("computer");
     setTimeout(this.boundAiTurn, 3000);
-    setTimeout(this.boundEndOption, 3500);
+    setTimeout(this.grid.boundDraw, 3001);
+    setTimeout(this.boundEndOption, 3001);
   }
   // Restarts the game by reloading the page.
   restart(e){
@@ -310,6 +312,7 @@ class GridView {
     playArea.style.display = "flex";
     let title = document.getElementById("title");
     this.selectInstructions();
+    Util.showPlayersTurn("human")
   }
 
   // Allow for instructions to be hidden and the grid to be shown
@@ -327,6 +330,7 @@ class GridView {
     instructionsElement.style.display = "";
     playArea.style.display = "none";
     this.selectGrid();
+    Util.showPlayersTurn("instructions")
   }
   
 }
