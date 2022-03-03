@@ -34,6 +34,6 @@ Lastly, MINI-XCOM uses wepback and npm to bundle code and manage project depende
 ----
 The author would like to acknowledge that the following were invaulabe to understanding and using the concepts that made MINI-XCOM possible:
 
-* [Clicks on a Canvas Element] (https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element)
+* [Clicks on a Canvas Element](https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element)
 * My friends who play tested and gave valuable user feedback.
 
