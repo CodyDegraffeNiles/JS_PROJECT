@@ -39,10 +39,10 @@ const Util = {
     let titleElement = document.getElementById("title");
     if (player === "human"){
       titleElement.innerHTML = "Your Turn";
-      titleElement.style.color = "green";
+      titleElement.style.color = "#39FF14";
     }
     else if (player === "computer") {
-      titleElement.innerHTML = "Enemey Turn";
+      titleElement.innerHTML = "Enemy Turn";
       titleElement.style.color = "red";
     }
     //Show title if on end screen.
@@ -50,6 +50,23 @@ const Util = {
       titleElement.innerHTML = "MINI-XCOM";
       titleElement.style.color = "rgb(199, 131, 4)";
     };
+  },
+  // Modify the Unit stats Bar based on if friendly unit is clicked or not;
+  // Side is a boolean. True if enemy, false if ally.
+  showUnitSide(side){
+    let statsTitle = document.getElementById("stats-title");
+    if (side === true){
+      statsTitle.innerHTML = "Enemy"
+      statsTitle.style.color ="red";
+    }
+    else if (side === false){
+      statsTitle.innerHTML = "Ally"
+      statsTitle.style.color = "#39FF14";
+    }
+    else{
+      statsTitle.innerHTML = "Unit Stats"
+      statsTitle.style.color = "black";
+    }
   }
 }
 

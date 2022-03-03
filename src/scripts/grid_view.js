@@ -95,11 +95,12 @@ class GridView {
     // Checks if there is a unit at the position clicked
     if (this.grid.getUnit([x,y]) !== undefined){
       let unit = this.grid.getUnit([x, y]);
-      // Determine if unit is a friendly. 
+      // Determine if unit not cover 
         if (!(unit instanceof Cover)){ 
           this.selectUnit(unit);
-          this.addActionEventListeners();
           this.populateStats()
+          // Add event listeners if unit is a friendly.
+          if (unit.enemy === false) {this.addActionEventListeners()};
         }
     };
   };
@@ -262,6 +263,7 @@ class GridView {
       statsArray.forEach(value => {
         value.innerHTML= "";     
       });
+      Util.showUnitSide("none");
     }
     // If there is a selected unit, update stats list.
     else{
@@ -280,6 +282,7 @@ class GridView {
       acted.innerHTML === "Has Action" ? acted.style.color = "black" : acted.style.color = "black";
       acted.innerHTML === "Has Action" ? acted.style.backgroundColor = "green" : acted.style.backgroundColor = "red";
       // clear grid and then highlight selected unit's grid spot
+      Util.showUnitSide(this.selectedUnit.enemy);
       this.grid.draw()
       this.highlightUnit();
     }
@@ -291,7 +294,8 @@ class GridView {
     let ctx = canvas.getContext('2d');
     let rightX = this.selectedUnit.pos[0] * 80;
     let leftX = this.selectedUnit.pos[1] * 80;
-    ctx.fillStyle = '#39FF14';
+    // different colors for enemy and friendlys
+    this.selectedUnit.enemy ? ctx.fillStyle ="red" : ctx.fillStyle = '#39FF14';
     ctx.fillRect(rightX, leftX, 80, 80);
     this.selectedUnit.draw();
   };
