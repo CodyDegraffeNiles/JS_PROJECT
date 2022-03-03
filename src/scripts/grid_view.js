@@ -33,7 +33,12 @@ class GridView {
 
   // Does an action and checks if it is the end of the turn/end of match.
   action(){
-    // Checks if any units were eliminated
+    // Remove all event listenrers until the action is done
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    canvas.removeEventListener("click", this.boundFirstClick);
+    this.removeMoveShootEvent();
+    this.removeActionEventListeners();
+    // Checks if any units were elminated
     this.grid.checkUnits();
     this.grid.erase();
     this.grid.draw();
@@ -45,14 +50,15 @@ class GridView {
     // Checks if the humanPlayers turn is over. If so run the AI's turn after
     // a three second delay and then select a unit for the player.
     if (this.grid.actionableUnits.length < 1) { 
-      this.removeMoveShootEvent();
-      this.removeActionEventListeners();
       this.selectedUnit = undefined;
       this.populateStats();
       // this.boundDeselectUnit();
       Util.showPlayersTurn("computer")
       setTimeout(this.boundAiTurn, 2000);
-    };
+    } else {
+      // Add back firstClick event listener;
+      this.bindFirstClick();
+    }
   };
 
 
@@ -73,6 +79,7 @@ class GridView {
     this.grid.swapTurn();
     Util.showPlayersTurn("human")
     this.grid.draw();
+    this.bindFirstClick(); 
   }
 
   gameOver(){

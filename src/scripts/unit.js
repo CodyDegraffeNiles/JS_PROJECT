@@ -41,12 +41,12 @@ class Unit{
   move(pos){
     // Check if move is valid]
     if( this.actionLeft === false){
-      alert("Unit has already acted. Deslect this unit and select another one.")
+      alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
       return false;
     }
     let posMoves = this.posssibleMoves();
     if (Util.inArray(pos, posMoves)){
-      // Only plays Move sound for friendlys as they will overlap too much in AI turn. 
+      // Only plays Move sound for friendlys as they will overlap too much in AI's turn. 
       if (!this.enemy) {this.moveSound.play()};
       this.takeAction();
       this.pos[0] = pos[0];
@@ -104,7 +104,7 @@ class Unit{
   shoot(pos) {
     // Check if a unit can act.
     if (this.actionLeft === false) {
-      alert("Unit has already acted. Deslect this unit and select another.")
+      alert("Unit has already acted. Deslect this unit (using the button on  the right hand side of the grid) and select another.")
       return false;
     }
     let posMoves = this.posssibleMoves("shoot")
