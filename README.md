@@ -1,73 +1,39 @@
 # MINI-XCOM
+------
+MINI-XCOM allows the player to be immersed in the role of an Imperium tank commander. In turn-based combat with a reactive and descriptive user interface, 
+the player battles traitor in a last man(tank) standing fight. In each turn and for each unit, the player can either:
 
-### Background
--------
-
-In MINI-XCOM, the player commands a squad of hardened space marines. In turn-based combat on a grid-coordinate board, 
-the player battles the AI in a last man standing fight.  If all the player’s units die, they lose. If they kill all the enemy units, they win. In each turn and for each unit, the player can either:
-
-  1) Move the unit.(Can only slide in one direction per turn)
+  1) Move the unit 
   2) Command the unit to shoot an enemy
 
-After the player's turn, the AI will make a turn and command its units to either move or shoot. Each unit, both friend and foe, has a set of stats. These stats include a movement range, shooting range, and health points. A unit dies once its health points reach zero. The player can also view their units' stats by clicking on the unit. Lastly, the player must be stragetic about their movement choices as cover morphs the battlefiled into choke points and kill zones.
+After the player's turn, the AI will command its units. Each unit, both friend and foe, has a set of stats. These stats include a movement range, shooting range, and health points. A unit dies once its health points reach zero. The player can view units' stats by clicking on the unit. The player must be stragetic about their movement choices as cover morphs the battlefiled into choke points and kill zones. The game also has sound effects, which can be disabled.
+
+[Become A Commander!](https://codydegraffeniles.github.io/MINI-XCOM/)
+
+### A Commander and his Canvas
+-----
+MINI-XCOM uses Vanilla Javascript and a Canvas HTML element to provide interactive gamplay to the user. By combining the two through the use of event listeners, the battlefield can dynamically update to provide the user with feedback about the battle as well as make gameplay smoother.
+
+While the use of Canvas over normal HTML allows for more dynamic images and less cluttered HTML, Canvas does present a unique challange, locating exactly where a user clicked. Unlike a grid using HTML elements, sections of a canvas grid cannot be "labeled/marked". This means if a user clicks anywhere on the canvas, the whole canvas is clicked. This is problamatic as it makes user interaction with units on the canvas impossible without creating a method to determine where on the canvas the user clicked. MINI-XCOM solves this problem in the following way. 
+
+After determining where the user clicked, as each grid box has a height of 80px and a width of 80px, the x and y coordinates of the click are both divided by 80 and then floored (rounded down) to get the grid position of the click. This grid position is then checked against the positions of the units stored in the grid to determine if the user clicked on a unit and if so, the approriate logic is initaited. This logic is also used to convert a unit's positions back into
+
+The other tricky part of the project was handling the Event Listeners.
+
+Lastly, MINI-XCOM uses wepback and npm to bundle code and manage project dependenices respectively. It also uses Babel to transpile the Javascript Code so that MINI-XCOM is backwards compatible.
 
 
-### Functionality & MVPs
--------
-With MINI-XCOM, users will be able to:
-* Command their units to move or shoot
-* View the stats of their units
-* Fight against a cunning(albeit simple) AI openent in turn-based combat
-* See a victory or defeat image and/or message upon completion of the game
-
-Furthermore, this project will include: 
-* An intro section describing the background and rules of MINI-XCOM
-* A production README
-
-### Wireframes
-------
-<img width="1029" alt="Wireframe of JS Project" src="https://user-images.githubusercontent.com/79245580/155656120-da29e2b5-b34e-4e11-84d3-fbe4229e6527.png">
-
-* Nav links include include links to this project's Github repo as well as my Github page and LinkedIn. 
-* Game Controls will include a restart option as well as an option to view the instructions.
-* Game Board is the grid on which the game takes place. It is also the area over which the end game image/message will be displayed.
-* Remaining units to move is a counter that both shows who the current player is (either the player or the AI) as well as the number of their units that can act in the current turn. 
-* Unit Stats is the panel that appears when a user views the stats on a unit. In the absence of a selected unit, it will either dissapear or show the stats of the last selected unit.
-
-### Technologies, Libraries, APIs
-------
-This project will be implemented using the following technologies: 
-* Vanilla Javascript to implement interactive gameplay logic
-* Canvas API to render the game grid as well as the units and animations
-* Webpack and npm to bundle the Javascript Code and manage project dependencies
-* Babel to transpile the Javascript Code
-
-### Implementation Timeline 
-------
-* **Friday Afternoon**: Setup project and Webpack. Start getting comfortable with Canvas and how to approach rending units on the screen.
-
-* **Saturday**: Get the board to appear on Canvas as well as “basic units”. Create the Unit class. However, the units will probably take a longer time to properly format on the screen and will be something, I will continue to tweak through the coming days.
-
-* **Sunday**: Finish up the board/Unit rendering, as well as make sure cover is included. Build the logic foundations of the game, i.e., how it receives and interprets user input.
-
-* **Monday**: Finishing building up the logic foundations of the game and allow for the user’s input to show up on the canvas screen. Especially foucs on making sure, the user can move and shoot. (The unit stats display can be delayed until Wednesday)
-
-* **Tuesday**: Finish up rendering user input and build (basic) enemy AI - Game should be functional at this point. 
-
-* **Wednesday**: If dealyed, finish the unit stats function. Add a victory/defeat screen. Work on stylizing the project through css. 
-If there is time, work on bonus features. such as increasing the AI logic, adding customization, and add background music.
-
-* **Thursday Morning**: Finish up production, write a Production Readme, and deploy through GitHub.
-
-### Bonus Features
+### Future Features
 ------ 
-
-There are many areas for impovement in this project. Some of possible areas for updates are:
-* Increase AI logic
-* Allow the user to customize their marines, e.g., their name and color
-* Add music
-* Create multiple levels of fighting and allow for the persistance of marines' health through the levels
+* Increased AI logic with the AI taking its turn one unit at a time
+* Animation for the tanks
+* Add board scalability for different sized windows and devices
 
 
-### LIVE LINK
-https://codydegraffeniles.github.io/MINI-XCOM/
+### Acknowledgments
+----
+The author would like to acknowledge that the following were invaulabe to understanding and using the concepts that made MINI-XCOM possible:
+
+* [Clicks on a Canvas Element] (https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element)
+* My friends who play tested and gave valuable user feedback.
+
