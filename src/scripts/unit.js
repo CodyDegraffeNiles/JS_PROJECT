@@ -12,7 +12,9 @@ class Unit{
     this.enemy = options.enemy;
     this.name = options.name;
     this.actionLeft = false;
-    this.grid = "grid";
+    this.grid = "grid"; 
+    this.shotSound = new Audio();
+    this.shotSound.src = "sounds/shot.mp3"
   }
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
@@ -104,6 +106,7 @@ class Unit{
     }
     let posMoves = this.posssibleMoves("shoot")
     if (Util.inArray(pos, posMoves)) {
+      this.shotSound.play();
       this.takeAction();
       let target = this.grid.getUnit(pos);
       target.takeDamage(this.shootingPower);

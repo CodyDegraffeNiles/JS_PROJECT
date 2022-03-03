@@ -5,8 +5,6 @@ class GridView {
   constructor(grid, ai){
     this.grid = grid;
     this.ai = ai;
-    this.shotSound = new Audio();
-    this.shotSound.src =
     this.boundFirstClick = this.handleFirstClick.bind(this);
     this.boundMove = this.handleMove.bind(this)
     this.boundShot = this.handleShot.bind(this);
@@ -51,8 +49,6 @@ class GridView {
       // this.boundDeselectUnit();
       Util.showPlayersTurn("computer")
       setTimeout(this.boundAiTurn, 2000);
-      // Fix ghost tank issue.
-      setTimeout(this.grid.boundDraw, 2001);
     };
   };
 
@@ -73,6 +69,7 @@ class GridView {
     this.ai.emptyUnits();
     this.grid.swapTurn();
     Util.showPlayersTurn("human")
+    this.grid.draw();
   }
 
   gameOver(){

@@ -1,6 +1,5 @@
 Sources for assests used in this project:
 
-
 Enemy tank: 
 https://www.deviantart.com/pastrano/art/WARHAMMER-40K-TANK-194526777
 
@@ -14,7 +13,8 @@ Background image:
 https://www.pinterest.com/pin/728246202216089604/
 
 Base of CSS reset file:
- http://meyerweb.com/eric/tools/css/
+ http://meyerweb.com/eric/tools/css/:
+
 
 
 I also use pngtosvg to create my svg files.
