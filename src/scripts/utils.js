@@ -51,8 +51,8 @@ const Util = {
       titleElement.style.color = "rgb(199, 131, 4)";
     };
   },
-  // Modify the Unit stats Bar based on if friendly unit is clicked or not;
-  // Side is a boolean. True if enemy, false if ally.
+  // Modify the Unit stats bar based on if friendly unit is clicked or not;
+  // Side is a boolean: true if enemy, false if ally.
   showUnitSide(side){
     let statsTitle = document.getElementById("stats-title");
     if (side === true){

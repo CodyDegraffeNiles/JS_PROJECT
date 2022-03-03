@@ -104,8 +104,8 @@ class GridView {
         if (!(unit instanceof Cover)){ 
           this.selectUnit(unit);
           this.populateStats()
-          // Add event listeners if unit is a friendly.
-          if (unit.enemy === false) {this.addActionEventListeners()};
+          // Add event listeners if unit is an ally and remove eventlistneers if unit is an enemy
+          unit.enemy === false ? this.addActionEventListeners() : this.removeActionEventListeners()
         }
     };
   };

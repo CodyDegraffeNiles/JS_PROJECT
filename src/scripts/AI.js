@@ -1,4 +1,4 @@
-
+import Cover from "./cover.js"
 
 class AI{
   constructor(grid){
