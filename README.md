@@ -37,7 +37,7 @@ While the use of Canvas over normal HTML allows for more dynamic images and less
 
 First, MINI-XCOM's canvas element has defined ratios. It is an 8 by 8 grid with each square having a both a height and width of 80. Thus, each unit on the grid is given a pos(ition) property that corresponds to a location on the grid, so its location can be stored and later manipulated for movement.
 
-Secondly, when a user clicks on the canvas, the following code is run to determine the exact location of the click. (Code snippet)
+Secondly, when a user clicks on the canvas, the following code is run to determine the exact location of the click.
 ``` JavaScript
     let cavansLeft = canvas.offsetLeft + canvas.clientLeft;
     let canvasRight = canvas.offsetTop + canvas.clientTop;
