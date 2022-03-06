@@ -133,10 +133,10 @@ class Grid{
     } else {
       this.humanPlayer = true;
       this.units.forEach(unit => {
-        if (!unit.isEnemy()) {
-          unit.gainAction();
-        }else {
+        if (unit.isEnemy()) {
           unit.takeAction();
+        }else {
+          unit.gainAction();
         }
       });
     };
