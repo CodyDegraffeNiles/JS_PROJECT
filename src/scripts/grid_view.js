@@ -19,6 +19,7 @@ class GridView {
     this.boundShowGrid = this.showGrid.bind(this);
     this.boundShowInstructions = this.showInstructions.bind(this);
     this.boundSoundToggle = this.soundToggle.bind(this);
+    this.boundHighlightActions = this.highlightActions.bind(this);
   };
 
   // sets up intial clicks
@@ -133,7 +134,7 @@ class GridView {
     if(this.selectedUnit.move([x,y])){
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
-      canvas.style.cursor = 'pointer';
+      canvas.style.cursor = "pointer";
       this.action();
       this.populateStats();
     }
@@ -240,22 +241,26 @@ class GridView {
   selectMove(e){
     e.preventDefault();
     e.stopPropagation();
+    this.grid.draw();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundMove);
     canvas.style.cursor = "alias";
+    this.boundHighlightActions("move");
   };
 
   // Activates eventlistener for shot and removes other eventlistenrs for the board.
   selectShot(e){
     e.preventDefault();
     e.stopPropagation();
+    this.grid.draw();
     let canvas = (document.getElementsByClassName("game-board")[0]);
     this.removeMoveShootEvent();
     canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundShot);
     canvas.style.cursor = "crosshair";
+    this.highlightActions("shoot");
   };
 
   // Deslects unit as to allow person to reset unit selection.
@@ -313,11 +318,26 @@ class GridView {
     let ctx = canvas.getContext('2d');
     let rightX = this.selectedUnit.pos[0] * 80;
     let leftX = this.selectedUnit.pos[1] * 80;
-    // different colors for enemy and friendlys
-    this.selectedUnit.enemy ? ctx.fillStyle ="red" : ctx.fillStyle = '#39FF14';
+    // selected unit is given yellow background
+    ctx.fillStyle = 'yellow';
     ctx.fillRect(rightX, leftX, 80, 80);
     this.selectedUnit.draw();
   };
+
+  // Highlights the gridlocation of possible actions
+  highlightActions(action){
+    let canvas = (document.getElementsByClassName("game-board")[0]);
+    let ctx = canvas.getContext('2d');
+    let posMoves = this.selectedUnit.possibleMoves(action);
+    posMoves.forEach(move => {
+      let moveX = move[0] * 80;
+      let moveY = move[1] * 80;
+      ctx.fillStyle = action === "move" ? "green" : "red";
+      ctx.fillRect(moveX + 5, moveY + 5, 70, 70);
+    });
+    // Make sure that the unit is till highlighted
+    this.highlightUnit();
+  }
 
   // Allow for instructions to be taken off and the grid to be shown
   selectGrid(){
@@ -333,7 +353,6 @@ class GridView {
     let instructionsElement = document.getElementById("instructions");
     instructionsElement.style.display = "none";
     playArea.style.display = "flex";
-    let title = document.getElementById("title");
     this.selectInstructions();
     Util.showPlayersTurn("human")
   };
@@ -373,6 +392,8 @@ class GridView {
     this.muted ? soundElement.style.textDecoration = "line-through" : 
     soundElement.style.textDecoration = "none" ;
   };
+
+
 }
 
 
