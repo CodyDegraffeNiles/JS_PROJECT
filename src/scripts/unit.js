@@ -1,4 +1,5 @@
 import Util from "./utils.js";
+import Cover from "./cover.js";
 
 class Unit{
   constructor(options){
@@ -77,8 +78,10 @@ class Unit{
           if (action === "move") { posMoves.push([orgX, orgY]) };
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
-        // adds occupied position if action is shot as well as check for friendly fire.
-          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy !== this.enemy)
+        // adds occupied position if action is shot as well as check for friendly fire 
+        // also checks to make sure the occupied position is not a piece of cover.
+          let occupyingUnit = this.grid.getUnit([orgX, orgY]);
+          if (action === "shoot" && occupyingUnit.enemy !== this.enemy && !(occupyingUnit instanceof Cover))
           {posMoves.push([orgX, orgY])};
           break
         }
