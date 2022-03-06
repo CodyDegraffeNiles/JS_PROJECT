@@ -22,11 +22,6 @@ class Cover extends Unit{
     img.src = "images/cover.svg";
   }
 
-  // Hijacks gain action method so that grid does not gain actions. Also makes 
-  // walls indestructible as their health is reset ever enemy turn.
-  gainAction(){
-    this.health = 9001;
-  }
 }
 
 export default Cover;

@@ -132,13 +132,13 @@ class Unit{
     this.grid = newGrid;
   };
 
-  // Allows for an action to take place.
+  // Allows for a unit to take an action 
   gainAction(){
     this.actionLeft = true;
     this.grid.actionableUnits.push(this);
   };
 
-  // the unit takes an action so its actionLeft is set to false.
+  // Disables unit action
   takeAction() {
     this.actionLeft = false;
     if(this.grid.actionableUnits.includes(this)){
@@ -146,7 +146,7 @@ class Unit{
     }
   };
 
-  // Checks if enemey
+  // Checks side of unit
   isEnemy(){
     return this.enemy === true;
   }

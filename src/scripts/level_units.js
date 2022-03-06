@@ -29,7 +29,7 @@ const levelUnits = [new Unit({
     shootingRange: 4,
     shootingPower: 75,
     enemy: false,
-    name: "Catachan 22nd"
+    name: "Cadian 13th"
   }),
 
   new Unit({
