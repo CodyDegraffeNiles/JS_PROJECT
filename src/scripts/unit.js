@@ -78,7 +78,7 @@ class Unit{
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
         // adds occupied position if action is shot as well as check for friendly fire.
-          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy !== this.enemy )
+          if (action === "shoot" && this.grid.getUnit([orgX, orgY]).enemy !== this.enemy)
           {posMoves.push([orgX, orgY])};
           break
         }

@@ -34,13 +34,11 @@ class AI{
       }
       else {
         let enemyShots = this.posEnemyShots();
-        console.log(this.posEnemyShots());
         let safeMoves = posMoves.filter(move => !(Util.inArray(move, enemyShots)));
         if (safeMoves.length >= 1){
           // Random safe move.
           let safeRandomMove = Math.floor(Math.random() * safeMoves.length);
           unit.move(safeMoves[safeRandomMove]);
-          console.log(safeMoves);
         }
         else{
           // Random move if there is no safe move.
