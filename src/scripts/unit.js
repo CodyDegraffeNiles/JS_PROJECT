@@ -23,20 +23,20 @@ class Unit{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    // Brown tanks for friendlys
-    if (!this.enemy){
-      let img = document.createElement("IMG");
-      let startX = this.pos[0] * 80 - 10;
-      let startY = this.pos[1] * 80 - 10
-      img.onload = function(){ctx.drawImage(img, startX, startY) };
-      img.src = "images/allied_tank.svg";
-    }
-    else{
+    // Red tanks for enemies
+    if (this.enemy){
       let img = document.createElement("IMG");
       let startX = this.pos[0] * 80;
       let startY = this.pos[1] * 80;
-      img.onload = function () { ctx.drawImage(img, startX, startY)};;
+      img.onload = function () { ctx.drawImage(img, startX, startY) };;
       img.src = "images/enemy_tank.svg";
+    }// Brown tanks for friendlys
+    else{
+      let img = document.createElement("IMG");
+      let startX = this.pos[0] * 80 - 10;
+      let startY = this.pos[1] * 80 - 10
+      img.onload = function () { ctx.drawImage(img, startX, startY) };
+      img.src = "images/allied_tank.svg";
     };
 }
   
@@ -46,7 +46,7 @@ class Unit{
       alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
       return false;
     }
-    let posMoves = this.posssibleMoves();
+    let posMoves = this.possibleMoves();
     if (Util.inArray(pos, posMoves)){
       // Only plays Move sound for friendlys as they will overlap too much in AI's turn. 
       if (!this.enemy) {this.moveSound.play()};
@@ -62,10 +62,9 @@ class Unit{
   }
 
   // Returns an array of possible moves/shoots for the unit; Important for the AI
-  // Determine which one by passing in type of action as parameter
-  posssibleMoves(action = "move"){
-    let range = this.movementRange;
-    if (action === "shoot"){range = this.shootingRange};
+  // Determine which action through the parameter
+  possibleMoves(action = "move"){
+    let range = action === "move" ? range = this.movementRange : this.shootingRange;
     let posMoves = [];
     directions.forEach(dir => {
       let orgX = this.pos[0];
@@ -109,7 +108,7 @@ class Unit{
       alert("Unit has already acted. Deslect this unit (using the button on  the right hand side of the grid) and select another.")
       return false;
     }
-    let posMoves = this.posssibleMoves("shoot")
+    let posMoves = this.possibleMoves("shoot")
     if (Util.inArray(pos, posMoves)) {
       this.shotSound.play();
       this.takeAction();
@@ -149,21 +148,13 @@ class Unit{
 
   // Checks if enemey
   isEnemy(){
-    if (this.enemy === true){
-      return true
-    }
-    return false
+    return this.enemy === true;
   }
 
-  // Mutes all sounds associated with the unit.
-  muteSounds(){
-    this.moveSound.muted = true;
-    this.shotSound.muted = true;
-  }
-
-  unMuteSounds(){
-    this.moveSound.muted = false;
-    this.shotSound.muted = false;
+  // Toogle sounds associated with the unit by passing in boolean as a parameter
+  toggleSounds(mute = true){
+    this.moveSound.muted = mute;
+    this.shotSound.muted = mute;
   }
 };
 

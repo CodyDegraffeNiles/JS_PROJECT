@@ -5,6 +5,8 @@ class GridView {
   constructor(grid, ai){
     this.grid = grid;
     this.ai = ai;
+    this.selectedUnit = undefined;
+    this.muted = false;
     this.boundFirstClick = this.handleFirstClick.bind(this);
     this.boundMove = this.handleMove.bind(this)
     this.boundShot = this.handleShot.bind(this);
@@ -16,9 +18,7 @@ class GridView {
     this.boundEndOption = this.addEndTurnOption.bind(this);
     this.boundShowGrid = this.showGrid.bind(this);
     this.boundShowInstructions = this.showInstructions.bind(this);
-    this.boundMute = this.mute.bind(this);
-    this.boundunMute = this.unMute.bind(this);
-    this.selectedUnit = undefined;
+    this.boundSoundToggle = this.soundToggle.bind(this);
   };
 
   // sets up intial clicks
@@ -28,7 +28,7 @@ class GridView {
     this.addDeselectOption();
     this.addRestartOption();
     this.addEndTurnOption();
-    this.muteSounds();
+    this.toggleSounds();
   };
 
   // Does an action and checks if it is the end of the turn/end of match.
@@ -357,39 +357,22 @@ class GridView {
   };
 
   // Sets up event listener for muting sound
-  muteSounds(){
-    let muteElement = document.getElementById("sound-command");
-    muteElement.addEventListener("click", this.boundMute);
-    muteElement.style.textDecoration = "none";
+  toggleSounds(){
+    let soundElement = document.getElementById("sound-command");
+    soundElement.addEventListener("click", this.boundSoundToggle);
   };
 
-  // Mutes all unit sounds
-  mute(e){
+  // Toggle unit sounds 
+  soundToggle(e){
     e.preventDefault();
     e.stopPropagation();
-    this.grid.muteSound();
-    let muteElement = document.getElementById("sound-command");
-    muteElement.removeEventListener("click", this.boundMute);
-    this.unMuteSounds();
+    this.muted = !(this.muted);
+    this.grid.toggleSound(this.muted);
+    // Adds a cross out to sound if muted.
+    let soundElement = document.getElementById("sound-command");
+    this.muted ? soundElement.style.textDecoration = "line-through" : 
+    soundElement.style.textDecoration = "none" ;
   };
-
-  // Sets up event listener for unMuting sounds
-  unMuteSounds() {
-    let muteElement = document.getElementById("sound-command");
-    muteElement.addEventListener("click", this.boundunMute);
-    muteElement.style.textDecoration = "line-through";
-  };
-
-  // Unmutes all unit sounds
-  unMute(e){
-    e.preventDefault();
-    e.stopPropagation();
-    this.grid.unMuteSounds();
-    let muteElement = document.getElementById("sound-command");
-    muteElement.removeEventListener("click", this.boundunMute);
-    this.muteSounds();
-  };
-  
 }
 
 

@@ -25,8 +25,8 @@ class AI{
 
     // Commands a unit to either shoot at a target or move to a safe location
     commandUnit(unit){
-      let posShots = unit.posssibleMoves("shoot");
-      let posMoves = unit.posssibleMoves("move");
+      let posShots = unit.possibleMoves("shoot");
+      let posMoves = unit.possibleMoves("move");
       if (posShots.length >= 1) {
         unit.shoot(posShots[0]);
         this.grid.checkUnits();
@@ -56,7 +56,7 @@ class AI{
         // Also give's the ai a blind spot when the move range is less than
         // the shooting range and does not include up to that shooting point. 
         // Intended feature, not a bug :)
-        posEnemyShots = posEnemyShots.concat(unit.posssibleMoves("move"));
+        posEnemyShots = posEnemyShots.concat(unit.possibleMoves("move"));
       });
       return posEnemyShots
     };
