@@ -1,4 +1,5 @@
 import Cover from "./cover.js"
+import Util from "./utils.js"
 
 class AI{
   constructor(grid){
@@ -33,11 +34,13 @@ class AI{
       }
       else {
         let enemyShots = this.posEnemyShots();
-        let safeMoves = posMoves.filter(move => !(enemyShots.includes(move)));
+        console.log(this.posEnemyShots());
+        let safeMoves = posMoves.filter(move => !(Util.inArray(move, enemyShots)));
         if (safeMoves.length >= 1){
           // Random safe move.
           let safeRandomMove = Math.floor(Math.random() * safeMoves.length);
           unit.move(safeMoves[safeRandomMove]);
+          console.log(safeMoves);
         }
         else{
           // Random move if there is no safe move.
@@ -52,10 +55,9 @@ class AI{
       let enemyUnits = this.grid.units.filter(unit => unit.enemy === false);
       let posEnemyShots = [];
       enemyUnits.forEach(unit => {
-        // Have to use moves, which will be possible shoots in the future. 
+        // Use move, which will be possible shoots in the future. 
         // Also give's the ai a blind spot when the move range is less than
         // the shooting range and does not include up to that shooting point. 
-        // Intended feature, not a bug :)
         posEnemyShots = posEnemyShots.concat(unit.possibleMoves("move"));
       });
       return posEnemyShots
