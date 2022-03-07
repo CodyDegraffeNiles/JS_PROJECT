@@ -247,7 +247,9 @@ class GridView {
     canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundMove);
     canvas.style.cursor = "alias";
-    this.boundHighlightActions("move");
+    // Show highlighted moves if unit can move.
+    if(this.selectedUnit.actionLeft) {this.boundHighlightActions("move")};
+    this.highlightUnit();
   };
 
   // Activates eventlistener for shot and removes other eventlistenrs for the board.
@@ -260,7 +262,9 @@ class GridView {
     canvas.removeEventListener("click", this.boundFirstClick);
     canvas.addEventListener("click", this.boundShot);
     canvas.style.cursor = "crosshair";
-    this.highlightActions("shoot");
+    if (this.selectedUnit.actionLeft) { this.boundHighlightActions("shoot") };
+    this.highlightUnit();
+
   };
 
   // Deslects unit as to allow person to reset unit selection.
@@ -335,8 +339,6 @@ class GridView {
       ctx.fillStyle = action === "move" ? "green" : "red";
       ctx.fillRect(moveX + 5, moveY + 5, 70, 70);
     });
-    // Make sure that the unit is till highlighted
-    this.highlightUnit();
   }
 
   // Allow for instructions to be taken off and the grid to be shown
