@@ -11,6 +11,7 @@ class Grid{
     this.actionableUnits = [];
     this.humanPlayer = false;
     this.boundDraw = this.draw.bind(this);
+    this.boundErase = this.erase.bind(this);
   }
   //erases board for cycling between frames.
   erase(){

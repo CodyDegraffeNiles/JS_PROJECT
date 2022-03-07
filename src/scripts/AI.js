@@ -5,6 +5,8 @@ class AI{
   constructor(grid){
     this.grid = grid;
     this.units = [];
+    this.unitsIndex = 0;
+    this.boundTakeTurn = this.takeTurn.bind(this);
   };
 
   // adds units for the AI to command
@@ -17,11 +19,24 @@ class AI{
   emptyUnits(){
     this.units = [];
   };
+
+  // setInterval for taking turn
+  setTurnInterval(){
+    this.interval = setInterval(this.boundTakeTurn, 2000)
+  }
   // Takes a turn with each unit one by one
   takeTurn(){
-    this.units.forEach(unit => {
-      this.commandUnit(unit);
-    })
+    if(this.unitsIndex < this.units.length && this.units.length > 0){
+      this.commandUnit(this.units[this.unitsIndex]);
+      this.unitsIndex ++;
+      // Set timeouts so that their is proper rendering of all units
+      setTimeout(this.grid.boundErase, 20);
+      setTimeout(this.grid.boundDraw, 20);
+    } else{
+      this.unitsIndex = 0;
+      clearInterval(this.interval);
+      this.emptyUnits();
+    }
   };
 
     // Commands a unit to either shoot at a target or move to a safe location

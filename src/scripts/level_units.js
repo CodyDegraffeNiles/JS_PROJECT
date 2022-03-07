@@ -16,7 +16,7 @@ const levelUnits = [new Unit({
   health: 100,
   movementRange: 3,
   shootingRange: 5,
-  shootingPower: 100,
+  shootingPower: 75,
   enemy: false,
   name: "Catachan 22nd"
 
@@ -34,12 +34,12 @@ const levelUnits = [new Unit({
 
   new Unit({
     pos: [3, 3],
-    health: 75,
+    health: 100,
     movementRange: 2,
     shootingRange: 5,
-    shootingPower: 100,
-    enemy: true,
-    name: "Tzeentch's Scheme"
+    shootingPower: 75,
+    enemy: false,
+    name: "Terran 2nd"
 }),
 
   new Unit({
@@ -69,7 +69,7 @@ const levelUnits = [new Unit({
     shootingRange: 5,
     shootingPower: 100,
     enemy: true,
-    name: "Slaanesh's Desire"
+    name: "Tzeentch's Scheme"
   }),
 
 new Cover([0,2]),

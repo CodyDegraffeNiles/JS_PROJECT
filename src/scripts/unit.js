@@ -49,8 +49,7 @@ class Unit{
     }
     let posMoves = this.possibleMoves();
     if (Util.inArray(pos, posMoves)){
-      // Only plays Move sound for friendlys as they will overlap too much in AI's turn. 
-      if (!this.enemy) {this.moveSound.play()};
+      this.moveSound.play();
       this.takeAction();
       this.pos[0] = pos[0];
       this.pos[1] = pos[1];

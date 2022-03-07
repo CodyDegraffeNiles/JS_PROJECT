@@ -14,6 +14,7 @@ class GridView {
     this.boundSelectShot = this.selectShot.bind(this);
     this.boundDeselectUnit = this.deselectUnit.bind(this);
     this.boundAiTurn = this.aiTurn.bind(this);
+    this.boundAfterAITurn = this.afterAITurn.bind(this);
     this.boundAiTurnEvent = this.aiTurnEvent.bind(this);    
     this.boundEndOption = this.addEndTurnOption.bind(this);
     this.boundShowGrid = this.showGrid.bind(this);
@@ -48,14 +49,20 @@ class GridView {
       Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
       return; }
-    // Checks if the humanPlayers turn is over. If so run the AI's turn after
-    // a three second delay and then select a unit for the player.
+    // Checks if the humanPlayers turn is over. If so run the AI's turn
+    // with approriate delays to not allow sound overlap as well as to mimic
+    // player delay.
     if (this.grid.actionableUnits.length < 1) { 
       this.selectedUnit = undefined;
       this.populateStats();
-      // this.boundDeselectUnit();
       Util.showPlayersTurn("computer")
+      this.ai.addUnits();
+      let delay = (this.ai.units.length * 2000 + 50);
+      this.grid.swapTurn();
+      this.selectedUnit = undefined;
+      this.populateStats();
       setTimeout(this.boundAiTurn, 2000);
+      setTimeout(this.boundAfterAITurn, delay);
     } else {
       // Add back firstClick event listener;
       this.bindFirstClick();
@@ -66,24 +73,23 @@ class GridView {
   // Performs an Ai's turn by getting its unit, movinging them, checking for AI victory
   // And if necessary handing it back over to the player.
   aiTurn(){
-    this.grid.swapTurn();
-    this.selectedUnit = undefined;
-    this.populateStats();
-    this.ai.addUnits();
+    this.ai.setTurnInterval();
     this.ai.takeTurn();
+  };
+
+  afterAITurn(){
     if (this.gameOver()) {
       Util.showPlayersTurn("endScreen")
       Util.displayEndScreen("computer");
       return;
     };
-    this.ai.emptyUnits();
     this.grid.swapTurn();
     Util.showPlayersTurn("human")
     this.grid.draw();
     this.bindFirstClick(); 
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.style.cursor = "pointer";
-  }
+  };
 
   gameOver(){
     if (this.grid.alliesDestroyed() || this.grid.enemiesDestroyed()){ return true;}
@@ -212,6 +218,7 @@ class GridView {
     endTurnElement.addEventListener("click", this.boundAiTurnEvent);
   }
 
+  // activates after prematurely ending turn.
   aiTurnEvent(e){
     e.preventDefault();
     e.stopPropagation();
@@ -224,10 +231,13 @@ class GridView {
     this.selectedUnit = undefined;
     this.populateStats();
     this.grid.draw();
-    setTimeout(this.boundAiTurn, 3000);
-    setTimeout(this.grid.boundDraw, 3001);
+    this.ai.addUnits();
+    let delay = (this.ai.units.length * 2000 + 50);
+    this.grid.swapTurn();
+    this.aiTurn();
+    setTimeout(this.boundAfterAITurn, delay);
     // Put event listerner back on end turn element
-    setTimeout(this.boundEndOption, 3001);
+    setTimeout(this.boundEndOption, delay);
     }
   };
   // Restarts the game by reloading the page.
