@@ -16,7 +16,7 @@ const levelUnits = [new Unit({
   health: 100,
   movementRange: 3,
   shootingRange: 5,
-  shootingPower: 75,
+  shootingPower: 100,
   enemy: false,
   name: "Catachan 22nd"
 
