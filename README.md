@@ -1,6 +1,6 @@
 # MINI-XCOM
 ------
-MINI-XCOM allows the player to be immersed in the role of an Imperium tank commander. In turn-based combat with a reactive and descriptive user interface, 
+MINI-XCOM allows the player to be immersed in the role of an Imperium[^1] tank commander. In turn-based combat with a reactive and descriptive user interface, 
 the player battles traitor in a last man(tank) standing fight. In each turn and for each unit, the player can either:
 
   1) Move the unit 
@@ -73,3 +73,6 @@ The author would like to acknowledge that the following were invaluable to under
 
 * [Clicks on a Canvas Element](https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element)
 * My friends who play tested MINI-XCOM and gave valuable user feedback.
+
+
+[^1]: Warhammer 40k and its associated content is owned by Games Workshop and this project claims no ownership of said material.
