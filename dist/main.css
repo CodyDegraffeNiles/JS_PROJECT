@@ -68,6 +68,8 @@ table {
 #instructions-text {
   width: 70%;
   margin: auto;
+  max-width: 1000px;
+  min-width: 600px;
 }
 
 #show-grid {
