@@ -9,14 +9,28 @@
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico"> 
+  <script src="https://kit.fontawesome.com/b98709b670.js" crossorigin="anonymous"></script>
   <title>MINI-XCOM</title>
 </head>
 
 <body  style = "background-image: url(images/background.jpeg)" > 
 <header> 
-  <ul id = "about"> 
-  <li id="github"> <a href="https://github.com/CodyDegraffeNiles"> <img src="images/GitHub-Mark-Light-64px.png">
-  </img> </a> </li>
+  <ul id="about"> 
+  <li class="about-link"> 
+    <a href="https://github.com/CodyDegraffeNiles" target="_blank"> 
+      <i class="fa-brands fa-github"></i>
+    </a> 
+  </li>
+  <li class="about-link">
+    <a href="https://www.linkedin.com/in/cody-degraffe-niles-366310235/" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+  </li>
+  <li class="about-link">
+    <a href="https://angel.co/u/cody-degraffe-niles" target="_blank">
+      <i class="fa-brands fa-angellist"></i>
+    </a>
+  </li>
   </ul>
   <h1 id=title> MINI-XCOM </h1> 
   <!-- Options list -->
@@ -25,8 +39,8 @@
     <li id="restart-command"> Restart</li> 
   </ul>
 </header>
-<section id ="instructions"> 
-  <h2> Instructions: </h2>
+<section id="instructions"> 
+  <h2>Instructions</h2>
   <p id="instructions-text"> 
   Commander, the Imperium needs you! In turn based combat, command your forces
     to destroy all the traitor filth. 

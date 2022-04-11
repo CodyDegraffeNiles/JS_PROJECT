@@ -9,18 +9,18 @@ class AI{
     this.boundTakeTurn = this.takeTurn.bind(this);
   };
 
-  // adds units for the AI to command
+  // Adds units for the AI to command
   addUnits(){
     let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover)));
     units.forEach(unit => {this.units.push(unit)});
   };
 
-  // after each turn resest the AI's units so that if they are destroyed they dont linger.
+  // Reset the AI's units
   emptyUnits(){
     this.units = [];
   };
 
-  // setInterval for taking turn
+  // Sets an internval for taking turn
   setTurnInterval(){
     this.interval = setInterval(this.boundTakeTurn, 2000)
   }
@@ -29,7 +29,7 @@ class AI{
     if(this.unitsIndex < this.units.length && this.units.length > 0){
       this.commandUnit(this.units[this.unitsIndex]);
       this.unitsIndex ++;
-      // Set timeouts so that their is proper rendering of all units
+      // Set timeouts so that there is proper rendering of all units
       setTimeout(this.grid.boundErase, 20);
       setTimeout(this.grid.boundDraw, 20);
     } else{
@@ -63,14 +63,13 @@ class AI{
       }
     };
 
-    // Gets an array of possible shots from the enemy
+    // Caclculate an array of possible shots from the enemy
     posEnemyShots(){
       let enemyUnits = this.grid.units.filter(unit => unit.enemy === false);
       let posEnemyShots = [];
       enemyUnits.forEach(unit => {
-        // Use move, which will be possible shoots in the future. 
-        // Also give's the ai a blind spot when the move range is less than
-        // the shooting range and does not include up to that shooting point. 
+        // Use possible moves to calculate possible shoots. 
+        // Gives the ai a blind spot when the move range is less than
         posEnemyShots = posEnemyShots.concat(unit.possibleMoves("move"));
       });
       return posEnemyShots

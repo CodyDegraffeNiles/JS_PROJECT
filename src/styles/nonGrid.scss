@@ -42,6 +42,8 @@
 
 #options{
   display: flex;
+  width: 200px;
+  justify-content: right;
 }
 
 #options li{
@@ -53,6 +55,17 @@
 
 #about{
   display: flex;
+  width: 200px;
+}
+
+.about-link{
+  width: 50px;
+  height: 50px;
+}
+
+.about-link i{
+  font-size: 40px;
+  color: white;
 }
 
 

@@ -2,7 +2,7 @@
 // File handles several miscellaneous functions to clean up the code.
 
 const Util = {
-  // checks if a position is an array of positions
+  // Check if a position is an array of positions
   inArray(pos, array){
     let check = false;
     array.forEach( move =>{

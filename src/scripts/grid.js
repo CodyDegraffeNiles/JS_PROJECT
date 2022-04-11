@@ -13,14 +13,14 @@ class Grid{
     this.boundDraw = this.draw.bind(this);
     this.boundErase = this.erase.bind(this);
   }
-  //erases board for cycling between frames.
+  //Erases board for cycling between frames.
   erase(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  // creates every non-inital iteration of the board.
+  //Creates every non-inital iteration of the board.
   draw(){
     let canvas = (document.getElementsByClassName("game-board"))[0];
     let ctx = canvas.getContext("2d");
@@ -45,21 +45,21 @@ class Grid{
     ctx.stroke();
   };
 
-  // populate all unit elements
+  //Populate all unit elements
   populate(){
     this.units.forEach(unit =>{
       unit.draw();
     })
   };
 
-  // add a unit to the units array as well as sets that unit's grid.
+  //Add a unit to the units array as well as sets that unit's grid.
   addNewUnit(unit){
     unit.joinGrid(this);
     this.units.push(unit);
   };
   
 
-  // add level one units
+  //Add level one units
   loadLevelOneUnits(){
     levelUnits.forEach(unit =>{
 
@@ -91,7 +91,7 @@ class Grid{
     })
   };
 
-  // elminate a unit from the grids array of units. 
+  //Eliminate a unit from the grids array of units. 
   destroy(unit) {
     let deleteIndex = this.units.indexOf(unit);
     let left = this.units.slice(0, deleteIndex);
@@ -99,7 +99,7 @@ class Grid{
     this.units = left.concat(right);
   };
 
-  // removes a unit from the actionableUnits.
+  //Removes a unit from the actionableUnits.
   removeFromActionableUnits(unit){
     let deleteIndex = this.actionableUnits.indexOf(unit);
     let left = this.actionableUnits.slice(0, deleteIndex);
@@ -107,7 +107,7 @@ class Grid{
     this.actionableUnits = left.concat(right);
   };
 
-  // takes a position checks if it occupied.
+  //Checks if a position is occupied
   occupiedPos(pos){
     let check = false;
     this.units.forEach( unit => {
@@ -119,7 +119,7 @@ class Grid{
   };
 
   // Swaps turns between humanPlayer and computerPlay and loads up their units with
-  // an action point while eliminating any moves from the other side.
+  // an action point while eliminating reamining action poits from the other side.
   swapTurn(){
     if (this.humanPlayer === true) {
       this.humanPlayer = false;
@@ -153,7 +153,7 @@ class Grid{
     return this.units.every(unit => (unit.enemy === false || unit instanceof Cover) );
   }
 
-  // Toggle all the sounds for each Unit
+  // Toggle all the sounds for each unit
   toggleSound(mute = true){
     this.units.forEach(unit => {unit.toggleSounds(mute)});
   }

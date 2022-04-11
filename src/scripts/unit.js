@@ -31,7 +31,7 @@ class Unit{
       let startY = this.pos[1] * 80;
       img.onload = function () { ctx.drawImage(img, startX, startY) };;
       img.src = "images/enemy_tank.svg";
-    }// Brown tanks for friendlys
+    }// Brown tanks for allies
     else{
       let img = document.createElement("IMG");
       let startX = this.pos[0] * 80 - 10;
@@ -42,7 +42,7 @@ class Unit{
 }
   
   move(pos){
-    // Check if move is valid]
+    // Check if a move is valid
     if( this.actionLeft === false){
       alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
       return false;
@@ -61,7 +61,7 @@ class Unit{
     }
   }
 
-  // Returns an array of possible moves/shoots for the unit; Important for the AI
+  // Returns an array of possible moves/shoots for the unit
   // Determine which action through the parameter
   possibleMoves(action = "move"){
     let range = action === "move" ? range = this.movementRange : this.shootingRange;
@@ -73,12 +73,11 @@ class Unit{
         orgX = orgX + dir[0];
         orgY = orgY + dir[1];
         if (this.isValidMove([orgX, orgY]) && !this.grid.occupiedPos([orgX, orgY])){
-          // adds empty position if action is move.
+          // Adds empty position if action is move.
           if (action === "move") { posMoves.push([orgX, orgY]) };
         }
         else if (this.isValidMove([orgX, orgY]) && this.grid.occupiedPos([orgX, orgY])){
-        // adds occupied position if action is shot as well as check for friendly fire 
-        // also checks to make sure the occupied position is not a piece of cover.
+        // Adds occupied position if action is shot as well as check for friendly fire/cover 
           let occupyingUnit = this.grid.getUnit([orgX, orgY]);
           if (action === "shoot" && occupyingUnit.enemy !== this.enemy && !(occupyingUnit instanceof Cover))
           {posMoves.push([orgX, orgY])};
@@ -96,16 +95,16 @@ class Unit{
   isValidMove(pos){
     let posX = pos[0];
     let posY = pos[1];
-    // Check if it is in valid bounds.
+    // Checks if moive is in valid bounds.
     if (posX > 7 || posX < 0 || posY > 7 || posY < 0) {
       return false;
     }
     return true;
   };
 
-  // The unit shoots at target location
+  // The unit shoots at target location.
   shoot(pos) {
-    // Check if a unit can act.
+    // Checks if a unit can act.
     if (this.actionLeft === false) {
       alert("Unit has already acted. Deslect this unit (using the button on  the right hand side of the grid) and select another.")
       return false;
@@ -124,23 +123,23 @@ class Unit{
     }
   };
 
-  // Causes the unit to take damage
+  // Causes the unit to take damage.
   takeDamage(amount) {
     this.health -= amount;
   };
 
-  // sets this.grid equal to a specific grid
+  // Sets this.grid equal to a specific grid.
   joinGrid(newGrid){
     this.grid = newGrid;
   };
 
-  // Allows for a unit to take an action 
+  // Allows for a unit to take an action.
   gainAction(){
     this.actionLeft = true;
     this.grid.actionableUnits.push(this);
   };
 
-  // Disables unit action
+  // Disables unit action.
   takeAction() {
     this.actionLeft = false;
     if(this.grid.actionableUnits.includes(this)){
@@ -148,12 +147,12 @@ class Unit{
     }
   };
 
-  // Checks side of unit
+  // Checks side of unit.
   isEnemy(){
     return this.enemy === true;
   }
 
-  // Toogle sounds associated with the unit by passing in boolean as a parameter
+  // Toogle sounds associated with the unit by passing in boolean as a parameter.
   toggleSounds(mute = true){
     this.moveSound.muted = mute;
     this.shotSound.muted = mute;
