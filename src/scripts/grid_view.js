@@ -23,7 +23,7 @@ class GridView {
     this.boundHighlightActions = this.highlightActions.bind(this);
   };
 
-  // sets up intial clicks
+  // Sets up intial clicks and listeners.
   start(){
     this.selectGrid();
     this.bindFirstClick();
@@ -33,23 +33,23 @@ class GridView {
     this.toggleSounds();
   };
 
-  // Does an action and checks if it is the end of the turn/end of match.
+  // Does an action and checks end of turn/match.
   action(){
-    // Remove all event listenrers until the action is done
+    // Remove all event listenrers until the action is done.
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.removeEventListener("click", this.boundFirstClick);
     this.removeMoveShootEvent();
     this.removeActionEventListeners();
-    // Checks if any units were elminated
+    // Checks if any units were elminated.
     this.grid.checkUnits();
     this.grid.erase();
     this.grid.draw();
-    // checks if game is over
+    // Checks if game is over.
     if (this.gameOver()) { 
       Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
       return; }
-    // Checks if the humanPlayers turn is over. If so run the AI's turn
+    // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
     if (this.grid.actionableUnits.length < 1) { 
@@ -64,14 +64,13 @@ class GridView {
       setTimeout(this.boundAiTurn, 2000);
       setTimeout(this.boundAfterAITurn, delay);
     } else {
-      // Add back firstClick event listener;
+      // Add back firstClick event listener.
       this.bindFirstClick();
     }
   };
 
 
-  // Performs an Ai's turn by getting its unit, movinging them, checking for AI victory
-  // And if necessary handing it back over to the player.
+  // Performs an Ai's turn by getting its units, commanding them, checking for AI victory.
   aiTurn(){
     this.ai.setTurnInterval();
     this.ai.takeTurn();
@@ -101,7 +100,7 @@ class GridView {
     canvas.addEventListener("click", this.boundFirstClick);
   };
 
-  // handles firstClick
+  // Handles first click of the players turn.
   handleFirstClick(e){
     e.preventDefault();
     e.stopPropagation();
@@ -110,17 +109,17 @@ class GridView {
     let canvasRight = canvas.offsetTop + canvas.clientTop;
     let xClick = e.pageX - cavansLeft;
     let yClick = e.pageY - canvasRight;
-    // Convert click into x, y positions
+    // Convert click into x, y positions.
     let x = Math.floor((xClick)/80);
     let y = Math.floor((yClick)/80);
-    // Checks if there is a unit at the position clicked
+    // Checks if there is a unit at the position clicked.
     if (this.grid.getUnit([x,y]) !== undefined){
       let unit = this.grid.getUnit([x, y]);
-      // Determine if unit not cover 
+      // Determines if unit is not cover.
         if (!(unit instanceof Cover)){ 
           this.selectUnit(unit);
           this.populateStats()
-          // Add event listeners if unit is an ally and remove eventlistneers if unit is an enemy
+          // Add event listeners if unit is an ally/remove eventlistneers if unit is an enemy.
           unit.enemy === false ? this.addActionEventListeners() : this.removeActionEventListeners()
         }
     };
@@ -134,7 +133,7 @@ class GridView {
     let canvasRight = canvas.offsetTop + canvas.clientTop;
     let xClick = e.pageX - cavansLeft;
     let yClick = e.pageY - canvasRight;
-    // Convert click into x, y positions
+    // Convert click into x, y positions.
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
     if(this.selectedUnit.move([x,y])){
@@ -167,7 +166,7 @@ class GridView {
 
   };
 
-  // Sets the selected unit so it can be tracked on different event listeners
+  // Sets the selected unit so it can be tracked on different event listeners.
   selectUnit(unit){
     this.selectedUnit = unit;
   };
@@ -187,7 +186,7 @@ class GridView {
     shotEle.removeEventListener("click", this.boundSelectShot)
   };
 
-  // Removes event listeners for moving and shooting. Allowing player to toggle between
+  // Removes event listeners for moving and shooting. Allows player to toggle between
   // shot and move commands.
   removeMoveShootEvent() {
     let canvas = (document.getElementsByClassName("game-board")[0]);
@@ -218,13 +217,13 @@ class GridView {
     endTurnElement.addEventListener("click", this.boundAiTurnEvent);
   }
 
-  // activates after prematurely ending turn.
+  // Activates after prematurely ending turn.
   aiTurnEvent(e){
     e.preventDefault();
     e.stopPropagation();
     if (confirm("End Turn?")){;
-    // remove event listener from end turn element so that
-    // endturn command does not get spammed clicked.
+    // Remove event listener from end turn element so that
+    // Endturn command does not get spammed clicked.
     let endTurnElement = document.getElementById("endturn-command");
     endTurnElement.removeEventListener("click", this.boundAiTurnEvent);
     Util.showPlayersTurn("computer");
@@ -247,7 +246,7 @@ class GridView {
     location.reload();
   };
 
-  //Activates eventlistener for move and removes other eventlistenres for the board.
+  //Activates eventlistener for move and removes other eventlisteners from the board.
   selectMove(e){
     e.preventDefault();
     e.stopPropagation();
@@ -288,14 +287,14 @@ class GridView {
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.addEventListener("click", this.boundFirstClick);
     canvas.style.cursor = "pointer";
-    // Redraw grid to get out of selected units highlight
+    // Redraw grid to remove selected units highlight.
     this.grid.draw();
   };
 
 
   // Helper method to populate the descrptive list with current unit stats
   populateStats(){
-    // If no unit is selected, clear out Stats list
+    // If no unit is selected, clear out stats list
     if (this.selectedUnit === undefined){
       let statsArray = Array.from(document.getElementsByTagName("DD"));
       statsArray.forEach(value => {
@@ -319,7 +318,7 @@ class GridView {
       this.selectedUnit.actionLeft ? acted.innerHTML = "Has Action" : acted.innerHTML = "Acted";
       acted.innerHTML === "Has Action" ? acted.style.color = "black" : acted.style.color = "black";
       acted.innerHTML === "Has Action" ? acted.style.backgroundColor = "green" : acted.style.backgroundColor = "red";
-      // clear grid and then highlight selected unit's grid spot
+      // Clear grid and then highlight selected unit's grid spot
       Util.showUnitSide(this.selectedUnit.enemy);
       this.grid.draw()
       this.highlightUnit();
@@ -332,7 +331,7 @@ class GridView {
     let ctx = canvas.getContext('2d');
     let rightX = this.selectedUnit.pos[0] * 80;
     let leftX = this.selectedUnit.pos[1] * 80;
-    // selected unit is given yellow background
+    // Gives yellow backend to selected unit
     ctx.fillStyle = 'yellow';
     ctx.fillRect(rightX, leftX, 80, 80);
     this.selectedUnit.draw();
