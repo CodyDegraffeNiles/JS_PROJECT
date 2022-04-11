@@ -27,6 +27,7 @@ Class GridView {
   selectUnit(unit){
     this.selectedUnit = unit;
     };
+}
 ```
 This selectedUnit is the unit whose stats show up on the screen. The absence of a selectedUnit also indicates the swap of a turn as all units are deselected when a turn swaps so the other player can act. Lastly, the selectedUnit is also used to determine which event listeners to activate/remove. The reason for the heavy emphasis on the selectedUnit is because it is the main focus of the player. As the player interacts with the game one unit at a time, updating the user interface based on what unit is selected is critical for user interaction and readability. It also increases the player's feeling of agency as compared to a more static all unit overview.
 
