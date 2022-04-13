@@ -49,6 +49,7 @@ After determining where the user clicked, the x and y coordinates of the click a
   let y = Math.floor((yClick) / 80);
  ```
 
+![Game Demo](https://media.giphy.com/media/ZNyuPiw8I6FKUzUDT6/giphy.gif)
 ### Technologies
 ---- 
 
