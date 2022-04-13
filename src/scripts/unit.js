@@ -91,7 +91,7 @@ class Unit{
     return posMoves;
   };
 
-  // Checks to see if move is within the bou ndries of the gird.
+  // Checks to see if move is within the bou ndrie s of the gird.
   isValidMove(pos){
     let posX = pos[0];
     let posY = pos[1];
