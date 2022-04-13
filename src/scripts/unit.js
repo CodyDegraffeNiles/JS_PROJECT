@@ -24,7 +24,7 @@ class Unit{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    // Red tanks for enemies
+    // Red tanks for trators
     if (this.enemy){
       let img = document.createElement("IMG");
       let startX = this.pos[0] * 80;
