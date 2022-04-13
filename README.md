@@ -1,13 +1,10 @@
 # MINI-XCOM
 ------
-MINI-XCOM allows the player to be immersed in the role of an Imperium[^1] tank commander. In turn-based combat with a reactive and descriptive user interface, the player battles traitors to the last man(tank). In each turn and for each unit, the player can either:
-
-  1) Move the unit 
-  2) Command the unit to shoot an enemy
-
-After the player's turn, the AI will command its units. Each unit, both friend and foe, has a set of stats. These stats include movement range, shooting range, firepower(damage) and health points. A tank dies once its health points reach zero. The player can view a tank's stats by clicking on it. The player must be strategic about their movement choices as czech hedgehogs morphs the battlefield into choke points and kill zones. The game also has sound effects, which can be disabled.
+MINI-XCOM allows the player to be immersed in the role of an Imperium[^1] tank commander. In turn-based combat with a reactive and descriptive user interface, the player battles traitors to the last man(tank). In each turn and for each unit, the player can either command the unit to move or shoot an enemy. After the player's turn, the AI will command its units. Each unit, both friend and foe, has a set of stats. These stats include movement range, shooting range, firepower(damage) and health points. A tank dies once its health points reach zero. The player can view a tank's stats by clicking on it. The player must be strategic about their movement choices as czech hedgehogs morphs the battlefield into choke points and kill zones. The game also has sound effects, which can be disabled.
 
 [Become A Commander!](https://codydegraffeniles.github.io/MINI-XCOM/)
+
+![Splash](https://github.com/CodyDegraffeNiles/MINI-XCOM/blob/main/images/link_image2.png)
 
 ### The Chosen Unit
 ----
