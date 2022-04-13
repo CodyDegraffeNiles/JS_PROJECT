@@ -136,7 +136,7 @@ class GridView {
     // Convert click into x, y positions.
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
-    if(this.selectedUnit.move([x,y])){
+    if(this?.selectedUnit?.move([x,y])){
       canvas.removeEventListener("click", this.boundMove);
       canvas.addEventListener("click", this.boundFirstClick);
       canvas.style.cursor = "pointer";
@@ -347,6 +347,11 @@ class GridView {
       let moveY = move[1] * 80;
       ctx.fillStyle = action === "move" ? "green" : "red";
       ctx.fillRect(moveX + 5, moveY + 5, 70, 70);
+      // Redraw enemy image
+      if(action === "shoot"){
+        let target = this.grid.getUnit([move[0], move[1]])
+        target.draw()
+      }
     });
   }
 

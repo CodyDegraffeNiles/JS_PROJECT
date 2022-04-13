@@ -10,16 +10,16 @@ class Cover extends Unit{
       pos: pos,
       enemy: true
     });
+    this.coverImage = new Image()
+    this.coverImage.src = "images/cover.svg"
   }
 
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    let img = document.createElement("IMG");
     let startX = this.pos[0] * 80;
     let startY = this.pos[1] * 80;
-    img.onload = function () { ctx.drawImage(img, startX, startY) };
-    img.src = "images/cover.svg";
+    ctx.drawImage(this.coverImage, startX, startY);
   }
 
 }

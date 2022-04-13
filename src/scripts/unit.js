@@ -6,6 +6,11 @@ class Unit{
     // Position is in [0,0] - 2d array format, is converted mathmatically
     // into the center of a square on the board.
     this.pos = options.pos;
+    this.oldPos = []
+    this.newPos = []
+    this.xInc = 0
+    this.yInc = 0
+    this.count = 0
     this.health = options.health;
     this.movementRange = options.movementRange;
     this.shootingRange = options.shootingRange;
@@ -20,28 +25,29 @@ class Unit{
     this.moveSound = new Audio();
     this.moveSound.src = "sounds/move.wav"
     this.moveSound.volume = .4;
+    this.allyImage = new Image();
+    this.allyImage.src = "images/allied_tank.svg"
+    this.enemyImage = new Image();
+    this.enemyImage.src = "images/enemy_tank.svg"
+    this.animate = this.animate.bind(this)
+
   }
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
     // Red tanks for trators
     if (this.enemy){
-      let img = document.createElement("IMG");
       let startX = this.pos[0] * 80;
       let startY = this.pos[1] * 80;
-      img.onload = function () { ctx.drawImage(img, startX, startY) };;
-      img.src = "images/enemy_tank.svg";
+      ctx.drawImage(this.enemyImage, startX, startY)
     }// Brown tanks for allies
-    else{
-      let img = document.createElement("IMG");
+    else {
       let startX = this.pos[0] * 80 - 10;
       let startY = this.pos[1] * 80 - 10
-      img.onload = function () { ctx.drawImage(img, startX, startY) };
-      img.src = "images/allied_tank.svg";
+      ctx.drawImage(this.allyImage, startX, startY)}
     };
-}
   
-  move(pos){
+    move(pos){
     // Check if a move is valid
     if( this.actionLeft === false){
       alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
@@ -50,9 +56,17 @@ class Unit{
     let posMoves = this.possibleMoves();
     if (Util.inArray(pos, posMoves)){
       this.moveSound.play();
+      // Animate
+      this.newPos[0] = pos[0]
+      this.newPos[1] = pos[1]
+      this.oldPos[0] = this.pos[0]
+      this.oldPos[1] = this.pos[1]
+      let distanceX = this.newPos[0] * 80 - this.oldPos[0] * 80
+      let distanceY = this.newPos[1] * 80 - this.oldPos[1] * 80 
+      this.incrementX = distanceX/6000 // 100 parts and 80 as width/height are 80px
+      this.incrementY = distanceY/6000 // 100 parts and 80 as width/height are 80px
+      window.requestAnimationFrame(this.animate)
       this.takeAction();
-      this.pos[0] = pos[0];
-      this.pos[1] = pos[1];
       return true;
     }
     else{
@@ -156,6 +170,26 @@ class Unit{
   toggleSounds(mute = true){
     this.moveSound.muted = mute;
     this.shotSound.muted = mute;
+  }
+
+  // Animate tanks moving
+  
+  animate(){
+      this.grid.erase();
+      this.pos[0] = this.pos[0] + this.incrementX
+      this.pos[1] = this.pos[1] + this.incrementY
+      this.count += 1
+      this.grid.draw();
+      if(this.count < 75) 
+      {
+        window.requestAnimationFrame(this.animate)
+      } else {
+        // Finalse position
+        this.pos[0] = this.newPos[0];
+        this.pos[1] = this.newPos[1];
+        // Reset count
+        this.count = 0;
+      }
   }
 };
 

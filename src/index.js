@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", () =>{
   const gridView = new GridView(grid, ai);
   gridView.start();
   grid.loadLevelOneUnits();
-  grid.draw();
   // start on Player's turn
   grid.swapTurn();
+  // Timeout before drawing grid to allow images to properly load
+  grid.draw = grid.draw.bind(grid)
+  setTimeout(grid.draw, 50)
 });
