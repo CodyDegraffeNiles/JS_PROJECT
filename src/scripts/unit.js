@@ -63,8 +63,8 @@ class Unit{
       this.oldPos[1] = this.pos[1]
       let distanceX = this.newPos[0] * 80 - this.oldPos[0] * 80
       let distanceY = this.newPos[1] * 80 - this.oldPos[1] * 80 
-      this.incrementX = distanceX/4000 // 100 parts and 80 as width/height are 80px
-      this.incrementY = distanceY/4000 // 100 parts and 80 as width/height are 80px
+      this.incrementX = distanceX/6000 // 100 parts and 80 as width/height are 80px
+      this.incrementY = distanceY/6000 // 100 parts and 80 as width/height are 80px
       window.requestAnimationFrame(this.animate)
       this.takeAction();
       return true;
@@ -180,7 +180,7 @@ class Unit{
       this.pos[1] = this.pos[1] + this.incrementY
       this.count += 1
       this.grid.draw();
-      if(this.count < 50) 
+      if(this.count < 75) 
       {
         window.requestAnimationFrame(this.animate)
       } else {
