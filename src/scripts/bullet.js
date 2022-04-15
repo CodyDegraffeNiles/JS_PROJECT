@@ -1,14 +1,14 @@
 class Bullet{
   constructor(options){
     this.pos = options.pos;
-    this.startPos = options.pos
+    this.startPos = options.startPos
     this.endPos = options.endPos;
     this.grid = options.grid;
     this.target = options.target
     this.shootingPower = options.shootingPower
     this.animate = this.animate.bind(this);
     this.incrementX = (this.endPos[0] - this.startPos[0])/50
-    this.incrementY = (this.endPos[1] - this.startPos[0])/50
+    this.incrementY = (this.endPos[1] - this.startPos[1])/50
     this.count = 0;
   }
 
@@ -16,11 +16,13 @@ class Bullet{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
+    console.log(this.incrementX)
+    console.log(this.incrementY)
     let startX = this.pos[0] * 80 + 40;
-    let startY = this.pos[0] * 80 + 40;
+    let startY = this.pos[1] * 80 + 40;
     ctx.fillStyle = "black";
     ctx.beginPath();
-    ctx.arc(startX,startY, 20, 0, 2*Math.PI, false);
+    ctx.arc(startX, startY, 10, 0, 2*Math.PI, false);
     ctx.fill()
   }
 
@@ -40,6 +42,10 @@ class Bullet{
       this.grid.draw();
     }
   }
+  // Sets this.grid equal to a specific grid.
+  joinGrid(newGrid){
+    this.grid = newGrid;
+  };
 }
 
 export default Bullet

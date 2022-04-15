@@ -121,7 +121,7 @@ class Unit{
   shoot(pos) {
     // Checks if a unit can act.
     if (this.actionLeft === false) {
-      alert("Unit has already acted. Deslect this unit (using the button on  the right hand side of the grid) and select another.")
+      alert("Unit has already acted. Deselect this unit (using the button on  the right hand side of the grid) and select another.")
       return false;
     }
     let posMoves = this.possibleMoves("shoot")
@@ -129,18 +129,18 @@ class Unit{
       this.shotSound.play();
       this.takeAction();
       let target = this.grid.getUnit(pos);
+
       const bullet = new Bullet({
-        pos: this.pos,
+        pos: [this.pos[0], this.pos[1]],
+        startPos: [this.pos[0], this.pos[1]],
         endPos: pos,
         grid: this.grid,
         target: target,
         shootingPower: this.shootingPower
       })
-      console.log(bullet)
       this.grid.addNewUnit(bullet)
-      console.log(this.grid.units)
       window.requestAnimationFrame(bullet.animate)
-      setTimeout(() => {return true}, 2000);
+      return true
     }
     else {
       alert("Invalid Shot. Please select a valid shot location.")

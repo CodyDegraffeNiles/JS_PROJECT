@@ -43,7 +43,7 @@ const levelUnits = [new Unit({
 }),
 
   new Unit({
-    pos: [2, 0],
+    pos: [3, 6],
     health: 75,
     movementRange: 2,
     shootingRange: 5,
@@ -53,7 +53,7 @@ const levelUnits = [new Unit({
   }),
 
   new Unit({
-    pos: [7, 4],
+    pos: [1, 3],
     health: 75,
     movementRange: 2,
     shootingRange: 5,

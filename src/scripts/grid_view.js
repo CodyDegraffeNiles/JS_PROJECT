@@ -156,7 +156,7 @@ class GridView {
     // Convert click into x, y positions
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
-    if (this.selectedUnit.shoot([x,y])){
+    if (this?.selectedUnit?.shoot([x,y])){
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
       canvas.style.cursor = "pointer";
