@@ -59,6 +59,7 @@ class GridView {
     // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
+    console.log(this.grid.actionableUnits)
     if (this.grid.actionableUnits.length < 1) { 
       this.selectedUnit = undefined;
       this.populateStats();

@@ -56,6 +56,7 @@ class Unit{
     }
     let posMoves = this.possibleMoves();
     if (Util.inArray(pos, posMoves)){
+      this.takeAction();
       this.moveSound.play();
       // Animate
       this.newPos[0] = pos[0]
@@ -67,7 +68,6 @@ class Unit{
       this.incrementX = distanceX/6000 // 100 parts and 80 as width/height are 80px
       this.incrementY = distanceY/6000 // 100 parts and 80 as width/height are 80px
       window.requestAnimationFrame(this.animate)
-      this.takeAction();
       return true;
     }
     else{
@@ -136,7 +136,7 @@ class Unit{
         endPos: pos,
         grid: this.grid,
         target: target,
-        shootingPower: this.shootingPower
+        shootingPower: this.shootingPower,
       })
       this.grid.addNewUnit(bullet)
       window.requestAnimationFrame(bullet.animate)
