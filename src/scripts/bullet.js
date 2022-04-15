@@ -7,9 +7,10 @@ class Bullet{
     this.target = options.target
     this.shootingPower = options.shootingPower
     this.animate = this.animate.bind(this);
-    this.incrementX = (this.endPos[0] - this.startPos[0])/50
-    this.incrementY = (this.endPos[1] - this.startPos[1])/50
+    this.incrementX = (this.endPos[0] - this.startPos[0])/30
+    this.incrementY = (this.endPos[1] - this.startPos[1])/30
     this.count = 0;
+    this.enemy = true;
   }
 
 // Draw bullet
@@ -33,11 +34,12 @@ class Bullet{
     this.pos[1] = this.pos[1] + this.incrementY
     this.count += 1
     this.grid.draw();
-    if(this.count < 50){
+    if(this.count < 30){
       window.requestAnimationFrame(this.animate)
     } else {
       this.target.takeDamage(this.shootingPower);
       this.grid.destroy(this)
+      this.grid.destroy(this.target)
       this.grid.erase();
       this.grid.draw();
     }
