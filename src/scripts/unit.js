@@ -51,7 +51,6 @@ class Unit{
     move(pos){
     // Check if a move is valid
     if( this.actionLeft === false){
-      console.log(this.name)
       alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
       return false;
     }
@@ -167,6 +166,8 @@ class Unit{
   // Disables unit action.
   takeAction() {
     this.actionLeft = false;
+    console.log(this)
+    console.log(this.grid.actionableUnits.includes(this))
     if(this.grid.actionableUnits.includes(this)){
       this.grid.removeFromActionableUnits(this);
     }

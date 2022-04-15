@@ -11,7 +11,6 @@ class AI{
 
   // Adds units for the AI to command
   addUnits(){
-    console.log("hi")
     let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover || unit instanceof Bullet)));
     this.emptyUnits();
     units.forEach(unit => {this.units.push(unit)});
