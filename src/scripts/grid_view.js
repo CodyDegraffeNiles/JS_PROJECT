@@ -22,7 +22,7 @@ class GridView {
     this.boundSoundToggle = this.soundToggle.bind(this);
     this.boundHighlightActions = this.highlightActions.bind(this);
     this.boundCheck = this.checkGameOver.bind(this);
-    this.boundMonkey = this.monkey.bind(this)
+    this.boundCheckAiTurn = this.checkAiTurn.bind(this)
   };
 
   // Sets up intial clicks and listeners.
@@ -46,16 +46,13 @@ class GridView {
       this.grid.erase();
       this.grid.draw();
       this.ai.addUnits();
-      console.log("bye")
     }
   }
 
-  monkey(){
+  checkAiTurn(){
     // fail safe so that does not display too error messages
     if(this.gameOver()){return}
-    console.log(this.grid.actionableUnits)
     if (this.grid.actionableUnits.length === 0) { 
-      console.log("hi")
       this.selectedUnit = undefined;
       this.populateStats();
       Util.showPlayersTurn("computer")
@@ -89,7 +86,7 @@ class GridView {
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
 
-    setTimeout(this.boundMonkey, 1000)
+    setTimeout(this.boundCheckAiTurn, 1000)
   };
 
 
