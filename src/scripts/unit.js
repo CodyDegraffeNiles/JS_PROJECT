@@ -51,6 +51,7 @@ class Unit{
     move(pos){
     // Check if a move is valid
     if( this.actionLeft === false){
+      console.log(this.name)
       alert("Unit has already acted. Deslect this unit (using the button on the right hand side of the grid) and select another.")
       return false;
     }
@@ -138,7 +139,6 @@ class Unit{
         target: target,
         shootingPower: this.shootingPower,
       })
-      this.grid.addNewUnit(bullet)
       window.requestAnimationFrame(bullet.animate)
       return true
     }

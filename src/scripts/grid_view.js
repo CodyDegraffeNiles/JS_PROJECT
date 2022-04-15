@@ -40,6 +40,12 @@ class GridView {
       Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
       return; }
+    else{
+      this.grid.checkUnits();
+      this.grid.erase();
+      this.grid.draw();
+      this.ai.addUnits();
+    }
   }
 
   // Does an action and checks end of turn/match.
@@ -59,12 +65,10 @@ class GridView {
     // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
-    console.log(this.grid.actionableUnits)
     if (this.grid.actionableUnits.length < 1) { 
       this.selectedUnit = undefined;
       this.populateStats();
       Util.showPlayersTurn("computer")
-      this.ai.addUnits();
       let delay = (this.ai.units.length * 2000 + 50);
       this.grid.swapTurn();
       this.selectedUnit = undefined;
@@ -82,6 +86,7 @@ class GridView {
   aiTurn(){
     this.ai.setTurnInterval();
     this.ai.takeTurn();
+    console.log(this.ai.units)
   };
 
   afterAITurn(){
@@ -96,6 +101,7 @@ class GridView {
     this.bindFirstClick(); 
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.style.cursor = "pointer";
+    this.ai.emptyUnits();
   };
 
   gameOver(){

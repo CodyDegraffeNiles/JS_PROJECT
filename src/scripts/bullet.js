@@ -4,14 +4,16 @@ class Bullet{
     this.pos = options.pos
     this.startPos = options.startPos
     this.endPos = options.endPos;
-    this.grid = options.grid;
+    this.grid = options.grid
     this.target = options.target
     this.shootingPower = options.shootingPower
     this.animate = this.animate.bind(this);
     this.incrementX = (this.endPos[0] - this.startPos[0])/30
     this.incrementY = (this.endPos[1] - this.startPos[1])/30
     this.count = 0;
-    this.enemy = true;
+    this.enemy = false;
+    this.actionLeft = false;
+    this.health = 0;
   }
 
 // Draw bullet
@@ -28,12 +30,14 @@ class Bullet{
 
    //
   animate(){
+    this.grid.addNewUnit(this)
     this.grid.erase();
     this.pos[0] = this.pos[0] + this.incrementX
     this.pos[1] = this.pos[1] + this.incrementY
     this.count += 1
     this.grid.draw();
     if(this.count < 30){
+      this.grid.destroy(this)
       window.requestAnimationFrame(this.animate)
     } else {
       this.target.takeDamage(this.shootingPower);
