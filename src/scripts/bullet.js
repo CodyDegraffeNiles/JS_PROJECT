@@ -1,4 +1,3 @@
-import Unit from "./unit"
 
 class Bullet{
   constructor(options){

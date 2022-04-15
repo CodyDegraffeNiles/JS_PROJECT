@@ -21,6 +21,7 @@ class GridView {
     this.boundShowInstructions = this.showInstructions.bind(this);
     this.boundSoundToggle = this.soundToggle.bind(this);
     this.boundHighlightActions = this.highlightActions.bind(this);
+    this.boundCheck = this.checkGameOver.bind(this);
   };
 
   // Sets up intial clicks and listeners.
@@ -33,7 +34,8 @@ class GridView {
     this.toggleSounds();
   };
 
-  checkGameover(){
+  // Checks if game is over, used as callback in setTimeout within this.action.
+  checkGameOver(){
     if (this.gameOver()) { 
       Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
@@ -53,11 +55,7 @@ class GridView {
     this.grid.draw();
     // Checks if game is over after delay to allow for shot to process
 
-    setTimeout(this.checkGameOver, 2000)
-    // if (this.gameOver()) { 
-    //   Util.showPlayersTurn("endScreen");
-    //   Util.displayEndScreen("human");
-    //   return; }
+    setTimeout(this.boundCheck, 750)
     // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
