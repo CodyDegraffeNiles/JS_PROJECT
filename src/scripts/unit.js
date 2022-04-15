@@ -174,7 +174,7 @@ class Unit{
 
   // Checks side of unit.
   isEnemy(){
-    return this.enemy === true;
+    return this.enemy;
   }
 
   // Toogle sounds associated with the unit by passing in boolean as a parameter.

@@ -33,6 +33,13 @@ class GridView {
     this.toggleSounds();
   };
 
+  checkGameover(){
+    if (this.gameOver()) { 
+      Util.showPlayersTurn("endScreen");
+      Util.displayEndScreen("human");
+      return; }
+  }
+
   // Does an action and checks end of turn/match.
   action(){
     // Remove all event listenrers until the action is done.
@@ -45,10 +52,12 @@ class GridView {
     this.grid.erase();
     this.grid.draw();
     // Checks if game is over after delay to allow for shot to process
-    if (this.gameOver()) { 
-      Util.showPlayersTurn("endScreen");
-      Util.displayEndScreen("human");
-      return; }
+
+    setTimeout(this.checkGameOver, 2000)
+    // if (this.gameOver()) { 
+    //   Util.showPlayersTurn("endScreen");
+    //   Util.displayEndScreen("human");
+    //   return; }
     // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.

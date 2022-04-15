@@ -63,6 +63,13 @@ class Bullet{
     }
   };
 
+
+  // Checks side of unit.
+  isEnemy(){
+    return true;
+  }
+
+
 }
 
 export default Bullet
