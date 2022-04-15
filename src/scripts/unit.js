@@ -1,5 +1,6 @@
 import Util from "./utils.js";
 import Cover from "./cover.js";
+import Bullet from "./bullet.js"
 
 class Unit{
   constructor(options){
@@ -128,8 +129,18 @@ class Unit{
       this.shotSound.play();
       this.takeAction();
       let target = this.grid.getUnit(pos);
-      target.takeDamage(this.shootingPower);
-      return true;
+      const bullet = new Bullet({
+        pos: this.pos,
+        endPos: pos,
+        grid: this.grid,
+        target: target,
+        shootingPower: this.shootingPower
+      })
+      console.log(bullet)
+      this.grid.addNewUnit(bullet)
+      console.log(this.grid.units)
+      window.requestAnimationFrame(bullet.animate)
+      setTimeout(() => {return true}, 2000);
     }
     else {
       alert("Invalid Shot. Please select a valid shot location.")
