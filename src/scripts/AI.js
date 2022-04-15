@@ -1,6 +1,6 @@
 import Cover from "./cover.js"
 import Util from "./utils.js"
-
+import Bullet from "./bullet.js"
 class AI{
   constructor(grid){
     this.grid = grid;
@@ -11,7 +11,8 @@ class AI{
 
   // Adds units for the AI to command
   addUnits(){
-    let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover)));
+    let units = this.grid.units.filter(unit => (unit.enemy === true && !(unit instanceof Cover || unit instanceof Bullet)));
+    this.emptyUnits();
     units.forEach(unit => {this.units.push(unit)});
   };
 

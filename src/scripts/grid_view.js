@@ -21,6 +21,8 @@ class GridView {
     this.boundShowInstructions = this.showInstructions.bind(this);
     this.boundSoundToggle = this.soundToggle.bind(this);
     this.boundHighlightActions = this.highlightActions.bind(this);
+    this.boundCheck = this.checkGameOver.bind(this);
+    this.boundCheckAiTurn = this.checkAiTurn.bind(this)
   };
 
   // Sets up intial clicks and listeners.
@@ -33,6 +35,39 @@ class GridView {
     this.toggleSounds();
   };
 
+  // Checks if game is over, used as callback in setTimeout within this.action.
+  checkGameOver(){
+    if (this.gameOver()) { 
+      Util.showPlayersTurn("endScreen");
+      Util.displayEndScreen("human");
+      return; }
+    else{
+      this.grid.checkUnits();
+      this.grid.erase();
+      this.grid.draw();
+      this.ai.addUnits();
+    }
+  }
+
+  checkAiTurn(){
+    // fail safe so that does not display too error messages
+    if(this.gameOver()){return}
+    if (this.grid.actionableUnits.length === 0) { 
+      this.selectedUnit = undefined;
+      this.populateStats();
+      Util.showPlayersTurn("computer")
+      let delay = (this.ai.units.length * 2000 + 2000);
+      this.grid.swapTurn();
+      this.selectedUnit = undefined;
+      this.populateStats();
+      setTimeout(this.boundAiTurn, 2000);
+      setTimeout(this.boundAfterAITurn, delay);
+    } else {
+      // Add back firstClick event listener.
+      this.bindFirstClick();
+    }
+  }
+
   // Does an action and checks end of turn/match.
   action(){
     // Remove all event listenrers until the action is done.
@@ -44,29 +79,14 @@ class GridView {
     this.grid.checkUnits();
     this.grid.erase();
     this.grid.draw();
-    // Checks if game is over.
-    if (this.gameOver()) { 
-      Util.showPlayersTurn("endScreen");
-      Util.displayEndScreen("human");
-      return; }
+    // Checks if game is over after delay to allow for shot to process
+
+    setTimeout(this.boundCheck, 750)
     // Checks if the humanPlayers turn is over. If so run the AI's turn.
     // with approriate delays to not allow sound overlap as well as to mimic
     // player delay.
-    if (this.grid.actionableUnits.length < 1) { 
-      this.selectedUnit = undefined;
-      this.populateStats();
-      Util.showPlayersTurn("computer")
-      this.ai.addUnits();
-      let delay = (this.ai.units.length * 2000 + 50);
-      this.grid.swapTurn();
-      this.selectedUnit = undefined;
-      this.populateStats();
-      setTimeout(this.boundAiTurn, 2000);
-      setTimeout(this.boundAfterAITurn, delay);
-    } else {
-      // Add back firstClick event listener.
-      this.bindFirstClick();
-    }
+
+    setTimeout(this.boundCheckAiTurn, 1000)
   };
 
 
@@ -88,6 +108,7 @@ class GridView {
     this.bindFirstClick(); 
     let canvas = (document.getElementsByClassName("game-board")[0]);
     canvas.style.cursor = "pointer";
+    this.grid.checkUnits();
   };
 
   gameOver(){
@@ -156,7 +177,7 @@ class GridView {
     // Convert click into x, y positions
     let x = Math.floor((xClick) / 80);
     let y = Math.floor((yClick) / 80);
-    if (this.selectedUnit.shoot([x,y])){
+    if (this?.selectedUnit?.shoot([x,y])){
       canvas.removeEventListener("click", this.boundShot);
       canvas.addEventListener("click", this.boundFirstClick);
       canvas.style.cursor = "pointer";
@@ -168,6 +189,7 @@ class GridView {
 
   // Sets the selected unit so it can be tracked on different event listeners.
   selectUnit(unit){
+    this.grid.checkUnits();
     this.selectedUnit = unit;
   };
 

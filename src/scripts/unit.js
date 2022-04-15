@@ -1,5 +1,6 @@
 import Util from "./utils.js";
 import Cover from "./cover.js";
+import Bullet from "./bullet.js"
 
 class Unit{
   constructor(options){
@@ -55,6 +56,7 @@ class Unit{
     }
     let posMoves = this.possibleMoves();
     if (Util.inArray(pos, posMoves)){
+      this.takeAction();
       this.moveSound.play();
       // Animate
       this.newPos[0] = pos[0]
@@ -66,7 +68,6 @@ class Unit{
       this.incrementX = distanceX/6000 // 100 parts and 80 as width/height are 80px
       this.incrementY = distanceY/6000 // 100 parts and 80 as width/height are 80px
       window.requestAnimationFrame(this.animate)
-      this.takeAction();
       return true;
     }
     else{
@@ -120,7 +121,7 @@ class Unit{
   shoot(pos) {
     // Checks if a unit can act.
     if (this.actionLeft === false) {
-      alert("Unit has already acted. Deslect this unit (using the button on  the right hand side of the grid) and select another.")
+      alert("Unit has already acted. Deselect this unit (using the button on  the right hand side of the grid) and select another.")
       return false;
     }
     let posMoves = this.possibleMoves("shoot")
@@ -128,8 +129,17 @@ class Unit{
       this.shotSound.play();
       this.takeAction();
       let target = this.grid.getUnit(pos);
-      target.takeDamage(this.shootingPower);
-      return true;
+
+      const bullet = new Bullet({
+        pos: [this.pos[0], this.pos[1]],
+        startPos: [this.pos[0], this.pos[1]],
+        endPos: pos,
+        grid: this.grid,
+        target: target,
+        shootingPower: this.shootingPower,
+      })
+      window.requestAnimationFrame(bullet.animate)
+      return true
     }
     else {
       alert("Invalid Shot. Please select a valid shot location.")
@@ -163,7 +173,7 @@ class Unit{
 
   // Checks side of unit.
   isEnemy(){
-    return this.enemy === true;
+    return this.enemy;
   }
 
   // Toogle sounds associated with the unit by passing in boolean as a parameter.

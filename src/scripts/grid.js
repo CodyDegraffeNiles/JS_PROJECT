@@ -1,5 +1,6 @@
 import levelUnits from "./level_units.js";
 import Cover from "./cover.js";
+import Bullet from "./bullet.js"
 
 class Grid{
   constructor(height = 640, width = 640, column = 8, row = 8){
@@ -124,7 +125,7 @@ class Grid{
     if (this.humanPlayer === true) {
       this.humanPlayer = false;
       this.units.forEach( unit => {
-        if (unit.isEnemy()){
+        if (unit.isEnemy() && !(unit instanceof Bullet)){
           unit.gainAction();
         } else{
           unit.takeAction();
@@ -145,10 +146,10 @@ class Grid{
 
   // Return true all alies are destroyed
   alliesDestroyed(){
-    return this.units.every(unit => unit.enemy === true)
+    return this.units.every(unit => unit.enemy === true);
   }
 
-  // Returns true if all enemies, execpt for cover, are destroyed.
+  // Returns true if all enemies, execpt for cover
   enemiesDestroyed(){
     return this.units.every(unit => (unit.enemy === false || unit instanceof Cover) );
   }
