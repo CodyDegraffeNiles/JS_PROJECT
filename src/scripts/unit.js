@@ -166,8 +166,6 @@ class Unit{
   // Disables unit action.
   takeAction() {
     this.actionLeft = false;
-    console.log(this)
-    console.log(this.grid.actionableUnits.includes(this))
     if(this.grid.actionableUnits.includes(this)){
       this.grid.removeFromActionableUnits(this);
     }
