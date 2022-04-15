@@ -1,6 +1,8 @@
+import Unit from "./unit"
+
 class Bullet{
   constructor(options){
-    this.pos = options.pos;
+    this.pos = options.pos
     this.startPos = options.startPos
     this.endPos = options.endPos;
     this.grid = options.grid;
@@ -17,8 +19,6 @@ class Bullet{
   draw(){
     const canvas = (document.getElementsByClassName('game-board'))[0];
     const ctx = canvas.getContext('2d');
-    console.log(this.incrementX)
-    console.log(this.incrementY)
     let startX = this.pos[0] * 80 + 40;
     let startY = this.pos[1] * 80 + 40;
     ctx.fillStyle = "black";
@@ -48,6 +48,21 @@ class Bullet{
   joinGrid(newGrid){
     this.grid = newGrid;
   };
+
+    // Allows for a unit to take an action.
+  gainAction(){
+    this.actionLeft = true;
+    this.grid.actionableUnits.push(this);
+  };
+
+  // Disables unit action.
+  takeAction() {
+    this.actionLeft = false;
+    if(this.grid.actionableUnits.includes(this)){
+      this.grid.removeFromActionableUnits(this);
+    }
+  };
+
 }
 
 export default Bullet

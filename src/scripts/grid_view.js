@@ -44,7 +44,7 @@ class GridView {
     this.grid.checkUnits();
     this.grid.erase();
     this.grid.draw();
-    // Checks if game is over.
+    // Checks if game is over after delay to allow for shot to process
     if (this.gameOver()) { 
       Util.showPlayersTurn("endScreen");
       Util.displayEndScreen("human");
