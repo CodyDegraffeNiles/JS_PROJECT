@@ -13,5 +13,5 @@ document.addEventListener("DOMContentLoaded", () =>{
   grid.swapTurn();
   // Timeout before drawing grid to allow images to properly load
   grid.draw = grid.draw.bind(grid)
-  setTimeout(grid.draw, 50)
+  setTimeout(grid.draw, 500)
 });
