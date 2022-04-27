@@ -45,6 +45,7 @@ header {
   font-size: 20px;
   background-color: goldenrod;
   cursor: pointer;
+  padding: 5px;
 }
 
 #action-options li:hover{
@@ -63,6 +64,11 @@ header {
   background-color: goldenrod;
   font-size: 20px;
   cursor: pointer;
+  padding: 5px 5px 0px;
+}
+
+#unit-stats dt:last-of-type{
+  padding: 0px;
 }
 
 #unit-stats dd{
@@ -71,6 +77,11 @@ header {
   background-color: goldenrod;
   font-size: 20px;
   cursor: pointer;
+  padding: 0px 5px 5px
+}
+
+#unit-stats dd:last-of-type{
+  padding: 0px 5px
 }
 
 #unit-stats :last-child{
