@@ -22,7 +22,6 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   margin-block: 0em;
 }
@@ -57,9 +56,16 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: "./fonts/Montserrat-Regular";
+}
+* {
+  font-family: "Montserrat";
+}
+
 #instructions {
   margin: auto;
-  font-family: sans-serif;
   font-size: 18px;
   color: white;
   text-align: center;
@@ -72,10 +78,15 @@ table {
 
 #show-grid {
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
   cursor: pointer;
   color: red;
+  transition: 0.3s;
+}
+
+#show-grid:hover {
+  background-color: darkred;
+  color: white;
 }
 
 #instructions h2 {
@@ -92,7 +103,6 @@ table {
 
 #end-game-restart-command {
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: black;
   cursor: pointer;
   color: white;
@@ -131,15 +141,15 @@ table {
   position: absolute;
   text-align: left;
   color: white;
-  font-family: sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   top: 60px;
   right: 0;
   width: 200px;
+  line-height: 1.25;
 }
 
 #turn-overview-title {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -172,13 +182,12 @@ header {
 
 #title {
   font-size: 40px;
-  font-family: Arial, Helvetica, sans-serif;
   color: #c78304;
   font-weight: 500;
 }
 
-#action-options {
-  padding: 10px;
+#action-options, #unit-stats {
+  padding: 20px;
 }
 
 #action-title {
@@ -199,10 +208,6 @@ header {
 #action-options li:hover {
   background-color: black;
   color: white;
-}
-
-#unit-stats {
-  padding: 10px;
 }
 
 #unit-stats dt {

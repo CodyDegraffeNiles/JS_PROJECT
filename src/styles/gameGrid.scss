@@ -24,13 +24,12 @@ header {
 
 #title{
   font-size: 40px;
-  font-family:Arial, Helvetica, sans-serif;
   color:rgb(199, 131, 4);
   font-weight: 500;
 }
 
-#action-options{
-  padding: 10px;
+#action-options, #unit-stats {
+  padding: 20px;
 }
 
 #action-title{
@@ -51,10 +50,6 @@ header {
 #action-options li:hover{
   background-color: black;
   color: white;
-}
-
-#unit-stats{
-  padding: 10px;
 }
 
 #unit-stats dt{
