@@ -26,12 +26,13 @@ header {
   font-size: 40px;
   color:rgb(199, 131, 4);
   font-weight: 500;
-  font-family: "Ginto"
+  font-family: "Orelega One"
 }
 
 #action-options, #unit-stats {
   padding: 20px;
-  width: 110px;
+  width: 115px;
+  font-family: 'Roboto'
 }
 
 #action-title{
@@ -39,7 +40,6 @@ header {
   color: #39FF14;
   font-weight: bold;
   filter: brightness(85%);
-  font-family: "Ginot"
 }
 
 #action-options li{
@@ -93,7 +93,6 @@ header {
   font-size: 24px;
   color: yellow;
   font-weight: bold;
-  font-family: "Ginto"
 }
 
 .crosshairs{

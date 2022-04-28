@@ -56,27 +56,15 @@ table {
   border-spacing: 0;
 }
 
-@font-face {
-  font-family: "Montserrat";
-  src: "./fonts/Montserrat-Regular";
-}
-@font-face {
-  font-family: "Ginto";
-  src: "/fonts/GintoNormal-Bold";
-}
-* {
-  font-family: "Montserrat";
-}
-
 #instructions {
   margin: auto;
   font-size: 18px;
   color: white;
   text-align: center;
+  font-family: "Nanum Gothic";
 }
 
 #instructions-text {
-  width: 70%;
   margin: auto;
 }
 
@@ -87,7 +75,7 @@ table {
   color: red;
   transition: 0.3s;
   font-weight: 500;
-  font-family: "Ginto";
+  font-family: "Orelega One";
 }
 
 #show-grid:hover {
@@ -98,7 +86,7 @@ table {
 #instructions h2 {
   font-size: 24px;
   font-weight: bold;
-  font-family: "Ginto";
+  font-family: "Roboto";
 }
 
 #end-screen {
@@ -113,6 +101,7 @@ table {
   background-color: black;
   cursor: pointer;
   color: white;
+  font-family: "Orelega One";
 }
 
 #options {
@@ -126,7 +115,10 @@ table {
   color: white;
   font-size: 20px;
   cursor: pointer;
-  font-family: "Ginto";
+}
+
+#options li:hover {
+  text-decoration: underline;
 }
 
 #about {
@@ -149,12 +141,13 @@ table {
   position: absolute;
   text-align: left;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   top: 60px;
   right: 0;
   width: 200px;
-  line-height: 1.25;
+  line-height: 1.1;
   padding-right: 10px;
+  font-family: "Nanum Gothic";
 }
 
 #turn-overview-title {
@@ -193,12 +186,13 @@ header {
   font-size: 40px;
   color: #c78304;
   font-weight: 500;
-  font-family: "Ginto";
+  font-family: "Orelega One";
 }
 
 #action-options, #unit-stats {
   padding: 20px;
-  width: 110px;
+  width: 115px;
+  font-family: "Roboto";
 }
 
 #action-title {
@@ -206,7 +200,6 @@ header {
   color: #39FF14;
   font-weight: bold;
   filter: brightness(85%);
-  font-family: "Ginot";
 }
 
 #action-options li {
@@ -260,7 +253,6 @@ header {
   font-size: 24px;
   color: yellow;
   font-weight: bold;
-  font-family: "Ginto";
 }
 
 .crosshairs {

@@ -22,6 +22,7 @@ const Util = {
     let gameOverMessage = document.createElement("P")
     gameOverMessage.style.textAlign = "center"
     gameOverMessage.style.fontSize = "35px"
+    gameOverMessage.style.fontFamily = "Orelega One"
     if (player === "human"){
       gameOverMessage.innerHTML = "VICTORY! The heretics have been purged!"
       gameOverMessage.style.color = "green";

@@ -428,7 +428,7 @@ class GridView {
     // Adds a cross out to sound if muted.
     let soundElement = document.getElementById("sound-command");
     this.muted ? soundElement.style.textDecoration = "line-through" : 
-    soundElement.style.textDecoration = "none" ;
+    soundElement.removeAttribute("style")
   };
 
 
