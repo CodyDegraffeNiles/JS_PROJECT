@@ -153,6 +153,7 @@ table {
   right: 0;
   width: 200px;
   line-height: 1.25;
+  padding-right: 10px;
 }
 
 #turn-overview-title {
