@@ -4,11 +4,26 @@
   font-size: 18px;
   color: white;
   text-align: center;
+  font-family: "Nanum Gothic";
 }
 
+
+
 #instructions-text {
-  width: 70%;
-  margin: auto
+  margin: auto;
+  width: 80%;
+}
+
+#instructions h2 {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#instructions li{
+  padding-bottom: 10px;
 }
 
 #show-grid {
@@ -18,18 +33,12 @@
   color: red;
   transition: 0.3s;
   font-weight: 500;
-  font-family: "Ginto";
+  font-family: "Orelega One";
 }
 
 #show-grid:hover{
   background-color: darkred;
   color: white;
-}
-
-#instructions h2{
-  font-size: 24px;
-  font-weight: bold;
-  font-family: "Ginto"
 }
 
 #end-screen{
@@ -44,6 +53,7 @@
   background-color: black;
   cursor: pointer;
   color: white;
+  font-family: "Orelega One"
 }
 
 #options{
@@ -54,12 +64,15 @@
 
 #options li{
   padding-right: 20px;
+  padding-top: 10px;
   color: white;
   font-size: 20px;
   cursor: pointer;
-  font-family: "Ginto"
 }
 
+#options li:hover{
+  text-decoration: underline;
+}
 #about{
   display: flex;
   width: 200px;
@@ -69,6 +82,7 @@
   width: 50px;
   height: 50px;
   padding-left: 20px;
+  padding-top: 10px;
 }
 
 .about-link i{
@@ -76,17 +90,17 @@
   color: white;
 }
 
-
 #turn-overview {
   position: absolute;
   text-align: left;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   top: 60px;
   right: 0;
   width: 200px;
-  line-height: 1.25;
+  line-height: 1.1;
   padding-right: 10px;
+  font-family: "Nanum Gothic";
 }
 
 #turn-overview-title {
