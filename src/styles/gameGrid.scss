@@ -31,6 +31,7 @@ header {
 
 #action-options, #unit-stats {
   padding: 20px;
+  width: 110px;
 }
 
 #action-title{
@@ -42,11 +43,17 @@ header {
 }
 
 #action-options li{
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   font-size: 20px;
   background-color: goldenrod;
   cursor: pointer;
   padding: 5px;
+}
+
+#action-options li:last-child {
+  border-bottom: 1px solid black;
 }
 
 #action-options li:hover{
@@ -78,16 +85,13 @@ header {
 }
 
 #unit-stats dd:last-of-type{
-  padding: 0px 5px
-}
-
-#unit-stats :last-child{
+  padding: 0px 5px;
   border-bottom: 1px solid black;
 }
 
 #stats-title{
   font-size: 24px;
-  color: black;
+  color: yellow;
   font-weight: bold;
   font-family: "Ginto"
 }

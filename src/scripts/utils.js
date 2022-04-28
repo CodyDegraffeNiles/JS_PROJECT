@@ -65,7 +65,7 @@ const Util = {
     }
     else{
       statsTitle.innerHTML = "Unit Stats"
-      statsTitle.style.color = "black";
+      statsTitle.style.color = "yellow";
     }
   }
 }
