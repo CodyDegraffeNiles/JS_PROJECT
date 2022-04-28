@@ -24,13 +24,13 @@ header {
 
 #title{
   font-size: 40px;
-  font-family:Arial, Helvetica, sans-serif;
   color:rgb(199, 131, 4);
   font-weight: 500;
+  font-family: "Ginto"
 }
 
-#action-options{
-  padding: 10px;
+#action-options, #unit-stats {
+  padding: 20px;
 }
 
 #action-title{
@@ -38,6 +38,7 @@ header {
   color: #39FF14;
   font-weight: bold;
   filter: brightness(85%);
+  font-family: "Ginot"
 }
 
 #action-options li{
@@ -45,15 +46,12 @@ header {
   font-size: 20px;
   background-color: goldenrod;
   cursor: pointer;
+  padding: 5px;
 }
 
 #action-options li:hover{
   background-color: black;
   color: white;
-}
-
-#unit-stats{
-  padding: 10px;
 }
 
 #unit-stats dt{
@@ -63,6 +61,11 @@ header {
   background-color: goldenrod;
   font-size: 20px;
   cursor: pointer;
+  padding: 5px 5px 0px;
+}
+
+#unit-stats dt:last-of-type{
+  padding: 0px;
 }
 
 #unit-stats dd{
@@ -71,6 +74,11 @@ header {
   background-color: goldenrod;
   font-size: 20px;
   cursor: pointer;
+  padding: 0px 5px 5px
+}
+
+#unit-stats dd:last-of-type{
+  padding: 0px 5px
 }
 
 #unit-stats :last-child{
@@ -81,6 +89,7 @@ header {
   font-size: 24px;
   color: black;
   font-weight: bold;
+  font-family: "Ginto"
 }
 
 .crosshairs{
